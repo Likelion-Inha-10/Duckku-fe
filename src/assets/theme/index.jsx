@@ -8,6 +8,7 @@ const colors = {
   noonToDusk: "linear-gradient(90deg, #EC7A85 0%, #C9E3F8 100%)",
   white: "#FFFFFF",
   purple: "#7000FF",
+  headerText: "#1D1D1F",
 };
 
 const flex = {

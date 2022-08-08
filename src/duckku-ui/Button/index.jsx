@@ -7,7 +7,7 @@ const Button = styled.button`
   border: none;
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : "16"}px;
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "16")}px;
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "24")}px;
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "700")};
   text-align: center;
   color: ${(props) => (props.color ? props.color : props.theme.colors.white)};
@@ -16,6 +16,8 @@ const Button = styled.button`
       ? props.theme.colors[props.backgroundColor]
       : props.theme.colors.main};
   z-index: inherit;
+  line-height: 29px;
+  letter-spacing: 0.55px;
 
   ${(props) =>
     props.large &&
