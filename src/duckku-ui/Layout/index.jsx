@@ -5,6 +5,7 @@ import Flex from "../Flex";
 const Width = styled.div`
   height: 100% !important;
   min-height: 550px;
+  max-height: 926px;
   max-width: 428px;
   margin: 0 auto;
   padding-top: 20px;
@@ -21,6 +22,10 @@ const BackColor = styled.div`
   width: 100%;
   height: 100%;
   background-color: #d3d3d3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Layout = ({ children }) => (
