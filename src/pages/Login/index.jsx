@@ -11,20 +11,20 @@ const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   align-items: flex-start;
   gap: 56px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 `;
 const Password = styled.div``;
 
 const ButtonWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   gap: 18px;
-  margin-bottom: 70px;
+  margin-bottom: 130px;
 `;
 
 const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
-  min-height: 844px;
+  min-height: 780px;
   justify-content: space-between;
 `;
 

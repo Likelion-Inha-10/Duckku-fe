@@ -9,6 +9,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 const InputWrapper = styled.div`
+  margin-top: 10px;
   ${(props) => props.theme.flex.flexCenterColumn};
   align-items: flex-start;
   gap: 6vh;
@@ -27,7 +28,7 @@ const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
   height: 100%;
-  min-height: 844px;
+  min-height: 760px;
   justify-content: space-between;
 `;
 
