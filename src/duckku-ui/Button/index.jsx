@@ -20,6 +20,7 @@ const Button = styled.button`
   z-index: inherit;
   line-height: 29px;
   letter-spacing: 0.55px;
+  cursor: pointer;
 `;
 
 export default withTheme(Button);

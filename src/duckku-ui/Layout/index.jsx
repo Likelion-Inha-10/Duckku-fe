@@ -3,9 +3,7 @@ import styled from "styled-components";
 import Flex from "../Flex";
 
 const Width = styled.div`
-  height: 100% !important;
-  min-height: 550px;
-  max-height: 844px;
+  min-height: 844px;
   max-width: 390px;
   margin: 0 auto;
   padding-top: 20px;
@@ -14,15 +12,9 @@ const Width = styled.div`
   background-color: white;
 `;
 
-const StyledFlex = styled(Flex)`
-  height: 100% !important;
-`;
-
 const BackColor = styled.div`
   width: 100%;
-  height: 100%;
   background-color: #d3d3d3;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,9 +23,9 @@ const BackColor = styled.div`
 const Layout = ({ children }) => (
   <BackColor>
     <Width>
-      <StyledFlex align="center" direction="column">
+      <Flex align="center" direction="column">
         {children}
-      </StyledFlex>
+      </Flex>
     </Width>
   </BackColor>
 );
