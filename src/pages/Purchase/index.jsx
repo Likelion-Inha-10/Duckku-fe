@@ -71,18 +71,18 @@ const Purchase = () => {
       <ButtonWrapper>
         <Button
           borderRadius="5"
-          width="161"
-          height="56"
-          fontSize="18.66"
+          width="120"
+          height="50"
+          fontSize="16"
           fontWeight="normal"
         >
           찜하기
         </Button>
         <Button
           borderRadius="5"
-          width="161"
-          height="56"
-          fontSize="18.66"
+          width="120"
+          height="50"
+          fontSize="16"
           fontWeight="normal"
         >
           바로 결제
@@ -97,12 +97,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               1
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               Lonely
             </Typography>
           </TrackListTitle>
@@ -110,12 +110,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               2
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               Feels Like Rooler - Coaster Ride
             </Typography>
           </TrackListTitle>
@@ -123,12 +123,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               3
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               Ohio
             </Typography>
           </TrackListTitle>
@@ -136,12 +136,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               4
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               위잉위잉
             </Typography>
           </TrackListTitle>
@@ -149,12 +149,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               5
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               Our Place
             </Typography>
           </TrackListTitle>
@@ -162,12 +162,12 @@ const Purchase = () => {
 
         <TrackListWrapper>
           <TrackListNum>
-            <Typography thin16 color="gray" center>
+            <Typography thin14 color="gray" center>
               6
             </Typography>
           </TrackListNum>
           <TrackListTitle>
-            <Typography thin16 color="gray">
+            <Typography thin14 color="gray">
               I Have No Hometown
             </Typography>
           </TrackListTitle>
