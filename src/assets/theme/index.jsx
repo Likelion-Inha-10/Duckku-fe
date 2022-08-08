@@ -1,5 +1,5 @@
 const colors = {
-  main: "linear-gradient(92.33deg, rgba(112, 0, 255, 0.8) 6.14%, rgba(193, 92, 255, 0.8) 94.68%)",
+  main: "linear-gradient(92.33deg, #7000FF 6.14%, #C15CFF 94.68%)",
   buttonInactive: "#D9D9D9",
   red: "#FD0000",
   gray: "#AFAFAF",

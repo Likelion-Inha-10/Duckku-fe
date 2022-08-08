@@ -35,56 +35,56 @@ const Typography = styled.div`
     ${(props) =>
     props.thin14 &&
     `
-        font-weight: 400;
+    font-family: 'Pretendard-Regular';
         font-size: 14px;
         `}
 
     ${(props) =>
     props.thin16 &&
     `
-        font-weight: 400;
+    font-family: 'Pretendard-Regular';
         font-size: 16px;
     `}
 
     ${(props) =>
     props.thin18 &&
     `
-        font-weight: 400;
+    font-family: 'Pretendard-Regular';
         font-size: 18px;
     `}
 
     ${(props) =>
     props.thin21 &&
     `
-        font-weight: 400;
+    font-family: 'Pretendard-Regular';
         font-size: 21px;
     `}
 
     ${(props) =>
     props.regular16 &&
     `
-        font-weight: 500;
+    font-family: 'Pretendard-Medium';
         font-size: 16px;
     `}
 
     ${(props) =>
     props.bold16 &&
     `
-            font-weight: 700;
+    font-family: 'Pretendard-Bold';
             font-size: 16px;
         `}
 
     ${(props) =>
     props.bold21 &&
     `
-        font-weight: 700;
+    font-family: 'Pretendard-Bold';
         font-size: 21px;
         `}
 
     ${(props) =>
     props.bold24 &&
     `
-        font-weight: 700;
+    font-family: 'Pretendard-Bold';
         font-size: 24px;
     `}
 `;

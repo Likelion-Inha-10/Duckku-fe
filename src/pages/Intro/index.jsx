@@ -9,7 +9,7 @@ const Intro = () => {
     <Layout>
       <Header back title="회원가입" />
       <Margin height="50" />
-      <Button backgroundColor="gray">가입하기</Button>
+      <Button backgroundColor="main">가입하기</Button>
       <Input borderColor="purple" placeholder="이름"></Input>
     </Layout>
   );
