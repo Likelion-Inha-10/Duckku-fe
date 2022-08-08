@@ -8,26 +8,24 @@ import Typography from "../../duckku-ui/Typography";
 import Flex from "../../duckku-ui/Flex";
 
 const TitleBox = styled.div`
-  width: 350px;
+  width: 320px;
   padding-left: 10px;
 `;
 
 const ArtistSelect = () => {
   return (
     <Layout>
-      <Header back title="회원가입" />
+      <Header back title="아티스트 설정" />
       <Margin height="50" />
       <TitleBox>
         <Flex direction="column" justify="left">
-          <Typography bold24>좋아하는 아티스트를</Typography>
-          <Typography bold24>선택해주세요.</Typography>
+          <Typography bold21>좋아하는 아티스트를</Typography>
+          <Typography bold21>선택해주세요.</Typography>
         </Flex>
       </TitleBox>
       <Margin height="30" />
-      <InputBox backgroundColor="gray" />
-      <Button backgroundColor="gray" width="350">
-        아티스트 선택
-      </Button>
+      <InputBox />
+      <Button backgroundColor="gray">아티스트 선택</Button>
     </Layout>
   );
 };

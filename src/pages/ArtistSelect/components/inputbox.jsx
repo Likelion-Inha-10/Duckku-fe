@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-const InputBox = styled.input`
+const InputContainer = styled.div`
   border: none;
-  border-bottom: 2px solid ${(props) => props.theme.colors[props.borderColor]};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "24")}px;
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "400")};
-  height: ${(props) => (props.height ? props.height : "39")}px;
+  height: ${(props) => (props.height ? props.height : "42")}px;
   line-height: 29px;
-  width: 350px;
+  width: 320px;
   padding-left: 5px;
   box-sizing: border-box;
   outline: none;
   background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "white"};
+    props.backgroundColor ? props.backgroundColor : "#F5F5F5"};
+  border-radius: 25px;
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -28,5 +28,9 @@ const InputBox = styled.input`
     line-height: 29px;
   }
 `;
+
+const InputBox = () => {
+  return <InputContainer></InputContainer>;
+};
 
 export default InputBox;
