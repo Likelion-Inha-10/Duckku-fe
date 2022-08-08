@@ -5,22 +5,32 @@ import Flex from "../Flex";
 const Width = styled.div`
   height: 100% !important;
   min-height: 550px;
-  max-width: 450px;
+  max-width: 428px;
   margin: 0 auto;
-  padding: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: 100%;
+  background-color: white;
 `;
 
 const StyledFlex = styled(Flex)`
   height: 100% !important;
 `;
 
+const BackColor = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d3;
+`;
+
 const Layout = ({ children }) => (
-  <Width>
-    <StyledFlex align="center" direction="column">
-      {children}
-    </StyledFlex>
-  </Width>
+  <BackColor>
+    <Width>
+      <StyledFlex align="center" direction="column">
+        {children}
+      </StyledFlex>
+    </Width>
+  </BackColor>
 );
 
 Layout.propTypes = {

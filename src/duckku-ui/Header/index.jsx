@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IoChevronBackSharp } from "react-icons/io5";
+import { VscChevronLeft } from "react-icons/vsc";
 import Typography from "../Typography";
 import Flex from "../Flex";
 import theme from "../../assets/theme";
@@ -38,10 +38,11 @@ const Header = (props) => {
   };
   return (
     <Wrapper align="center">
+      <Margin width="20" />
       <Back onClick={moveToBack} back={props.back}>
-        <IoChevronBackSharp size="30" color={theme.colors.black} />
+        <VscChevronLeft size="25" color={theme.colors.black} />
       </Back>
-      <Margin row size="50" />
+      <Margin width="6" />
       <Title title={props.title}>
         <Typography fontSize="20">{props.title}</Typography>
       </Title>

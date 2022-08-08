@@ -2,17 +2,19 @@ import styled, { css, withTheme } from "styled-components";
 
 const Button = styled.button`
   position: relative;
-  height: ${(props) => (props.height ? props.height : "50")}px;
-  width: ${(props) => (props.width ? props.width : "250")}px;
+  height: ${(props) => (props.height ? props.height : "64")}px;
+  width: ${(props) => (props.width ? props.width : "384")}px;
   border: none;
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : "16"}px;
   font-size: ${(props) => (props.fontSize ? props.fontSize : "16")}px;
-  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "600")};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "700")};
   text-align: center;
-  color: ${(props) => (props.color ? props.color : "#000000")};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.white)};
   background: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : props.theme.colors.main};
+    props.backgroundColor
+      ? props.theme.colors[props.backgroundColor]
+      : props.theme.colors.main};
   z-index: inherit;
 
   ${(props) =>
