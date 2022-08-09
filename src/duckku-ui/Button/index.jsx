@@ -17,7 +17,7 @@ const Button = styled.button`
     props.backgroundColor
       ? props.theme.colors[props.backgroundColor]
       : props.theme.colors.main};
-  z-index: inherit;
+  z-index: ${(props) => (props.zIndex ? props.zIndex : "inherit")};
   line-height: 29px;
   letter-spacing: 0.55px;
   cursor: pointer;

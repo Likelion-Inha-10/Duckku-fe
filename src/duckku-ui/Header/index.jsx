@@ -7,7 +7,14 @@ import Margin from "../Margin";
 
 const Wrapper = styled(Flex)`
   width: 100%;
-  height: 29px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
 `;
 
 const Title = styled.div`
@@ -40,7 +47,11 @@ const Header = (props) => {
     <Wrapper>
       <Margin width="20" />
       <Back onClick={moveToBack} back={props.back}>
-        <VscChevronLeft size="36" color={theme.colors.black} />
+        {props.white ? (
+          <VscChevronLeft size="36" color={theme.colors.white} />
+        ) : (
+          <VscChevronLeft size="36" color={theme.colors.black} />
+        )}
       </Back>
       <Margin width="6" />
       <Title title={props.title}>
