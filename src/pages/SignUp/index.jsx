@@ -1,5 +1,4 @@
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../duckku-ui/Button";
@@ -8,6 +7,8 @@ import Input from "../../duckku-ui/Input";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
+import toast, { toastConfig } from "react-simple-toasts";
+
 const InputWrapper = styled.div`
   margin-top: 10px;
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -33,6 +34,33 @@ const Wrapper = styled.div`
 `;
 
 const SignUp = () => {
+  const inputName = useRef();
+  const inputEmail = useRef();
+  const inputPW = useRef();
+  const inputPW2 = useRef();
+  const last = useRef();
+
+  const tt = () => {
+    toast("hi", {
+      clickClosable: true,
+      render: (message) => (
+        <div
+          style={{
+            background: "rgba(0, 0, 0, 0.6)",
+            borderRadius: "50px",
+            boxShadow: "0 2px 2px 2px rgba(0, 0, 0, 0.1)",
+            position: "absolute",
+            bottoM: "100px",
+            color: "white",
+            padding: "20px",
+            minWidth: "200px",
+          }}
+        >
+          {message}
+        </div>
+      ),
+    });
+  };
   const [user, setUser] = useState({ name: "", email: "", pw: "", pw2: "" });
   const [alert, setAlert] = useState({
     email: true,
@@ -49,6 +77,7 @@ const SignUp = () => {
 
   //회원가입 버튼 색 바꾸는거
   useEffect(() => {
+    tt();
     for (var key of Object.keys(user)) {
       if (user[key] === "") {
         return;
@@ -104,6 +133,25 @@ const SignUp = () => {
     console.log("성공!");
   };
 
+  //이건 있어도 되고 없어도 되는 기능
+  //엔터를 누르면 다음 항목으로 넘어간다.
+  //클릭하기 귀찮아서 추가함
+  const next = (e) => {
+    const { name } = e.target;
+    if (name === "name" && e.key === "Enter") {
+      inputEmail.current.focus();
+    }
+    if (name === "email" && e.key === "Enter") {
+      inputPW.current.focus();
+    }
+    if (name === "pw" && e.key === "Enter") {
+      inputPW2.current.focus();
+    }
+    if (name === "pw2" && e.key === "Enter") {
+      last.current.focus();
+    }
+  };
+
   return (
     <Layout>
       <Wrapper>
@@ -116,14 +164,18 @@ const SignUp = () => {
             onChange={onChange}
             name="name"
             placeholder="이름"
+            onKeyUp={next}
+            ref={inputName}
           />
           <SubText>
             <Input
               borderColor={colors.email}
               name="email"
               placeholder="이메일"
+              onKeyUp={next}
               value={user.email}
               onChange={onChange}
+              ref={inputEmail}
             />
             <Margin height="5" />
             <Typography
@@ -142,7 +194,9 @@ const SignUp = () => {
               placeholder="비밀번호"
               type="password"
               value={user.pw}
+              onKeyUp={next}
               onChange={onChange}
+              ref={inputPW}
             />
             <Margin height="5" />
             <Typography
@@ -160,7 +214,9 @@ const SignUp = () => {
               onChange={onChange}
               name="pw2"
               placeholder="비밀번호 확인"
+              onKeyUp={next}
               type="password"
+              ref={inputPW2}
             />
             <Margin height="5" />
             <Typography
@@ -175,7 +231,11 @@ const SignUp = () => {
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button onClick={submit} backgroundColor={colors.submitButton}>
+          <Button
+            onClick={submit}
+            ref={last}
+            backgroundColor={colors.submitButton}
+          >
             입력한 정보로 가입하기
           </Button>
         </ButtonWrapper>
