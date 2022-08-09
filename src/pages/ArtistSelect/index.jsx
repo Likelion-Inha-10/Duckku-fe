@@ -139,33 +139,20 @@ const ArtistSelect = () => {
   const [optionButtons, setOptionButtons] = useState();
   const [artistButtons, setArtistButtons] = useState();
 
-  const onAgencyClick = (e) => {
-    console.log(e.target.name);
-    setAgencies(
-      agencies.map((agency) => {
-        if (agency.key === e.target.name) {
-          if (agency.selected) return { ...agency, selected: false };
-          return { ...agency, selected: true };
-        }
-        return { ...agency, selected: false };
-      })
-    );
-  };
-
-  const onArtistClick = (e) => {
-    console.log(e.key);
-    setArtists(
-      artists.map((artist) => {
-        if (artist.key === e.key) {
-          if (artist.selected) return { ...artist, selected: false };
-          return { ...artist, selected: true };
-        }
-        return { ...artist };
-      })
-    );
-  };
-
   useEffect(() => {
+    const onAgencyClick = (e) => {
+      console.log(e.target.name);
+      setAgencies(
+        agencies.map((agency) => {
+          if (agency.key === e.target.name) {
+            if (agency.selected) return { ...agency, selected: false };
+            return { ...agency, selected: true };
+          }
+          return { ...agency, selected: false };
+        })
+      );
+    };
+
     setOptionButtons(
       agencies.map((agency) => (
         <OptionButton
@@ -181,6 +168,19 @@ const ArtistSelect = () => {
   }, [agencies]);
 
   useEffect(() => {
+    const onArtistClick = (e) => {
+      console.log(e.key);
+      setArtists(
+        artists.map((artist) => {
+          if (artist.key === e.key) {
+            if (artist.selected) return { ...artist, selected: false };
+            return { ...artist, selected: true };
+          }
+          return { ...artist };
+        })
+      );
+    };
+
     setArtistButtons(
       artists.map((artist) => (
         <ArtistButton
@@ -193,9 +193,11 @@ const ArtistSelect = () => {
         />
       ))
     );
+
     let counter = 0;
     artists.map((artist) => {
       if (artist.selected === true) counter++;
+      return 0;
     });
     setArtistNumber(counter);
   }, [artists]);
