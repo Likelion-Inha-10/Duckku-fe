@@ -1,30 +1,26 @@
+import React, { useState } from "react";
 import Button from "../../duckku-ui/Button";
 import Header from "../../duckku-ui/Header";
-import Input from "../../duckku-ui/Input";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
+import Modal from "./Modal/Modal";
+import { VscAdd } from "react-icons/vsc";
 
 const ButtonWrapper = styled.div`
   width: 80%;
   height: 100px;
   display: flex;
-  justify-content: space-around;
 `;
 
 const PurchaseImage = styled.div`
-  width: 338px;
-  height: 483px;
-  border-radius: 10%;
+  width: 324px;
+  height: 384px;
+  border-radius: 10% 10% 30% 30%;
   margin-top: 50px;
   background-color: gray;
   background-image: "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/463/170/80463170_1410941472017_1_600x600.JPG";
-`;
-
-const PurchaseInfo = styled.div`
-  width: 100%;
-  height: 200px;
 `;
 
 const TrackWrapper = styled.div`
@@ -56,6 +52,128 @@ const TrackListTitle = styled.div`
   margin-left: 10%;
 `;
 
+const ModalUnderLine = styled.div`
+  width: 100%;
+  border-bottom: 3px solid lightgray;
+`;
+
+const PurchaseInline = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+`;
+
+const CountingSection = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const PurchaseBtn = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const [numberInclude, setIncludeNumber] = useState(0);
+
+  const increaseIncludeNumber = () => {
+    setIncludeNumber(numberInclude + 1);
+  };
+
+  const decreaseIncludeNumber = () => {
+    setIncludeNumber(numberInclude - 1);
+  };
+
+  const [numberNotInclude, setNotIncludeNumber] = useState(0);
+
+  const increaseNotInclude = () => {
+    setNotIncludeNumber(numberNotInclude + 1);
+  };
+
+  const decreaseNotInclude = () => {
+    setNotIncludeNumber(numberNotInclude - 1);
+  };
+
+  return (
+    <React.Fragment>
+      <Button
+        onClick={openModal}
+        borderRadius="5"
+        width="350"
+        height="60"
+        fontSize="16"
+        fontWeight="normal"
+      >
+        바로 구매
+      </Button>
+      <Modal open={modalOpen} close={closeModal}>
+        <PurchaseInline>
+          <Typography bold16>응모권 포함</Typography>
+          <Typography fontSize="10">(온라인 앨범, 포토카트 교환권)</Typography>
+        </PurchaseInline>
+        <CountingSection>
+          <Margin width="10" />
+          <Button
+            fontSize="5"
+            height="13"
+            width="13"
+            onClick={decreaseIncludeNumber}
+          >
+            -
+          </Button>
+          <Margin width="10" />
+          <Typography>{numberInclude}</Typography>
+          <Margin width="10" />
+          <Button
+            color="black"
+            fontSize="5"
+            height="13"
+            width="13"
+            onClick={increaseIncludeNumber}
+          >
+            <VscAdd />
+          </Button>
+        </CountingSection>
+        <ModalUnderLine />
+        <PurchaseInline>
+          <Typography bold16>응모권 미포함</Typography>
+          <Typography fontSize="10">(온라인 앨범, 포토카트 교환권)</Typography>
+        </PurchaseInline>
+        <CountingSection>
+          <Margin width="10" />
+          <Button
+            fontSize="5"
+            height="13"
+            width="13"
+            onClick={decreaseNotInclude}
+          >
+            -
+          </Button>
+          <Margin width="10" />
+          <Typography>{numberNotInclude}</Typography>
+          <Margin width="10" />
+          <Button
+            color="black"
+            fontSize="5"
+            height="13"
+            width="13"
+            onClick={increaseNotInclude}
+          >
+            <VscAdd />
+          </Button>
+        </CountingSection>
+        <ModalUnderLine />
+      </Modal>
+    </React.Fragment>
+  );
+};
+
 const Purchase = () => {
   return (
     <Layout>
@@ -69,24 +187,7 @@ const Purchase = () => {
       </Typography>
       <Margin width="100%" height="30" />
       <ButtonWrapper>
-        <Button
-          borderRadius="5"
-          width="120"
-          height="50"
-          fontSize="16"
-          fontWeight="normal"
-        >
-          찜하기
-        </Button>
-        <Button
-          borderRadius="5"
-          width="120"
-          height="50"
-          fontSize="16"
-          fontWeight="normal"
-        >
-          바로 결제
-        </Button>
+        <PurchaseBtn />
       </ButtonWrapper>
       <TrackWrapper>
         <TrackUnderLine>
