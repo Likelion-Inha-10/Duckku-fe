@@ -2,7 +2,7 @@
   display: none;
   height: 1500px;
   position: fixed;
-  top: 0;
+  top: -1000px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -24,8 +24,9 @@
   border-radius: 0;
   background-color: #fff;
   animation: modal-show 0.3s;
-  position: sticky;
-  bottom: 0%;
+  position: fixed;
+  left: 30%;
+  bottom: 0;
   border-radius: 15px 15px 0 0;
 }
 .modal > section > header {
@@ -66,8 +67,11 @@
   padding: 6px 12px;
   color: #fff;
   background: linear-gradient(92.33deg, #7000ff 6.14%, #c15cff 94.68%);
-  border-radius: 5px;
-  font-size: 13px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 350px;
+  height: 60px;
 }
 
 @media (hover: hover) {
@@ -76,7 +80,10 @@
     color: #fff;
     background-color: rgba(167, 18, 223, 0.7);
     border-radius: 5px;
-    font-size: 13px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 350px;
+    height: 60px;
   }
 }
 
@@ -86,7 +93,10 @@
     color: #fff;
     background-color: rgba(167, 18, 223, 0.7);
     border-radius: 5px;
-    font-size: 13px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 350px;
+    height: 60px;
   }
 }
 
@@ -95,7 +105,10 @@
   color: #fff;
   background-color: rgba(167, 18, 223, 0.7);
   border-radius: 5px;
-  font-size: 13px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 350px;
+  height: 60px;
 }
 
 .modal > section > footer button {
@@ -103,7 +116,10 @@
   color: #a3a3a3;
   background-color: #fff;
   border-radius: 5px;
-  font-size: 13px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 350px;
+  height: 60px;
 }
 
 .modal.openModal {

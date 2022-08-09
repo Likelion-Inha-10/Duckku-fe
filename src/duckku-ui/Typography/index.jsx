@@ -61,6 +61,13 @@ const Typography = styled.div`
     `}
 
     ${(props) =>
+    props.regular14 &&
+    `
+      font-family: 'Pretendard-Medium';
+          font-size: 14px;
+      `}
+
+    ${(props) =>
     props.regular16 &&
     `
     font-family: 'Pretendard-Medium';
@@ -87,6 +94,14 @@ const Typography = styled.div`
     font-family: 'Pretendard-Bold';
         font-size: 24px;
     `}
+
+    ${(props) =>
+    props.mainColor &&
+    `
+      background: linear-gradient(92.33deg, #7000FF 6.14%, #C15CFF 94.68%);
+      -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      `}
 `;
 
 export default withTheme(Typography);

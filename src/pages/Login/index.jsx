@@ -1,6 +1,4 @@
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../duckku-ui/Button";
 import Header from "../../duckku-ui/Header";
@@ -13,50 +11,47 @@ const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   align-items: flex-start;
   gap: 56px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 `;
 const Password = styled.div``;
 
 const ButtonWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   gap: 18px;
-  margin-bottom: 70px;
+  margin-bottom: 130px;
 `;
 
 const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
-  height: 100%;
+  min-height: 780px;
   justify-content: space-between;
 `;
 
 const Login = () => {
-  const navigate = useNavigate();
+  const [user, setUser] = useState({ email: "", pw: "" });
+  const [colors, setColors] = useState({ email: "gray", pw: "gray" });
+  const [valid, setValid] = useState({ pw: "hidden" });
 
-  const [colorEmail, setColorEmail] = useState("gray");
-  const [colorPW, setColorPW] = useState("gray");
-  const [isCorrect, setIsCorrect] = useState("hidden");
-
-  const onChangeEmail = (e) => {
-    if (e.target.value === "") {
-      setColorEmail("gray");
-    } else {
-      setColorEmail("purple");
-    }
+  //로그인 버튼을 누르면 실행
+  const loginSuccess = () => {
+    //정보를 보내고 안된다고 다시 오면 안된다고 뜨게하기 , 아래에 쓴건 임시임
+    if (user.pw === "") return setValid({ pw: "visible" });
+    else setValid({ pw: "hidden" });
+  };
+  const forgetAccount = () => {
+    console.log("계정찾으러 가좡~!");
   };
 
-  const onChangePW = (e) => {
-    if (e.target.value === "") {
-      setColorPW("gray");
-    } else {
-      setColorPW("purple");
-      //비밀번호가 맞는지 알게되면 이 아래에있는 코드를 지워버리자~
-      setIsCorrect("visible");
-    }
+  //인풋에 변화가 생기면 실행
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+
+    if (value === "") setColors({ ...colors, [name]: "gray" });
+    else setColors({ ...colors, [name]: "purple" });
   };
 
-  const moveToPage = () => {};
-  const forgetAccount = () => {};
   return (
     <Layout>
       <Wrapper>
@@ -65,21 +60,23 @@ const Login = () => {
         <InputWrapper>
           <Input
             name="email"
-            onChange={onChangeEmail}
-            borderColor={colorEmail}
+            onChange={onChange}
+            borderColor={colors.email}
             placeholder="이메일"
+            value={user.email}
           />
           <Password>
             <Input
-              name="password"
-              onChange={onChangePW}
-              borderColor={colorPW}
+              name="pw"
+              onChange={onChange}
+              borderColor={colors.pw}
               placeholder="비밀번호"
               type="password"
+              value={user.pw}
             />
             <Margin height="5" />
             <Typography
-              style={{ visibility: isCorrect }}
+              style={{ visibility: valid.pw }}
               fontSize="14"
               color="red"
               fontWeight="400"
@@ -90,8 +87,13 @@ const Login = () => {
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button onClick={moveToPage}>로그인</Button>
-          <Typography onClick={forgetAccount} fontWeight="400" color="gray">
+          <Button onClick={loginSuccess}>로그인</Button>
+          <Typography
+            style={{ cursor: "pointer" }}
+            onClick={forgetAccount}
+            fontWeight="400"
+            color="gray"
+          >
             비밀번호를 잊어버렸어요
           </Typography>
         </ButtonWrapper>

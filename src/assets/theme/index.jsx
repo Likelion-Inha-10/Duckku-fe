@@ -9,6 +9,8 @@ const colors = {
   white: "#FFFFFF",
   purple: "#7000FF",
   headerText: "#1D1D1F",
+  navGray: "#6D6D6D",
+  darkGray: "#726969",
 };
 
 const flex = {
