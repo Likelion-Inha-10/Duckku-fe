@@ -8,31 +8,140 @@ import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import Flex from "../../duckku-ui/Flex";
 import OptionButton from "./components/optionButton";
+import ArtistButton from "./components/artistButton";
 
 const TitleBox = styled.div`
   width: 320px;
   padding-left: 10px;
 `;
 
+const OptionSlider = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+`;
+
+const OptionButtonWrapper = styled.div`
+  width: fit-content;
+  margin-left: 27px;
+  margin-right: 27px;
+`;
+
+const ArtistWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 336px;
+  height: 55vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 20px;
+`;
+
 const ArtistSelect = () => {
   const [agencies, setAgencies] = useState([
-    { id: "HYBE", label: "HYBE", selected: false },
-    { id: "SM", label: "SM", selected: false },
-    { id: "YG", label: "YG", selected: false },
-    { id: "JYP", label: "JYP", selected: false },
-    { id: "울림", label: "울림", selected: false },
-    { id: "젤리피쉬", label: "젤리피쉬", selected: false },
-    { id: "CUBE", label: "CUBE", selected: false },
-    { id: "FNC", label: "FNC", selected: false },
+    { key: "HYBE", selected: false },
+    { key: "SM", selected: false },
+    { key: "YG", selected: false },
+    { key: "JYP", selected: false },
+    { key: "울림", selected: false },
+    { key: "젤리피쉬", selected: false },
+    { key: "CUBE", selected: false },
+    { key: "FNC", selected: false },
+  ]);
+
+  const [artists, setArtists] = useState([
+    {
+      key: "TWICE",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "소녀시대",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "슈퍼주니어",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "EXO",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "NCT",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "레드벨벳",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "샤이니",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "청하",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "아이유",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "스트레이키즈",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
+    {
+      key: "BTS",
+      selected: false,
+      link: "https://img.hankyung.com/photo/202005/01.22706599.1.jpg",
+      color: "gray",
+    },
   ]);
 
   const [optionButtons, setOptionButtons] = useState();
+  const [artistButtons, setArtistButtons] = useState();
 
   const onAgencyClick = (e) => {
     console.log(e.target.name);
-    setOptionButtons(
+    setAgencies(
       agencies.map((agency) => {
-        if (agency.id === e.target.name) {
+        if (agency.key === e.target.name) {
           if (agency.selected) return { ...agency, selected: false };
           return { ...agency, selected: true };
         }
@@ -41,19 +150,48 @@ const ArtistSelect = () => {
     );
   };
 
+  const onArtistClick = (e) => {
+    console.log(e.selected);
+    setArtists(
+      artists.map((artist) => {
+        if (artist.key === e.key) {
+          if (artist.selected) return { ...artist, selected: false };
+          return { ...artist, selected: true };
+        }
+        return { ...artist };
+      })
+    );
+  };
+
   useEffect(() => {
     setOptionButtons(
       agencies.map((agency) => (
         <OptionButton
-          name={agency.id}
+          key={agency.key}
+          name={agency.key}
           activated={agency.selected}
           onClick={onAgencyClick}
         >
-          {agency.label}
+          {agency.key}
         </OptionButton>
       ))
     );
   }, [agencies]);
+
+  useEffect(() => {
+    setArtistButtons(
+      artists.map((artist) => (
+        <ArtistButton
+          key={artist.key}
+          artistName={artist.key}
+          activated={artist.selected}
+          color={artist.color}
+          link={artist.link}
+          onClick={() => onArtistClick(artist)}
+        />
+      ))
+    );
+  }, [artists]);
 
   return (
     <Layout>
@@ -61,16 +199,26 @@ const ArtistSelect = () => {
       <Margin height="32" />
       <TitleBox>
         <Flex direction="column" justify="left">
-          <Typography bold21>좋아하는 아티스트를</Typography>
-          <Typography bold21>선택해주세요.</Typography>
+          <Typography bold21>
+            좋아하는 아티스트를
+            <br />
+            선택해주세요.
+          </Typography>
         </Flex>
       </TitleBox>
       <Margin height="30" />
       <InputBox placeholder="아티스트 검색" />
       <Margin height="21" />
-      {optionButtons}
-      <OptionButton>JYP</OptionButton>
-      <Button backgroundColor="gray">아티스트 선택</Button>
+      <OptionSlider>
+        <OptionButtonWrapper>
+          <Flex direction="row">{optionButtons}</Flex>
+        </OptionButtonWrapper>
+      </OptionSlider>
+      <Margin height="32" />
+      <ArtistWrapper>{artistButtons}</ArtistWrapper>
+      <ButtonWrapper>
+        <Button backgroundColor="gray">아티스트 선택하기</Button>
+      </ButtonWrapper>
     </Layout>
   );
 };
