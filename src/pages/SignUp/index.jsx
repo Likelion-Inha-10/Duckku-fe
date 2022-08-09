@@ -7,7 +7,7 @@ import Input from "../../duckku-ui/Input";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
-import toast, { toastConfig } from "react-simple-toasts";
+import toast from "react-simple-toasts";
 
 const InputWrapper = styled.div`
   margin-top: 10px;
@@ -40,27 +40,6 @@ const SignUp = () => {
   const inputPW2 = useRef();
   const last = useRef();
 
-  const tt = () => {
-    toast("hi", {
-      clickClosable: true,
-      render: (message) => (
-        <div
-          style={{
-            background: "rgba(0, 0, 0, 0.6)",
-            borderRadius: "50px",
-            boxShadow: "0 2px 2px 2px rgba(0, 0, 0, 0.1)",
-            position: "absolute",
-            bottoM: "100px",
-            color: "white",
-            padding: "20px",
-            minWidth: "200px",
-          }}
-        >
-          {message}
-        </div>
-      ),
-    });
-  };
   const [user, setUser] = useState({ name: "", email: "", pw: "", pw2: "" });
   const [alert, setAlert] = useState({
     email: true,
@@ -77,7 +56,6 @@ const SignUp = () => {
 
   //회원가입 버튼 색 바꾸는거
   useEffect(() => {
-    tt();
     for (var key of Object.keys(user)) {
       if (user[key] === "") {
         return;
