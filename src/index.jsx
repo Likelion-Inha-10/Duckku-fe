@@ -41,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset !important;
+     }
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
