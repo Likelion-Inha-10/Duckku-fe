@@ -1,6 +1,4 @@
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../duckku-ui/Button";
 import Header from "../../duckku-ui/Header";
@@ -13,26 +11,24 @@ const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   align-items: flex-start;
   gap: 56px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 `;
 const Password = styled.div``;
 
 const ButtonWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   gap: 18px;
-  margin-bottom: 70px;
+  margin-bottom: 130px;
 `;
 
 const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
-  height: 100%;
+  min-height: 780px;
   justify-content: space-between;
 `;
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const [colorEmail, setColorEmail] = useState("gray");
   const [colorPW, setColorPW] = useState("gray");
   const [isCorrect, setIsCorrect] = useState("hidden");
