@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "../../duckku-ui/Button";
 import Header from "../../duckku-ui/Header";
@@ -15,7 +15,45 @@ const TitleBox = styled.div`
 `;
 
 const ArtistSelect = () => {
-  const [agency, setAgency] = useState();
+  const [agencies, setAgencies] = useState([
+    { id: "HYBE", label: "HYBE", selected: false },
+    { id: "SM", label: "SM", selected: false },
+    { id: "YG", label: "YG", selected: false },
+    { id: "JYP", label: "JYP", selected: false },
+    { id: "울림", label: "울림", selected: false },
+    { id: "젤리피쉬", label: "젤리피쉬", selected: false },
+    { id: "CUBE", label: "CUBE", selected: false },
+    { id: "FNC", label: "FNC", selected: false },
+  ]);
+
+  const [optionButtons, setOptionButtons] = useState();
+
+  const onAgencyClick = (e) => {
+    console.log(e.target.name);
+    setOptionButtons(
+      agencies.map((agency) => {
+        if (agency.id === e.target.name) {
+          if (agency.selected) return { ...agency, selected: false };
+          return { ...agency, selected: true };
+        }
+        return { ...agency };
+      })
+    );
+  };
+
+  useEffect(() => {
+    setOptionButtons(
+      agencies.map((agency) => (
+        <OptionButton
+          name={agency.id}
+          activated={agency.selected}
+          onClick={onAgencyClick}
+        >
+          {agency.label}
+        </OptionButton>
+      ))
+    );
+  }, [agencies]);
 
   return (
     <Layout>
@@ -30,6 +68,7 @@ const ArtistSelect = () => {
       <Margin height="30" />
       <InputBox placeholder="아티스트 검색" />
       <Margin height="21" />
+      {optionButtons}
       <OptionButton>JYP</OptionButton>
       <Button backgroundColor="gray">아티스트 선택</Button>
     </Layout>
