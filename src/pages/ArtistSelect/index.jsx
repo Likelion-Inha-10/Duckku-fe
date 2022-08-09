@@ -54,6 +54,8 @@ const ButtonWrapper = styled.div`
 `;
 
 const ArtistSelect = () => {
+  const [artistNumber, setArtistNumber] = useState(0);
+
   const [agencies, setAgencies] = useState([
     { key: "HYBE", selected: false },
     { key: "SM", selected: false },
@@ -145,13 +147,13 @@ const ArtistSelect = () => {
           if (agency.selected) return { ...agency, selected: false };
           return { ...agency, selected: true };
         }
-        return { ...agency };
+        return { ...agency, selected: false };
       })
     );
   };
 
   const onArtistClick = (e) => {
-    console.log(e.selected);
+    console.log(e.key);
     setArtists(
       artists.map((artist) => {
         if (artist.key === e.key) {
@@ -191,6 +193,11 @@ const ArtistSelect = () => {
         />
       ))
     );
+    let counter = 0;
+    artists.map((artist) => {
+      if (artist.selected === true) counter++;
+    });
+    setArtistNumber(counter);
   }, [artists]);
 
   return (
@@ -217,7 +224,11 @@ const ArtistSelect = () => {
       <Margin height="32" />
       <ArtistWrapper>{artistButtons}</ArtistWrapper>
       <ButtonWrapper>
-        <Button backgroundColor="gray">아티스트 선택하기</Button>
+        <Button backgroundColor={artistNumber === 0 ? "gray" : "main"}>
+          {artistNumber === 0
+            ? "아티스트 선택하기"
+            : artistNumber + "명의 아티스트 선택"}
+        </Button>
       </ButtonWrapper>
     </Layout>
   );
