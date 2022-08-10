@@ -5,24 +5,22 @@ const Container = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: row;
-  align-items: left;
   overflow: scroll;
+  padding-left: 32px;
+  margin-left: -px;
 `;
 
 const Box = styled.div`
-  width: 154px;
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 30px;
-  margin-right: 18px;
+  padding-right: 18px;
 `;
 
 const ImageContainer = styled.div`
   width: 154px;
   height: 220px;
-  border-radius: 20px;
   overflow: hidden;
 `;
 
@@ -34,21 +32,22 @@ const ImageBox = styled.img`
 `;
 
 const Info = styled.div`
-  width: 130px;
-  height: 16px;
+  width: 100px;
+  height: 40px;
+  flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
   margin-top: 10px;
+  margin-left: 10px;
 `;
 
 const AlbumTitle = styled.div`
   font-size: 16px;
-  font-weight: bolder;
+  font-weight: bold;
   color: #444444;
 `;
 
 const Detail = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   color: #444444;
 `;
@@ -56,57 +55,47 @@ const Detail = styled.div`
 const moveToPage = () => {};
 const StoreInfo = () => {
   return (
-    <div>
-      <Container>
-        <Box margin="10">
-          <ImageContainer>
-            <ImageBox src={loveImg} onClick={moveToPage} />
-          </ImageContainer>
-          <Info>
-            <AlbumTitle>사랑으로</AlbumTitle>
-          </Info>
-          <Info>
-            <Detail> 혁오 2022</Detail>
-          </Info>
-        </Box>
-        <Box>
-          <ImageContainer>
-            <ImageBox src={loveImg} onClick={moveToPage} />
-          </ImageContainer>
+    <Container>
+      <Box>
+        <ImageContainer>
+          <ImageBox src={loveImg} onClick={moveToPage} />
+        </ImageContainer>
+        <Info>
+          <AlbumTitle>사랑으로</AlbumTitle>
+          <Detail> 혁오 2022</Detail>
+        </Info>
+      </Box>
+      <Box>
+        <ImageContainer>
+          <ImageBox src={loveImg} onClick={moveToPage} />
+        </ImageContainer>
 
-          <Info>
-            <AlbumTitle>사랑으로</AlbumTitle>
-          </Info>
-          <Info>
-            <Detail> 혁오 2022</Detail>
-          </Info>
-        </Box>
-        <Box>
-          <ImageContainer>
-            <ImageBox src={loveImg} onClick={moveToPage} />
-          </ImageContainer>
+        <Info>
+          <AlbumTitle>사랑으로</AlbumTitle>
+          <Detail> 혁오 2022</Detail>
+        </Info>
+      </Box>
+      <Box>
+        <ImageContainer>
+          <ImageBox src={loveImg} onClick={moveToPage} />
+        </ImageContainer>
 
-          <Info>
-            <AlbumTitle>사랑으로</AlbumTitle>
-          </Info>
-          <Info>
-            <Detail> 혁오 2022</Detail>
-          </Info>
-        </Box>
+        <Info>
+          <AlbumTitle>사랑으로</AlbumTitle>
+          <Detail> 혁오 2022</Detail>
+        </Info>
+      </Box>
 
-        <Box margin="10">
-          <ImageContainer>
-            <ImageBox src={loveImg} onClick={moveToPage} />
-          </ImageContainer>
-          <Info>
-            <AlbumTitle>사랑으로</AlbumTitle>
-          </Info>
-          <Info>
-            <Detail> 혁오 2022</Detail>
-          </Info>
-        </Box>
-      </Container>
-    </div>
+      <Box>
+        <ImageContainer>
+          <ImageBox src={loveImg} onClick={moveToPage} />
+        </ImageContainer>
+        <Info>
+          <AlbumTitle>사랑으로</AlbumTitle>
+          <Detail> 혁오 2022</Detail>
+        </Info>
+      </Box>
+    </Container>
   );
 };
 

@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import Header from "../../duckku-ui/Header";
-import Input from "../../duckku-ui/Input";
 import Layout from "../../duckku-ui/Layout";
-import { VscSearch } from "react-icons/vsc";
 import StoreInfo from "../../duckku-ui/StoreInfo";
-import Album from "../../duckku-ui/Album";
+import Album from "../Store/components/album";
+import InputBox from "../ArtistSelect/components/inputBox";
+import Footer from "../../duckku-ui/Footer";
+import Margin from "../../duckku-ui/Margin";
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: 12%;
-  margin-bottom: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TitleWrapper = styled.div`
@@ -36,39 +38,37 @@ const More = styled.div`
   font-weight: bold;
 `;
 
-const Search = styled.div`
-  width: 100%;
-  padding-top: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
-  display: flex;
-`;
-
 const ListWrapper = styled.div`
-  padding-left: 27px;
-  padding-right: 10%;
   width: 100%;
   height: 38%;
 `;
 
 const AlbumWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  align-items: stretch;
-  width: 93%;
-  margin-right: 3px;
+  justify-content: space-between;
+  width: 390px;
+  padding-right: 14px;
+  padding-left: 32px;
+`;
+
+const Container = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const moveToPage = () => {};
 const Store = () => {
   return (
     <Layout>
+      <Container></Container>
+      <Header back title="스토어" />
+      <Margin height="32" />
       <Wrapper>
-        <Header back title="스토어" />
-        <Search>
-          <VscSearch size="36" />
-          <Input placeholder="검색어를 입력하세요"></Input>
-        </Search>
+        <InputBox placeholder="검색어를 입력해 주세요" />
       </Wrapper>
       <TitleWrapper>
         <Title>
@@ -86,8 +86,8 @@ const Store = () => {
       <AlbumWrapper>
         <Album></Album>
         <Album></Album>
-      </AlbumWrapper>
-      <AlbumWrapper>
+        <Album></Album>
+        <Album></Album>
         <Album></Album>
         <Album></Album>
       </AlbumWrapper>
@@ -98,11 +98,12 @@ const Store = () => {
       <AlbumWrapper>
         <Album></Album>
         <Album></Album>
-      </AlbumWrapper>
-      <AlbumWrapper>
+        <Album></Album>
+        <Album></Album>
         <Album></Album>
         <Album></Album>
       </AlbumWrapper>
+      <Footer></Footer>
     </Layout>
   );
 };
