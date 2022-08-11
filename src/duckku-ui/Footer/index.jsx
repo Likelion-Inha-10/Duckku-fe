@@ -6,14 +6,14 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 
 const Wrapper = styled.div`
   position: fixed;
-  bottom: 12px;
+  bottom: 0;
   max-width: 390px;
   width: ${(props) => (props.width ? props.width : "358")}px;
-  height: 72px;
+  height: 88px;
   background-color: white;
 
-  border-radius: 16px 16px 32px 32px;
-  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 16px 16px 8px 8px;
+  box-shadow: 0px -2px 3px 0px #00000033;
 
   display: flex;
   justify-content: space-around;
