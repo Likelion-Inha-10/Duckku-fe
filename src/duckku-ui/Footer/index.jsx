@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 0;
   max-width: 390px;
-  width: ${(props) => (props.width ? props.width : "358")}px;
+  width: ${(props) => (props.width ? props.width : "390")}px;
   height: 88px;
   background-color: white;
 
@@ -18,6 +18,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  z-index: 50;
 `;
 
 const ElementWrapper = styled.div`
