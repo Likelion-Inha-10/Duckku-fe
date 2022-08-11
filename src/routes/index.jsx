@@ -11,6 +11,8 @@ import NotFound from "../pages/NotFound";
 import Store from "../pages/Store";
 import MainHome from "./../pages/MainHome/index";
 import Wish from "../pages/Wish";
+import MyPage from "../pages/MyPage";
+
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -25,6 +27,7 @@ const Router = () => (
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/store" element={<Store />} />
       <Route exact path="/main-home" element={<MainHome />} />
+      <Route exact path="/my-page" element={<MyPage />} />
     </Routes>
   </BrowserRouter>
 );
