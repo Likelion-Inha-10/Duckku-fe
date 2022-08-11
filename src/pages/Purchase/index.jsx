@@ -319,10 +319,10 @@ const Purchase = () => {
   return (
     <AllWrapper>
       <Layout>
-        <Header back title="   앨범 구매하기" />
+        <Header zIndex="0" back title="   앨범 구매하기" />
         <PurchaseImageWrapper>
           <HeartButton />
-          <PurchaseImage></PurchaseImage>
+          <PurchaseImage />
         </PurchaseImageWrapper>
         <Margin width="390" height="20" />
         <IntrodSection>
