@@ -138,7 +138,7 @@ const MainHome = () => {
           </MoreViewTextWrapper>
         </MoreViewButton>
       </PageWrapper>
-      <Footer />
+      <Footer active="home" />
     </Layout>
   );
 };

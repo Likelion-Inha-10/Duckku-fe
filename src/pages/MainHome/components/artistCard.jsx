@@ -39,6 +39,15 @@ const ButtomWrapper = styled.div`
   margin-bottom: 21px;
 `;
 
+const StyledButton = styled(Button)`
+  background: linear-gradient(
+    92.33deg,
+    rgba(112, 0, 255, 0.8) 6.14%,
+    rgba(193, 92, 255, 0.8) 94.68%
+  );
+  backdrop-filter: blur(4px);
+`;
+
 // 아티스트 이름 component
 const ArtistNameBox = styled.div`
   width: fit-content;
@@ -95,14 +104,14 @@ const ArtistCard = (props) => {
           <ArtistLogoBox iconLink={props.iconLink} />
         </TopWrapper>
         <ButtomWrapper>
-          <Button width="150" height="44">
+          <StyledButton width="150" height="44">
             <Flex>
               <Typography bold16 color="white">
                 앨범함 가기
               </Typography>
               <HiOutlineChevronRight size="20" />
             </Flex>
-          </Button>
+          </StyledButton>
         </ButtomWrapper>
       </CardWrapper>
     </Wrapper>
