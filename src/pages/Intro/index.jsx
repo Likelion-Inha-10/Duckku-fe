@@ -5,17 +5,20 @@ import ImageCard from "../../duckku-ui/ImageCard";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import RedVelvet from "../../assets/images/redvelvet.png";
+import Toast from "../../duckku-ui/Toast";
 
 const Intro = () => {
   return (
     <>
       <Layout>
-        <Header back title="회원가입" />
+        <Header backWhite back title="회원가입" />
         <Margin height="50" />
 
         <ImageCard src={RedVelvet} />
 
-        <Margin height="75" />
+        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
+
+        <Margin height="88" />
         <Footer active="my" />
       </Layout>
     </>

@@ -11,10 +11,9 @@ const Wrapper = styled(Flex)`
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: white;
-
   display: flex;
   align-items: center;
+  background-color: white;
 `;
 
 const Title = styled.div`

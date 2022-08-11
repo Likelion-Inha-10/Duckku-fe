@@ -6,7 +6,6 @@ const Typography = styled.div`
       ? props.theme.colors[props.color]
       : props.theme.colors.headerText};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "16")}px;
-  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "600")};
 
   line-height: 1.5;
   white-space: pre-wrap;
