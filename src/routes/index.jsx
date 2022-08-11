@@ -10,6 +10,7 @@ import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
 import Store from "../pages/Store";
 import MainHome from "./../pages/MainHome/index";
+import Wish from "../pages/Wish";
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -17,7 +18,7 @@ const Router = () => (
     <Routes>
       <Route exact path="/" element={<Intro />} />
       <Route exact path="/purchase" element={<Purchase />} />
-
+      <Route exact path="/Wish" element={<Wish />} />
       <Route exact path="/artist-select" element={<ArtistSelect />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/sign-up" element={<SignUp />} />
