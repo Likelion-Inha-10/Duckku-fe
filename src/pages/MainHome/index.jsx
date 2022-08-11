@@ -6,6 +6,7 @@ import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import ArtistCard from "./components/artistCard";
 
+// 상단 Title을 감쌀 component
 const TitleBox = styled.div`
   width: 100%;
   padding-left: 40px;
@@ -26,7 +27,10 @@ const MainHome = () => {
         </Flex>
       </TitleBox>
       <Margin height="40" />
-      <ArtistCard link="https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg" />
+      <ArtistCard
+        imgLink="https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg"
+        iconLink="https://kkukowiki.kr/images/e/e0/%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3_%EB%A1%9C%EA%B3%A0.png"
+      />
       <Footer />
     </Layout>
   );
