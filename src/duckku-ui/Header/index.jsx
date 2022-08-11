@@ -10,7 +10,7 @@ const Wrapper = styled(Flex)`
   height: 70px;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: ${(props) => (props.zIndex ? props.zIndex : "1")};
   display: flex;
   align-items: center;
   background-color: white;
@@ -43,7 +43,7 @@ const Header = (props) => {
     // 추후 작성 예정
   };
   return (
-    <Wrapper>
+    <Wrapper zIndex={props.zIndex}>
       <Margin width="20" />
       {props.back && (
         <Back onClick={moveToBack} back={props.back}>
