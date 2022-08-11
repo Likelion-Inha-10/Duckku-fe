@@ -13,39 +13,9 @@ const Intro = () => {
   return (
     <>
       <Layout>
-        {/* <Header backWhite back title="회원가입" /> */}
         <ResponsiveHeader back></ResponsiveHeader>
         <Margin height="50" />
 
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-        <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
         <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
         <Margin height="88" />
         <Footer active="my" />
