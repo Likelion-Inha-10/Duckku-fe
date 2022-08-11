@@ -37,13 +37,6 @@ const Footer = (props) => {
           <stop stopColor="#C15CFF" offset="100%" />
         </linearGradient>
       </svg>
-
-      <svg width="0" height="0">
-        <linearGradient id="mainColor2" x1="100%" y1="100%" x2="0%" y2="0%">
-          <stop stopColor="#7000FF" offset="0%" />
-          <stop stopColor="#C15CFF" offset="100%" />
-        </linearGradient>
-      </svg>
       <Wrapper>
         <ElementWrapper>
           {props.active === "home" ? (
