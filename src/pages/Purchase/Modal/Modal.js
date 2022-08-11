@@ -1,7 +1,5 @@
 import React from "react";
 import "./modal.css";
-import { NavLink } from "react-router-dom";
-import Typography from "../../../duckku-ui/Typography";
 
 const Modal = (props) => {
   const { open, close, header } = props;

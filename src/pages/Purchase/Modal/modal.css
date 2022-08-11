@@ -2,11 +2,11 @@
   display: none;
   height: auto;
   position: fixed;
-  top: -1000px;
+  top: -1500px;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 99;
+  z-index: 100;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
 }
@@ -21,14 +21,14 @@
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
-  border-radius: 0;
   background-color: #fff;
   animation: modal-show 0.3s;
   position: fixed;
   bottom: 0;
   margin: 0 auto;
-  left: 0;
   right: 0;
+  left: 0;
+
   border-radius: 15px 15px 0 0;
 }
 .modal > section > header {

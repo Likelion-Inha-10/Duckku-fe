@@ -7,16 +7,18 @@ import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
 import Modal from "./Modal/Modal";
 import { FaWonSign } from "react-icons/fa";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 const AllWrapper = styled.div`
   width: 100%;
   height: auto;
+  display: flex;
+  justify-content: center;
 `;
 
 const ButtonWrapper = styled.div`
   width: 100%;
-  height: 100px;
+  height: auto;
   display: flex;
   justify-content: center;
   position: sticky;
@@ -48,13 +50,17 @@ const HeartSection = styled.div`
   background-color: white;
   opacity: 90%;
   position: absolute;
-  border-radius: 100%;
-  border: 1px solid black;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(#fff, #fff),
+    linear-gradient(to right, #7000ff 6.14%, #c15cff 94.68%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  color: #ff0000;
+  font-size: 23px;
+  color: ${(props) => props.color || "gray"};
 `;
 
 const HeartButton = () => {
@@ -62,7 +68,7 @@ const HeartButton = () => {
 
   return (
     <HeartSection onClick={() => setLike(!like)}>
-      {like ? <AiFillHeart /> : <AiOutlineHeart />}
+      {like ? <AiFillHeart color="red" /> : <AiFillHeart />}
     </HeartSection>
   );
 };
@@ -428,10 +434,10 @@ const Purchase = () => {
             </Typography>
           </TrackListWrapper>
         </TrackWrapper>
+        <ButtonWrapper>
+          <PurchaseBtn />
+        </ButtonWrapper>
       </Layout>
-      <ButtonWrapper>
-        <PurchaseBtn />
-      </ButtonWrapper>
     </AllWrapper>
   );
 };

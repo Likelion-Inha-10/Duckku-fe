@@ -6,18 +6,17 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import RedVelvet from "../../assets/images/redvelvet.png";
 import Toast from "../../duckku-ui/Toast";
+import Dimmer from "../../duckku-ui/Dimmer";
+import ResponsiveHeader from "../../duckku-ui/ResponsiveHeader";
 
 const Intro = () => {
   return (
     <>
       <Layout>
-        <Header backWhite back title="회원가입" />
+        <Header title="타이틀" />
         <Margin height="50" />
 
-        <ImageCard src={RedVelvet} />
-
         <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
-
         <Margin height="88" />
         <Footer active="my" />
       </Layout>
