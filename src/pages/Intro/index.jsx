@@ -13,7 +13,7 @@ const Intro = () => {
   return (
     <>
       <Layout>
-        <ResponsiveHeader back></ResponsiveHeader>
+        <Header title="타이틀" />
         <Margin height="50" />
 
         <Button onClick={() => Toast("로그인 되었습니다")}>로그인</Button>
