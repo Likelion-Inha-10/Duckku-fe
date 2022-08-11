@@ -83,6 +83,7 @@ const Partition = styled.div`
   background: rgba(114, 105, 105, 0.18);
 `;
 
+
 const MyPage = () => {
   return (
     <Layout>
@@ -129,6 +130,8 @@ const MyPage = () => {
         </Flex>
       </ListBox>
       <Footer active="my"/>
+        <Header title="마이 페이지" />
+        <Footer />
     </Layout>
   );
 };
