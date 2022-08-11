@@ -38,6 +38,17 @@ const NumberBox = styled.div`
   height: 36px;
   background: rgba(29, 29, 31, 0.8);
   border-radius: 15px;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const InfoTextWrapper = styled.div`
+  width: fit-content;
+  padding-left: 8px;
 `;
 
 const ArtistCard = (props) => {
@@ -53,7 +64,21 @@ const ArtistCard = (props) => {
         />
       </DeleteButton>
       <Margin height="11" />
-      <ArtistImageBox imgLink={props.imgLink}></ArtistImageBox>
+      <ArtistImageBox imgLink={props.imgLink}>
+        <NumberBox>
+          <Typography bold16 color="white">
+            {props.id}
+          </Typography>
+        </NumberBox>
+      </ArtistImageBox>
+      <Margin height="16" />
+      <InfoTextWrapper>
+        <Typography bold16>{props.artistName}</Typography>
+        <Margin height="4" />
+        <Typography bold14 color="gray">
+          {props.date}
+        </Typography>
+      </InfoTextWrapper>
     </CardWrapper>
   );
 };

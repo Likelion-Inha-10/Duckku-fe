@@ -41,7 +41,7 @@ const ArtistCardWrapper = styled.div`
 const FavoriteArtist = () => {
   return (
     <Layout>
-      <Header back title="나의 관심 아티스트" />
+      <Header back title="나의 관심 아티스트" zIndex="20" />
       <Margin height="56" />
       <TopWrapper>
         <Typography bold24 color="headerText">
@@ -51,7 +51,12 @@ const FavoriteArtist = () => {
       </TopWrapper>
       <Margin height="16" />
       <ArtistCardWrapper>
-        <ArtistCard imgLink="https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg" />
+        <ArtistCard
+          id="1"
+          artistName="레드벨벳"
+          date="2022.01.24"
+          imgLink="https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg"
+        />
       </ArtistCardWrapper>
       <ButtonWrapper>
         <Button width="350" height="68">

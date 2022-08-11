@@ -10,12 +10,8 @@ import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
 import Store from "../pages/Store";
 import MainHome from "./../pages/MainHome/index";
-<<<<<<< HEAD
 import FavoriteArtist from "./../pages/FavoriteArtist/index";
-
-=======
 import MyPage from "../pages/MyPage";
->>>>>>> 91fb6746683cff50a31f92c29729f669f22fa9a1
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -30,11 +26,8 @@ const Router = () => (
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/store" element={<Store />} />
       <Route exact path="/main-home" element={<MainHome />} />
-<<<<<<< HEAD
       <Route exact path="/favorite-artist" element={<FavoriteArtist />} />
-=======
       <Route exact path="/my-page" element={<MyPage />} />
->>>>>>> 91fb6746683cff50a31f92c29729f669f22fa9a1
     </Routes>
   </BrowserRouter>
 );
