@@ -234,7 +234,9 @@ const PurchaseBtn = () => {
 
         <TotalPriceFlex>
           <TotalPriceSection>
-            <Typography>총 상품금액(1개)</Typography>
+            <Typography>
+              총 상품금액({numberInclude + numberNotInclude}개)
+            </Typography>
             <Typography thin14>
               <FaWonSign />
               {13700 * numberInclude + numberNotInclude * 9700}

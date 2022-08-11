@@ -113,8 +113,8 @@
 
 .modal > section > footer button {
   padding: 6px 12px;
-  color: #a3a3a3;
-  background-color: #fff;
+  color: white;
+  background: linear-gradient(92.33deg, #7000ff 6.14%, #c15cff 94.68%);
   border-radius: 5px;
   font-weight: bold;
   font-size: 20px;
