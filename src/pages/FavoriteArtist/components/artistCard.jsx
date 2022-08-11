@@ -49,6 +49,9 @@ const NumberBox = styled.div`
 const InfoTextWrapper = styled.div`
   width: fit-content;
   padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const ArtistCard = (props) => {
@@ -74,7 +77,6 @@ const ArtistCard = (props) => {
       <Margin height="16" />
       <InfoTextWrapper>
         <Typography bold16>{props.artistName}</Typography>
-        <Margin height="4" />
         <Typography bold14 color="gray">
           {props.date}
         </Typography>
