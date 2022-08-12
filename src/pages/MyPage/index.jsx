@@ -10,6 +10,7 @@ import {BiHeartCircle} from 'react-icons/bi';
 import {BsGrid} from 'react-icons/bs';
 import {FiLayers} from 'react-icons/fi';
 import {BsCreditCard} from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 // 마이페이지 개인 정보 박스
 const PersonalBox = styled.div`
@@ -85,6 +86,12 @@ const Partition = styled.div`
 
 
 const MyPage = () => {
+
+  const navigate = useNavigate();
+
+  const goToInform = () => {
+    navigate("/my-inform");
+  }
   return (
     <Layout>
       <Header title="마이 페이지"/>
@@ -92,7 +99,7 @@ const MyPage = () => {
       <PersonalBox>
         <Flex direction="row" justify="space-between">
           <Typography bold21>김멋사</Typography>
-          <InformBox>내 정보</InformBox>
+          <InformBox onClick={goToInform}>내 정보</InformBox>
         </Flex>
       </PersonalBox>
       <Margin height="6" />
@@ -130,8 +137,6 @@ const MyPage = () => {
         </Flex>
       </ListBox>
       <Footer active="my"/>
-        <Header title="마이 페이지" />
-        <Footer />
     </Layout>
   );
 };
