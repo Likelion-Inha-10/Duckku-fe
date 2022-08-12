@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Margin from "../../../duckku-ui/Margin";
 import Typography from "../../../duckku-ui/Typography";
 import theme from "../../../assets/theme";
+import { useDrag, useDrop } from "react-dnd";
 
 const CardWrapper = styled.div`
   width: 154px;
@@ -27,7 +28,8 @@ const DeleteButton = styled.button`
 const ArtistImageBox = styled.div`
   width: 154px;
   height: 220px;
-  background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat;
+  background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat
+    center;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background-size: cover;
   border-radius: 20px;
