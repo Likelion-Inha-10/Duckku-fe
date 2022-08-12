@@ -71,28 +71,28 @@ const FixContentBox = styled.div`
 `;
 
 const MyFixInform = () => {
-
+  // 이름 입력값 받기
   const [inputName, setInputName] = useState("");
 
   const onChangeInputName = (e) => {
     const {name} = e.target;
     setInputName(name);
   };
-
+  // 이메일 입력값 받기
   const [inputEmail, setInputEmail] = useState("");
 
   const onChangeInputEmail = (e) => {
     const {email} = e.target;
     setInputEmail(email);
   };
-
+  // 비밀번호 입력값 받기
   const [inputPassword, setInputPassword] = useState("");
 
   const onChangeInputPassword = (e) => {
     const {password} = e.target;
     setInputPassword(password);
   };
-
+  // 비밀번호 확인 입력값 받기
   const [inputCheck, setInputCheck] = useState("");
 
   const onChangeInputCheck = (e) => {
