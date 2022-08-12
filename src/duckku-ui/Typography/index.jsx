@@ -60,6 +60,13 @@ const Typography = styled.div`
     `}
 
     ${(props) =>
+    props.thin24 &&
+    `
+      font-family: 'Pretendard-Regular';
+          font-size: 24px;
+      `}
+
+    ${(props) =>
     props.regular14 &&
     `
       font-family: 'Pretendard-Medium';
