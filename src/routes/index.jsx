@@ -12,6 +12,7 @@ import Wish from "../pages/Wish";
 import MyPage from "../pages/MyPage";
 import Interested from "../pages/Interested";
 import MyInform from "../pages/MyInform";
+import MyFixInform from "../pages/MyFixInform";
 
 // 라우트명은 kebab-case 로 작성합니다
 
@@ -31,6 +32,7 @@ const Router = () => (
       <Route exact path="/favorite-artist" element={<FavoriteArtist />} />
       <Route exact path="/my-page" element={<MyPage />} />
       <Route exact path="/my-inform" element={<MyInform />} />
+      <Route exact path="/my-inform-fix" element={<MyFixInform />} />
     </Routes>
   </BrowserRouter>
 );
