@@ -9,11 +9,21 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
 const TopWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  z-index: 10;
+`;
+
+const TitleWrapper = styled.div`
   width: 310px;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
+  padding-bottom: 20px;
 `;
 
 const AddArtistButton = styled.div`
@@ -27,12 +37,24 @@ const AddArtistButton = styled.div`
 `;
 
 const ArtistCardWrapper = styled.div`
-  width: 344px;
+  width: 328px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 124px;
+  align-items: baseline;
+  padding-top: 172px;
+  padding-bottom: 144px;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -113,15 +135,16 @@ const FavoriteArtist = () => {
 
   return (
     <Layout>
-      <Header back title="나의 관심 아티스트" zIndex="20" />
-      <Margin height="26" />
       <TopWrapper>
-        <Typography bold24 color="headerText">
-          총 4명의 아티스트
-        </Typography>
-        <AddArtistButton>+ 추가하기</AddArtistButton>
+        <Header back title="나의 관심 아티스트" zIndex="20" />
+        <Margin height="26" />
+        <TitleWrapper>
+          <Typography bold24 color="headerText">
+            총 {Object.keys(artistCards).length}명의 아티스트
+          </Typography>
+          <AddArtistButton>+ 수정하기</AddArtistButton>
+        </TitleWrapper>
       </TopWrapper>
-      <Margin height="16" />
       <ArtistCardWrapper>
         <DragDropContext onDragEnd={handleChange}>
           <Droppable droppableId="artistCards">

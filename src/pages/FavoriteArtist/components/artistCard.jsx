@@ -1,38 +1,24 @@
-import styled, { css } from "styled-components";
-import Margin from "../../../duckku-ui/Margin";
+import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
-import theme from "../../../assets/theme";
-import { useDrag, useDrop } from "react-dnd";
+import { BsChevronExpand } from "react-icons/bs";
 
 const CardWrapper = styled.div`
-  width: 154px;
-  height: 287px;
-  margin-left: 9px;
-  margin-right: 9px;
-`;
-
-const DeleteButton = styled.button`
-  width: 22px;
-  height: 22px;
-  border: none;
-  border-radius: 50%;
-  background: #f5f5f5;
-  position: absolute;
-  margin-left: 132px;
-  z-index: 10;
+  width: 328px;
+  height: 80px;
+  margin-bottom: 16px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 const ArtistImageBox = styled.div`
-  width: 154px;
-  height: 220px;
+  width: 80px;
+  height: 80px;
   background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat
     center;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 50%;
 `;
 
 const NumberBox = styled.div`
@@ -46,43 +32,44 @@ const NumberBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 `;
 
 const InfoTextWrapper = styled.div`
   width: fit-content;
+  height: 38px;
+  margin-left: 32px;
   padding-left: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
+const LeftWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const ArtistCard = (props) => {
   return (
     <CardWrapper>
-      <DeleteButton>
-        <hr
-          size="12px"
-          width="10px"
-          height="0px"
-          noshade="noshade"
-          color={theme.colors.red}
-        />
-      </DeleteButton>
-      <Margin height="11" />
-      <ArtistImageBox imgLink={props.imgLink}>
-        <NumberBox>
-          <Typography bold16 color="white">
-            {props.id}
+      <LeftWrapper>
+        <ArtistImageBox imgLink={props.imgLink}>
+          <NumberBox>
+            <Typography bold16 color="white">
+              {props.id}
+            </Typography>
+          </NumberBox>
+        </ArtistImageBox>
+        <InfoTextWrapper>
+          <Typography bold16>{props.artistName}</Typography>
+          <Typography regular14 color="gray">
+            {props.date}
           </Typography>
-        </NumberBox>
-      </ArtistImageBox>
-      <Margin height="16" />
-      <InfoTextWrapper>
-        <Typography bold16>{props.artistName}</Typography>
-        <Typography bold14 color="gray">
-          {props.date}
-        </Typography>
-      </InfoTextWrapper>
+        </InfoTextWrapper>
+      </LeftWrapper>
+      <BsChevronExpand size="24" color="#afafaf" />
     </CardWrapper>
   );
 };

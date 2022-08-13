@@ -280,8 +280,8 @@ const ArtistSelect = () => {
 
   return (
     <Layout>
-      <Header back title="아티스트 설정" />
       <TopWrapper>
+        <Header back title="아티스트 설정" />
         <Margin height="23" />
         <TitleBox>
           <Flex direction="column" justify="left">
