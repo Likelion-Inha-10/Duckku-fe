@@ -6,36 +6,32 @@ import Album from "../Store/components/album";
 import InputBox from "../ArtistSelect/components/inputBox";
 import Footer from "../../duckku-ui/Footer";
 import Margin from "../../duckku-ui/Margin";
-
-const Wrapper = styled.div`
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import Typography from "../../duckku-ui/Typography";
 
 const TitleWrapper = styled.div`
-  width: 300px;
+  width: 326px;
   display: flex;
-  font-size: 20px;
-  margin-top: 42px;
-  margin-bottom: 42px;
   align-items: flex-end;
+  justify-content: space-between;
 `;
 
 const Title = styled.div`
-  text-align: left;
-  font-weight: bolder;
-  font-size: 24px;
-  width: 250px;
-  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
 `;
 
-const More = styled.div`
-  text-align: right;
-  color: #979797;
-  font-size: 16px;
-  font-weight: bold;
+const MoreButton = styled.button`
+  background: none;
+  border: none;
+  padding-left: 8px;
+  padding-right: 8px;
+`;
+
+const ScrollWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ListWrapper = styled.div`
@@ -64,25 +60,34 @@ const moveToPage = () => {};
 const Store = () => {
   return (
     <Layout>
-      <Container></Container>
       <Header back title="스토어" />
-      <Margin height="32" />
-      <Wrapper>
-        <InputBox placeholder="검색어를 입력해 주세요" />
-      </Wrapper>
+      <Margin height="28" />
+      <InputBox placeholder="검색어를 입력해 주세요" />
+      <Margin height="40" />
       <TitleWrapper>
         <Title>
-          나의 관심 <br /> 아티스트의 앨범
+          <Typography bold24>
+            나의 관심
+            <br />
+            아티스트의 앨범
+          </Typography>
         </Title>
-        <More onClick={moveToPage}>더보기</More>
+        <MoreButton onClick={moveToPage}>
+          <Typography bold16 color="gray">
+            더보기
+          </Typography>
+        </MoreButton>
       </TitleWrapper>
+      <Margin height="24" />
       <ListWrapper>
         <StoreInfo></StoreInfo>
       </ListWrapper>
       <TitleWrapper>
-        <Title>추천 앨범</Title>
-        <More onClick={moveToPage}>더보기</More>
+        <Title>
+          <Typography bold24>추천 앨범</Typography>
+        </Title>
       </TitleWrapper>
+      <Margin height="24" />
       <AlbumWrapper>
         <Album></Album>
         <Album></Album>
@@ -92,9 +97,11 @@ const Store = () => {
         <Album></Album>
       </AlbumWrapper>
       <TitleWrapper>
-        <Title>최신 앨범</Title>
-        <More onClick={moveToPage}>더보기</More>
+        <Title>
+          <Typography bold24>최신 앨범</Typography>
+        </Title>
       </TitleWrapper>
+      <Margin height="24" />
       <AlbumWrapper>
         <Album></Album>
         <Album></Album>
