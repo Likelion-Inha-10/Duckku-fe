@@ -8,6 +8,7 @@ const ImageCard = styled.div`
     props.borderRadius ? props.borderRadius : "18"}px;
   background-image: url(${(props) => props.src});
   cursor: pointer;
+  background-size: cover;
 `;
 
 export default ImageCard;
