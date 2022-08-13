@@ -92,6 +92,7 @@ const MyPage = () => {
   const goToInform = () => {
     navigate("/my-inform");
   }
+  
   return (
     <Layout>
       <Header title="마이 페이지"/>

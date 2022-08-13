@@ -5,6 +5,7 @@ import Header from '../../duckku-ui/Header';
 import Margin from '../../duckku-ui/Margin';
 import Flex from '../../duckku-ui/Flex';
 import {BsFillCircleFill} from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 // 개인 정보 박스
 const PersonalBox = styled.div`
@@ -80,6 +81,13 @@ const Partition = styled.div`
 `;
 
 const MyInform = () => {
+
+  const navigate = useNavigate();
+
+  const goToFixInform = () => {
+    navigate("/my-inform-fix");
+  }
+
   return (
     <Layout>
       <Header back title="내 정보" />
@@ -87,7 +95,7 @@ const MyInform = () => {
       <PersonalBox>
         <Flex direction="row" justify="space-between">
           <MyInformBox>기본정보</MyInformBox>
-          <InformBox>정보수정</InformBox>
+          <InformBox onClick={goToFixInform}>정보수정</InformBox>
         </Flex>
       </PersonalBox>
       <Margin height="20" />

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Button from "../../../duckku-ui/Button";
 import Typography from "../../../duckku-ui/Typography";
 import { HiOutlineChevronRight } from "react-icons/hi";

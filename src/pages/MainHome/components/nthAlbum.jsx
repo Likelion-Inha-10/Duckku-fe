@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 
 // 앨범 전체 component

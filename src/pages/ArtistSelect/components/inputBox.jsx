@@ -55,6 +55,7 @@ const InputBox = (props) => {
         fontSize={props.fontSize}
         fontWeight={props.fontWeight}
         placeholder={props.placeholder}
+        onChange={(e) => props.setSearchTerm(e.target.value)}
       />
     </InputContainer>
   );
