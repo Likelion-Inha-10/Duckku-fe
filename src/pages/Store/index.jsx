@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Header from "../../duckku-ui/Header";
 import Layout from "../../duckku-ui/Layout";
-import StoreInfo from "../../duckku-ui/StoreInfo";
 import Album from "../Store/components/album";
 import InputBox from "../ArtistSelect/components/inputBox";
 import Footer from "../../duckku-ui/Footer";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
+import { useState, useEffect } from "react";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -27,37 +27,94 @@ const MoreButton = styled.button`
   padding-right: 8px;
 `;
 
-const ScrollWrapper = styled.div`
+const FavoriteListWrapper = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 
-const ListWrapper = styled.div`
-  width: 100%;
-  height: 38%;
+const FavoriteListContainer = styled.div`
+  width: fit-content;
+  margin-left: 23px;
+  margin-right: 23px;
+  display: flex;
+  flex-direction: row;
 `;
 
 const AlbumWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
-  width: 390px;
-  padding-right: 14px;
-  padding-left: 32px;
+  width: 344px;
 `;
 
-const Container = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const moveToPage = () => {};
 const Store = () => {
+  const [recommendAlbum, setRecommendAlbum] = useState();
+  const [recommendList, setRecommendList] = useState([
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: true,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: true,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+  ]);
+
+  useEffect(() => {
+    setRecommendAlbum(
+      recommendList.map((album) => (
+        <Album
+          imgLink={album.imgLink}
+          albumTitle={album.albumTitle}
+          artist={album.artist}
+          year={album.year}
+          isChecked={album.isChecked}
+        />
+      ))
+    );
+  }, [recommendList]);
+
   return (
     <Layout>
       <Header back title="스토어" />
@@ -72,45 +129,34 @@ const Store = () => {
             아티스트의 앨범
           </Typography>
         </Title>
-        <MoreButton onClick={moveToPage}>
+        <MoreButton>
           <Typography bold16 color="gray">
             더보기
           </Typography>
         </MoreButton>
       </TitleWrapper>
       <Margin height="24" />
-      <ListWrapper>
-        <StoreInfo></StoreInfo>
-      </ListWrapper>
+      <FavoriteListWrapper>
+        <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
+      </FavoriteListWrapper>
+      <Margin height="24" />
       <TitleWrapper>
         <Title>
           <Typography bold24>추천 앨범</Typography>
         </Title>
       </TitleWrapper>
       <Margin height="24" />
-      <AlbumWrapper>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-      </AlbumWrapper>
+      <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+      <Margin height="24" />
       <TitleWrapper>
         <Title>
           <Typography bold24>최신 앨범</Typography>
         </Title>
       </TitleWrapper>
       <Margin height="24" />
-      <AlbumWrapper>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-        <Album></Album>
-      </AlbumWrapper>
-      <Footer></Footer>
+      <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+      <Margin height="88" />
+      <Footer active="store" />
     </Layout>
   );
 };
