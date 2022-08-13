@@ -1,7 +1,8 @@
-.modal {
+.modalQr {
   display: none;
   height: auto;
   position: fixed;
+
   top: 0;
   right: 0;
   bottom: 0;
@@ -10,7 +11,7 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal button {
+.modalQr button {
   outline: none;
   cursor: pointer;
   border: 0;
@@ -19,7 +20,7 @@
   color: white;
   font-size: 30px;
 }
-.modal > section {
+.modalQr > section {
   max-height: 100%;
   overflow-y: auto;
   width: 100%;
@@ -34,7 +35,7 @@
   border-radius: 15px 15px 0 0;
   overflow-x: hidden;
 }
-.modal > section > header {
+.modalQr > section > header {
   position: relative;
   padding: 16px 64px 16px 16px;
   background-color: white;
@@ -42,7 +43,7 @@
   border-radius: 30% 30% 0 0;
   color: black;
 }
-.modal > section > header button {
+.modalQr > section > header button {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -53,79 +54,8 @@
   color: #999;
   background-color: transparent;
 }
-.modal > section > main {
-  padding: 16px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
-  color: #646464;
-}
-.modal > section > footer {
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-around;
-}
-.modal > section > footer button:hover {
-  padding: 6px 12px;
-  color: #fff;
-  background: linear-gradient(92.33deg, #7000ff 6.14%, #c15cff 94.68%);
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 20px;
-  width: 350px;
-  height: 60px;
-}
 
-@media (hover: hover) {
-  .modal > section > footer button {
-    padding: 6px 12px;
-    color: #fff;
-    background-color: rgba(167, 18, 223, 0.7);
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    width: 350px;
-    height: 60px;
-  }
-}
-
-@media (hover: none) {
-  .modal > section > footer button {
-    padding: 6px 12px;
-    color: #fff;
-    background-color: rgba(167, 18, 223, 0.7);
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    width: 350px;
-    height: 60px;
-  }
-}
-
-.modal > section > footer button:active {
-  padding: 6px 12px;
-  color: #fff;
-  background-color: rgba(167, 18, 223, 0.7);
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 20px;
-  width: 350px;
-  height: 60px;
-}
-
-.modal > section > footer button {
-  padding: 6px 12px;
-  color: white;
-  background: linear-gradient(92.33deg, #7000ff 6.14%, #c15cff 94.68%);
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 20px;
-  width: 350px;
-  height: 60px;
-}
-
-.modal.openModal {
+.modalQr.openModal {
   display: flex;
   align-items: center;
   animation: modal-bg-show 0.3s;

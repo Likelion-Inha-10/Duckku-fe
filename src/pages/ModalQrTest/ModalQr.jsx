@@ -16,7 +16,7 @@ const CardWrapper = styled.div`
 const BackWrapper = styled.div`
   width: 100%;
   height: auto;
-  margin-left: 25px;
+  margin-left: 15px;
 `;
 
 const SingerNameSection = styled.div`
@@ -76,7 +76,7 @@ const ModalQr = (props) => {
   const { open, close } = props;
 
   return (
-    <div className={open ? "openModal modal" : "modal"}>
+    <div className={open ? "openModal modalQr" : "modalQr"}>
       {open ? (
         <section>
           <Margin width="340" height="100" />
