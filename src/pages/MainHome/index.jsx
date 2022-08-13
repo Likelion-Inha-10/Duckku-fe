@@ -113,7 +113,6 @@ const MainHome = () => {
         <Margin height="16" />
         <NthAlbum
           rank="2"
-          albumLink="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/639/088/82639088_1653623843808_1_600x600.JPG/dims/resize/Q_80,0"
           iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
           albumName="Face The Sun"
           artistName="Seventeen"
@@ -122,7 +121,6 @@ const MainHome = () => {
         <Margin height="16" />
         <NthAlbum
           rank="3"
-          albumLink="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/639/088/82639088_1653623843808_1_600x600.JPG/dims/resize/Q_80,0"
           iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
           albumName="Face The Sun"
           artistName="Seventeen"
