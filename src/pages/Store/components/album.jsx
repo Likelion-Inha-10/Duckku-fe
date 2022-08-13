@@ -1,59 +1,90 @@
 import styled from "styled-components";
-import loveImg from "../../../assets/images/love.jpeg";
+import Typography from "../../../duckku-ui/Typography";
+import Margin from "./../../../duckku-ui/Margin/index";
+import { HiOutlineCheckCircle } from "react-icons/hi";
 
 const Box = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
   flex-direction: column;
-  padding-bottom: 24px;
-  padding-right: 18px;
+  width: 154px;
+  height: 273px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 24px;
 `;
 
 const ImageContainer = styled.div`
   width: 154px;
   height: 220px;
-`;
-
-const ImageBox = styled.img`
-  width: 100%;
-  height: 100%;
   border-radius: 20px;
-  object-fit: cover;
+  overflow: hidden;
+  background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat;
+  background-size: cover;
 `;
 
-const Info = styled.div`
-  width: 100px;
-  height: 40px;
-  flex-wrap: wrap;
+const AlbumInfoWrapper = styled.div`
   display: flex;
-  margin-top: 10px;
-  margin-left: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-left: 8px;
+  padding-right: 8px;
 `;
 
-const AlbumTitle = styled.div`
-  font-size: 16px;
-  font-weight: bold;
-  color: #444444;
+const BottomTextWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
-const Detail = styled.div`
-  font-size: 14px;
-  font-weight: normal;
-  color: #444444;
+const IconSection = styled.div`
+  width: 28px;
+  height: 28px;
+  padding: 2px;
+  overflow: visible;
+  margin-left: 114px;
+  margin-top: 8px;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 50%;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: ${(props) => (props.visible ? "flex" : "none")};
+  justify-content: center;
+  align-items: center;
 `;
 
-const moveToPage = () => {};
-const Album = () => {
+const Album = (props) => {
   return (
     <Box>
-      <ImageContainer>
-        <ImageBox src={loveImg} onClick={moveToPage} />
+      <svg width="0" height="0">
+        <linearGradient id="purple" x1="100%" y1="100%" x2="0%" y2="0%">
+          <stop stopColor="#7001FF" offset="0" />
+          <stop stopColor="#C15CFF" offset="50" />
+        </linearGradient>
+      </svg>
+      <ImageContainer imgLink={props.imgLink}>
+        <IconSection visible={props.isChecked}>
+          <HiOutlineCheckCircle
+            size="36px"
+            opacity="100%"
+            style={{ stroke: "url(#purple)", overflow: "visible" }}
+          />
+        </IconSection>
       </ImageContainer>
-      <Info>
-        <AlbumTitle>사랑으로</AlbumTitle>
-        <Detail> 혁오 2022</Detail>
-      </Info>
+      <Margin height="13" />
+      <AlbumInfoWrapper>
+        <Typography bold16>{props.albumTitle}</Typography>
+        <BottomTextWrapper>
+          <Typography thin14 color="gray">
+            {props.artist}
+          </Typography>
+          <Typography thin14 color="gray">
+            {props.year}
+          </Typography>
+        </BottomTextWrapper>
+      </AlbumInfoWrapper>
     </Box>
   );
 };
