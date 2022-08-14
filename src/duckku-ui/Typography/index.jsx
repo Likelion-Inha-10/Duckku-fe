@@ -60,6 +60,13 @@ const Typography = styled.div`
     `}
 
     ${(props) =>
+    props.thin24 &&
+    `
+      font-family: 'Pretendard-Regular';
+          font-size: 24px;
+      `}
+
+    ${(props) =>
     props.regular14 &&
     `
       font-family: 'Pretendard-Medium';
@@ -72,6 +79,13 @@ const Typography = styled.div`
     font-family: 'Pretendard-Medium';
         font-size: 16px;
     `}
+
+    ${(props) =>
+    props.bold14 &&
+    `
+      font-family: 'Pretendard-Bold';
+          font-size: 14px;
+          `}
 
     ${(props) =>
     props.bold16 &&
@@ -93,6 +107,13 @@ const Typography = styled.div`
     font-family: 'Pretendard-Bold';
         font-size: 24px;
     `}
+
+    ${(props) =>
+    props.bold28 &&
+    `
+      font-family: 'Pretendard-Bold';
+          font-size: 24px;
+      `}
 
     ${(props) =>
     props.mainColor &&

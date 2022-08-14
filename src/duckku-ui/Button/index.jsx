@@ -21,6 +21,7 @@ const Button = styled.button`
   line-height: 29px;
   letter-spacing: 0.55px;
   cursor: pointer;
+  vertical-align: center;
 `;
 
 export default withTheme(Button);

@@ -10,7 +10,7 @@ const Wrapper = styled(Flex)`
   height: 70px;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: ${(props) => (props.zIndex ? props.zIndex : "1")};
   display: flex;
   align-items: center;
   background-color: white;
@@ -43,15 +43,17 @@ const Header = (props) => {
     // 추후 작성 예정
   };
   return (
-    <Wrapper>
+    <Wrapper zIndex={props.zIndex}>
       <Margin width="20" />
-      <Back onClick={moveToBack} back={props.back}>
-        {props.white ? (
-          <VscChevronLeft size="36" color={theme.colors.white} />
-        ) : (
-          <VscChevronLeft size="36" color={theme.colors.black} />
-        )}
-      </Back>
+      {props.back && (
+        <Back onClick={moveToBack} back={props.back}>
+          {props.white ? (
+            <VscChevronLeft size="36" color={theme.colors.white} />
+          ) : (
+            <VscChevronLeft size="36" color={theme.colors.black} />
+          )}
+        </Back>
+      )}
       <Margin width="6" />
       <Title title={props.title}>
         <Typography bold24 color="headerText">

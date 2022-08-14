@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import loveImg from "../../assets/images/love.jpeg";
-import { HiOutlineCheckCircle } from "react-icons/hi";
+import { HiOutlineCheck } from "react-icons/hi";
 
 const Container = styled.div`
   width: 100vw;
@@ -8,6 +8,12 @@ const Container = styled.div`
   flex-direction: row;
   overflow: scroll;
   padding-left: 32px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Box = styled.div`
@@ -64,16 +70,25 @@ const IconBox = styled.div`
   align-items: center;
 `;
 
-const Circle = styled.div`
+const HeartSection = styled.div`
   width: 30px;
   height: 30px;
-  background-color: #ffffff;
-  border-radius: 100%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  margin-left: 275px;
+  margin-top: 8px;
+  background-color: white;
   opacity: 90%;
-  object-fit: cover;
+  position: absolute;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(#fff, #fff),
+    linear-gradient(to right, #7001ff 6.14%, #c15cff 94.68%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  color: ${(props) => props.color || "gray"};
 `;
 
 const moveToPage = () => {};
@@ -89,13 +104,13 @@ const StoreInfo = () => {
 
       <Box>
         <IconBox>
-          <Circle>
-            <HiOutlineCheckCircle
+          <HeartSection>
+            <HiOutlineCheck
               size="32px"
               opacity="100%"
               style={{ stroke: "url(#purple)" }}
             />
-          </Circle>
+          </HeartSection>
         </IconBox>
 
         <ImageContainer>
