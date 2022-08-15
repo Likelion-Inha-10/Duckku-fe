@@ -11,6 +11,7 @@ const colors = {
   headerText: "#1D1D1F",
   navGray: "#6D6D6D",
   darkGray: "#726969",
+  buttonGray: "#7269692E",
 };
 
 const flex = {
