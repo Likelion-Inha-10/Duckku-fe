@@ -25,13 +25,19 @@ const Button = styled.button`
     `}
 `;
 
-const Category = () => {
+const Category = ({ categories, clickCategory, setClickCategory }) => {
   return (
     <Categories>
       <Margin width="22" />
-      <Button>앨범</Button>
-      <Button none>포토카드</Button>
-      <Button none>응모권</Button>
+      {categories.map((category) =>
+        category === clickCategory ? (
+          <Button onClick={() => setClickCategory(category)}>{category}</Button>
+        ) : (
+          <Button none onClick={() => setClickCategory(category)}>
+            {category}
+          </Button>
+        )
+      )}
     </Categories>
   );
 };

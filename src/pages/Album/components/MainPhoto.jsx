@@ -17,7 +17,7 @@ const Photo = styled.div`
 `;
 
 const Dimmer = styled(Flex)`
-  height: 491px;
+  height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   flex-direction: column;

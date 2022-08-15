@@ -18,7 +18,8 @@ const Type = styled(Flex)`
   align-items: center;
 `;
 
-const Contents = () => {
+const Contents = ({ categories, clickCategory }) => {
+  const [selectCategory, setSelectCategory] = useState(categories[0]);
   const [data, setData] = useState({
     numbers: 3,
     type: "앨범",
