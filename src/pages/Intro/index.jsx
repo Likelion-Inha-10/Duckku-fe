@@ -6,6 +6,8 @@ import { ReactComponent as Tutorial01 } from "../../assets/svgs/tutorial01.svg";
 import Button from "../../duckku-ui/Button";
 import Slider from "react-slick";
 import Flex from "../../duckku-ui/Flex";
+import "./components/slick.css";
+import Header from "./../../duckku-ui/ResponsiveHeader/index";
 
 const StyledSlider = styled(Slider)`
   &,
@@ -16,9 +18,6 @@ const StyledSlider = styled(Slider)`
     width: 100%;
     height: 615px;
   }
-
-  display: flex;
-  justify-content: center;
 `;
 
 const SlideWrapper = styled.div`
@@ -56,11 +55,24 @@ const Intro = () => {
     arrows: false,
     slidesTosShow: 2,
     slidesToScroll: 1,
+    appendDots: (dots) => (
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ul>{dots}</ul>
+      </div>
+    ),
+    dotsClass: "dots_custom",
   };
 
   return (
     <Layout>
-      <Margin height="106" />
+      <Header back title="title" />
       <StyledSlider {...settings}>
         <SlideWrapper>
           <Flex justify="center">

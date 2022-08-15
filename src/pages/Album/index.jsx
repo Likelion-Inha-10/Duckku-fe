@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../duckku-ui/Layout/index";
 import MainPhoto from "./components/MainPhoto";
 import Header from "../../duckku-ui/Header/index";
