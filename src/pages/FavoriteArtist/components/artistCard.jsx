@@ -6,7 +6,7 @@ const CardWrapper = styled.div`
   width: 328px;
   height: 80px;
   margin-bottom: 16px;
-  display: flex;
+  display: ${(props) => (props.deleted === true ? "none" : "flex")};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -19,6 +19,18 @@ const ArtistImageBox = styled.div`
     center;
   background-size: cover;
   border-radius: 50%;
+`;
+
+const DeleteButton = styled.button`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: ${(props) => (props.activate === true ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #f5f5f5;
+  margin-left: 59px;
 `;
 
 const NumberBox = styled.div`
@@ -53,7 +65,7 @@ const LeftWrapper = styled.div`
 
 const ArtistCard = (props) => {
   return (
-    <CardWrapper>
+    <CardWrapper deleted={props.deleted}>
       <LeftWrapper>
         <ArtistImageBox imgLink={props.imgLink}>
           <NumberBox>
@@ -61,6 +73,12 @@ const ArtistCard = (props) => {
               {props.id}
             </Typography>
           </NumberBox>
+          <DeleteButton
+            activate={props.activate}
+            onClick={() => props.setDeleteState(props.artistName)}
+          >
+            <hr noshade="noshade" color="red" width="10px" />
+          </DeleteButton>
         </ArtistImageBox>
         <InfoTextWrapper>
           <Typography bold16>{props.artistName}</Typography>
