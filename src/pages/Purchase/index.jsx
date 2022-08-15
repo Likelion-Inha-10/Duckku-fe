@@ -16,6 +16,8 @@ const AllWrapper = styled.div`
   align-items: center;
   overflow: auto;
   white-space: nowrap;
+  max-width: 100%;
+  overflow-x: hidden;
 `;
 
 const ButtonWrapper = styled.div`
