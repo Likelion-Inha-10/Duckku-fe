@@ -5,8 +5,10 @@ import Header from "../../duckku-ui/Header";
 import Typography from "../../duckku-ui/Typography";
 import Margin from "../../duckku-ui/Margin";
 import ArtistCard from "./components/artistCard";
+import Toast from "../../duckku-ui/Toast";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
+import { BsPencilSquare } from "react-icons/bs";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -21,19 +23,46 @@ const TitleWrapper = styled.div`
   width: 310px;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
 `;
 
-const AddArtistButton = styled.div`
+const PencilButton = styled.button`
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+`;
+
+const ModalWrapper = styled.div`
+  width: 310px;
+  z-index: 20;
+  display: flex;
+  justify-content: right;
+`;
+
+const ModalButtonWrapper = styled.div`
+  display: ${(props) => (props.active ? "flex" : "none")};
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 98px;
+  height: 86px;
+  background: #ffffff;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+`;
+
+const ModalInsideButton = styled.div`
   width: fit-content;
   background: none;
   border: none;
-  font-family: "Pretendard-Bold";
-  font-size: 16px;
-  font-weight: 700;
-  color: #979797;
 `;
 
 const ArtistCardWrapper = styled.div`
@@ -79,9 +108,12 @@ const getListStyle = () => ({
 });
 
 const FavoriteArtist = () => {
+  const [isPencilbuttonClicked, setIsPencilButtonClicked] = useState(false);
+  const [isDeleteModeActivated, setIsDeleteModeActivated] = useState(false);
   const [artistCards, setArtistCards] = useState([
     {
       id: "1",
+      deleted: false,
       artistName: "레드벨벳",
       date: "2022.01.24",
       imgLink:
@@ -89,6 +121,7 @@ const FavoriteArtist = () => {
     },
     {
       id: "2",
+      deleted: false,
       artistName: "트와이스",
       date: "2022.01.24",
       imgLink:
@@ -96,6 +129,7 @@ const FavoriteArtist = () => {
     },
     {
       id: "3",
+      deleted: false,
       artistName: "아이브",
       date: "2022.01.24",
       imgLink:
@@ -103,6 +137,7 @@ const FavoriteArtist = () => {
     },
     {
       id: "4",
+      deleted: false,
       artistName: "아이들",
       date: "2022.01.24",
       imgLink:
@@ -110,6 +145,7 @@ const FavoriteArtist = () => {
     },
     {
       id: "5",
+      deleted: false,
       artistName: "소녀시대",
       date: "2022.01.24",
       imgLink:
@@ -117,6 +153,7 @@ const FavoriteArtist = () => {
     },
     {
       id: "6",
+      deleted: false,
       artistName: "BTS",
       date: "2022.01.24",
       imgLink: "https://pbs.twimg.com/media/EpU5qZuUUAI27rk.jpg:large",
@@ -133,6 +170,39 @@ const FavoriteArtist = () => {
     setArtistCards(items);
   };
 
+  const changePencilButtonState = () => {
+    if (isDeleteModeActivated === false) {
+      console.log("바뀐다!!");
+      setIsPencilButtonClicked(!isPencilbuttonClicked);
+    }
+  };
+
+  const setDeleteState = (e) => {
+    console.log(e);
+    setArtistCards(
+      artistCards.map((artist) => {
+        if (artist.artistName === e) {
+          return { ...artist, deleted: true };
+        }
+        return { ...artist };
+      })
+    );
+  };
+
+  const activateDeleteMode = () => {
+    setIsPencilButtonClicked(true);
+    setIsDeleteModeActivated(true);
+  };
+
+  const onComfirm = () => {
+    if (isDeleteModeActivated === true) {
+      setIsPencilButtonClicked(false);
+      setIsDeleteModeActivated(false);
+    } else {
+      return Toast("완료되었습니다");
+    }
+  };
+
   return (
     <Layout>
       <TopWrapper>
@@ -142,9 +212,29 @@ const FavoriteArtist = () => {
           <Typography bold24 color="headerText">
             총 {Object.keys(artistCards).length}명의 아티스트
           </Typography>
-          <AddArtistButton>+ 수정하기</AddArtistButton>
+          <PencilButton onClick={changePencilButtonState}>
+            <BsPencilSquare
+              size="24px"
+              color={isPencilbuttonClicked === false ? "black" : "#AFAFAF"}
+            />
+          </PencilButton>
         </TitleWrapper>
       </TopWrapper>
+      <ModalWrapper>
+        <ModalButtonWrapper
+          active={
+            isPencilbuttonClicked === true && isDeleteModeActivated === false
+          }
+        >
+          <ModalInsideButton>
+            <Typography bold16>추가하기</Typography>
+          </ModalInsideButton>
+          <Margin height="10" />
+          <ModalInsideButton onClick={activateDeleteMode}>
+            <Typography bold16>제거하기</Typography>
+          </ModalInsideButton>
+        </ModalButtonWrapper>
+      </ModalWrapper>
       <ArtistCardWrapper>
         <DragDropContext onDragEnd={handleChange}>
           <Droppable droppableId="artistCards">
@@ -155,25 +245,30 @@ const FavoriteArtist = () => {
                 ref={provided.innerRef}
                 style={getListStyle()}
               >
-                {artistCards.map(({ id, artistName, date, imgLink }, index) => (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.dragHandleProps}
-                        {...provided.draggableProps}
-                        style={getItemStyle(provided.draggableProps.style)}
-                      >
-                        <ArtistCard
-                          id={index + 1}
-                          artistName={artistName}
-                          date={date}
-                          imgLink={imgLink}
-                        />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
+                {artistCards.map(
+                  ({ id, deleted, artistName, date, imgLink }, index) => (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.dragHandleProps}
+                          {...provided.draggableProps}
+                          style={getItemStyle(provided.draggableProps.style)}
+                        >
+                          <ArtistCard
+                            id={index + 1}
+                            deleted={deleted}
+                            activate={isDeleteModeActivated}
+                            artistName={artistName}
+                            date={date}
+                            imgLink={imgLink}
+                            setDeleteState={setDeleteState}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  )
+                )}
                 {provided.placeholder}
               </div>
             )}
@@ -181,9 +276,9 @@ const FavoriteArtist = () => {
         </DragDropContext>
       </ArtistCardWrapper>
       <ButtonWrapper>
-        <Button width="350" height="68">
+        <Button width="350" height="68" onClick={onComfirm}>
           <Typography bold24 color="white">
-            완료
+            {isDeleteModeActivated ? "삭제 완료" : "완료"}
           </Typography>
         </Button>
       </ButtonWrapper>

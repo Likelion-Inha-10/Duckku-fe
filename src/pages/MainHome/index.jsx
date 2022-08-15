@@ -121,7 +121,7 @@ const MainHome = () => {
         <Margin height="16" />
         <NthAlbum
           rank="3"
-          iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
+          iconLink="https://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
           albumName="Face The Sun"
           artistName="Seventeen"
           albumInfo="정규 4집"
