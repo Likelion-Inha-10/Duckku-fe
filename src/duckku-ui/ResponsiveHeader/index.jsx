@@ -8,10 +8,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Wrapper = styled(Flex)`
+  max-width: 390px;
   width: 100%;
   height: 70px;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0px;
   z-index: 1;
   display: flex;
   align-items: center;
