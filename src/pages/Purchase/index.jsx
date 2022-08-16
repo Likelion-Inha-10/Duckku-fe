@@ -25,8 +25,8 @@ const ButtonWrapper = styled.div`
   height: auto;
   display: flex;
   justify-content: center;
-  position: sticky;
-  bottom: 0;
+  position: fixed;
+  bottom: 56px;
 `;
 
 // 트랙 부분
@@ -57,10 +57,9 @@ const Purchase = () => {
           <SingList Num="5" SingName="Our place" SingTime="3:21" />
           <SingList Num="6" SingName="Cheer up" SingTime="3:21" />
         </TrackWrapper>
-        <ButtonWrapper>
-          <PurchaseBtn />
-        </ButtonWrapper>
+        <Margin width="300px" height="130" />
       </AllWrapper>
+      <PurchaseBtn />
     </Layout>
   );
 };

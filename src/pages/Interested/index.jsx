@@ -35,7 +35,7 @@ const Interested = () => {
     <Layout>
       <AllInterestedWrapper>
         <Header back title=" 나의 관심 아티스트의 앨범" />
-        <Margin width="300" height="15" />
+
         <ViewOrderWrapper>
           <Margin width="10" height="10" />
           <Typography inline bold16 color="gray">

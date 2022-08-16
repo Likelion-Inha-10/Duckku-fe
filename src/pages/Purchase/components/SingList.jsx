@@ -7,11 +7,13 @@ const TrackListWrapper = styled.div`
   height: 30px;
   display: flex;
   margin-top: 20px;
+  justify-content: space-between;
 `;
 
 const TrackListNum = styled.div`
   width: 20%;
   height: 40px;
+  text-align: left;
 `;
 
 const TrackListTitle = styled.div`
@@ -25,9 +27,7 @@ const SingList = (props) => {
     <>
       <TrackListWrapper>
         <TrackListNum>
-          <Typography color="gray" center>
-            {props.Num}
-          </Typography>
+          <Typography color="gray">{props.Num}</Typography>
         </TrackListNum>
         <TrackListTitle>
           <Typography thin14 color="gray">

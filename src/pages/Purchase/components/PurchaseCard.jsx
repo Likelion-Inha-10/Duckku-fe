@@ -38,7 +38,7 @@ const HeartSection = styled.div`
   background-color: white;
   opacity: 90%;
   position: absolute;
-  border: 3px solid transparent;
+  border: 1.5px solid transparent;
   border-radius: 50%;
   background-image: linear-gradient(#fff, #fff),
     linear-gradient(to right, #7000ff 6.14%, #c15cff 94.68%);
@@ -122,19 +122,46 @@ const WonPadding = styled.div`
 `;
 
 const TotalPriceFlex = styled.div`
-  width: 96%;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin-top: 35px;
+  margin-bottom: 5px;
 `;
 
 const TotalPriceSection = styled.div`
-  width: 95%;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: space-between;
+  margin: 10px;
+  margin-right: 0;
+`;
+
+const Number = styled.div`
+  width: 20px;
+  height: auto;
+  text-align: center;
+`;
+
+const Price = styled.div`
+  width: 90px;
+  height: auto;
+  text-align: left;
+`;
+
+const ButtonFixed = styled.div`
+  position: fixed;
+  bottom: 30px;
+`;
+
+const TotalCountSection = styled.div`
+  width: 45px;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  margin-right: 130px;
 `;
 
 const PurchaseBtn = () => {
@@ -154,7 +181,11 @@ const PurchaseBtn = () => {
   };
 
   const decreaseIncludeNumber = () => {
-    setIncludeNumber(numberInclude - 1);
+    if (numberInclude == 0) {
+      return numberInclude == 0;
+    } else {
+      return setIncludeNumber(numberInclude - 1);
+    }
   };
 
   const [numberNotInclude, setNotIncludeNumber] = useState(0);
@@ -163,23 +194,34 @@ const PurchaseBtn = () => {
     setNotIncludeNumber(numberNotInclude + 1);
   };
 
+  let ButtonColor = "gray";
+
   const decreaseNotInclude = () => {
-    setNotIncludeNumber(numberNotInclude - 1);
+    if (numberNotInclude == 0) {
+      ButtonColor = "gray";
+      return numberNotInclude == 0;
+    } else {
+      ButtonColor = "red";
+      return setNotIncludeNumber(numberNotInclude - 1);
+    }
   };
 
   return (
     <React.Fragment>
-      <Button
-        onClick={openModal}
-        borderRadius="20"
-        width="350"
-        height="60"
-        fontSize="16"
-        fontWeight="normal"
-      >
-        바로 구매
-      </Button>
+      <ButtonFixed>
+        <Button
+          onClick={openModal}
+          borderRadius="15"
+          width="350"
+          height="60"
+          fontSize="24"
+          fontWeight="bold"
+        >
+          바로 구매
+        </Button>
+      </ButtonFixed>
       <Modal open={modalOpen} close={closeModal}>
+        <Margin width="300" height="38" />
         <PurchaseInline>
           <Typography bold16>응모권 포함</Typography>&nbsp;
           <Typography thin14 color="gray">
@@ -195,11 +237,14 @@ const PurchaseBtn = () => {
               height="13"
               width="13"
               onClick={decreaseIncludeNumber}
+              backgroundColor="gray"
             >
               <StyleFlex>-</StyleFlex>
             </Button>
             <Margin width="10" />
-            <Typography>{numberInclude}</Typography>
+            <Number>
+              <Typography regular16>{numberInclude}</Typography>
+            </Number>
             <Margin width="10" />
             <Button
               fontSize="5"
@@ -211,13 +256,15 @@ const PurchaseBtn = () => {
             </Button>
           </CountingSection>
           <PriceSection>
-            <Typography thin16>
-              <WonPadding>
-                <FaWonSign />
-              </WonPadding>
-              &nbsp;
-              {13700 * numberInclude}
-            </Typography>
+            <Price>
+              <Typography regular16>
+                <WonPadding>
+                  <FaWonSign />
+                </WonPadding>
+                &nbsp;
+                {13700 * numberInclude}
+              </Typography>
+            </Price>
           </PriceSection>
         </PriceAllSection>
 
@@ -236,11 +283,14 @@ const PurchaseBtn = () => {
               height="13"
               width="13"
               onClick={decreaseNotInclude}
+              backgroundColor="gray"
             >
               <StyleFlex>-</StyleFlex>
             </Button>
             <Margin width="10" />
-            <Typography>{numberNotInclude}</Typography>
+            <Number>
+              <Typography regular16>{numberNotInclude}</Typography>
+            </Number>
             <Margin width="10" />
             <Button
               fontSize="5"
@@ -253,25 +303,30 @@ const PurchaseBtn = () => {
           </CountingSection>
 
           <PriceSection>
-            <Typography regular16>
-              <FaWonSign />
-              &nbsp;
-              {numberNotInclude * 9700}
-            </Typography>
+            <Price>
+              <Typography regular16>
+                <FaWonSign />
+                &nbsp;
+                {numberNotInclude * 9700}
+              </Typography>
+            </Price>
           </PriceSection>
         </PriceAllSection>
         <ModalUnderLine />
 
         <TotalPriceFlex>
           <TotalPriceSection>
-            <Typography>
+            <Typography bold16>
               총 상품금액&nbsp;({numberInclude + numberNotInclude}개)
             </Typography>
-            <Typography thin14>
-              <FaWonSign />
-              &nbsp;
-              {13700 * numberInclude + numberNotInclude * 9700}
-            </Typography>
+
+            <Price>
+              <Typography bold16>
+                <FaWonSign />
+                &nbsp;
+                {13700 * numberInclude + numberNotInclude * 9700}
+              </Typography>
+            </Price>
           </TotalPriceSection>
         </TotalPriceFlex>
       </Modal>

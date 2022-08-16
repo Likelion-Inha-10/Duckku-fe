@@ -18,7 +18,6 @@ const Wish = () => {
     <Layout>
       <AllWishWrapper>
         <Header back title=" 찜한 앨범" />
-        <Margin width="300" height="30" />
 
         <WishCard
           Img="https://i.pinimg.com/736x/8a/67/57/8a675780020a8172d765b3c0e8b19c26.jpg"
