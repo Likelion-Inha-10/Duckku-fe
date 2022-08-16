@@ -12,6 +12,7 @@ const colors = {
   navGray: "#6D6D6D",
   darkGray: "#726969",
   buttonGray: "#7269692E",
+  cardNumberGray: "#B8B4B4",
 };
 
 const flex = {
