@@ -2,10 +2,14 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import styled from "styled-components";
-import { ReactComponent as Tutorial01 } from "../../assets/svgs/tutorial01.svg";
+import Tutorial01 from "../../assets/svgs/tutorial01.svg";
+import Tutorial02 from "../../assets/svgs/tutorial02.svg";
+import Tutorial03 from "../../assets/svgs/tutorial03.svg";
 import Button from "../../duckku-ui/Button";
 import Slider from "react-slick";
 import Flex from "../../duckku-ui/Flex";
+import "./components/slick.css";
+import { useState } from "react";
 
 const StyledSlider = styled(Slider)`
   &,
@@ -16,9 +20,6 @@ const StyledSlider = styled(Slider)`
     width: 100%;
     height: 615px;
   }
-
-  display: flex;
-  justify-content: center;
 `;
 
 const SlideWrapper = styled.div`
@@ -48,6 +49,11 @@ const StyledSpan = styled.span`
   font-family: "Pretendard-Bold";
 `;
 
+const StyledImg = styled.img`
+  width: 234px;
+  height: 447px;
+`;
+
 const Intro = () => {
   const settings = {
     dots: true,
@@ -56,7 +62,23 @@ const Intro = () => {
     arrows: false,
     slidesTosShow: 2,
     slidesToScroll: 1,
+    appendDots: (dots) => (
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ul>{dots}</ul>
+      </div>
+    ),
+    dotsClass: "dots_custom",
+    afterChange: (current) => setSlide(current),
   };
+
+  const [slide, setSlide] = useState(0);
 
   return (
     <Layout>
@@ -83,7 +105,7 @@ const Intro = () => {
 
           <Margin height="36" />
           <Flex justify="center">
-            <Tutorial01 width="234" height="447" />
+            <StyledImg src={Tutorial01} />
           </Flex>
         </SlideWrapper>
 
@@ -107,7 +129,7 @@ const Intro = () => {
           <Margin height="36" />
 
           <Flex justify="center">
-            <Tutorial01 width="234" height="447" />
+            <StyledImg src={Tutorial02} />
           </Flex>
         </SlideWrapper>
 
@@ -131,20 +153,31 @@ const Intro = () => {
           <Margin height="36" />
 
           <Flex justify="center">
-            <Tutorial01 width="234" height="447" />
+            <StyledImg src={Tutorial03} />
           </Flex>
         </SlideWrapper>
       </StyledSlider>
 
       <Margin height="36" />
-      <Button
-        width="350"
-        height="60"
-        borderRadius="15"
-        backgroundColor="buttonGray"
-      >
-        서비스 시작하기
-      </Button>
+      {slide === 2 ? (
+        <Button
+          width="350"
+          height="60"
+          borderRadius="15"
+          backgroundColor="main"
+        >
+          서비스 시작하기
+        </Button>
+      ) : (
+        <Button
+          width="350"
+          height="60"
+          borderRadius="15"
+          backgroundColor="buttonGray"
+        >
+          서비스 시작하기
+        </Button>
+      )}
     </Layout>
   );
 };

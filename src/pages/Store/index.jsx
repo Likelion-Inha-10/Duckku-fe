@@ -7,6 +7,8 @@ import Footer from "../../duckku-ui/Footer";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import { useState, useEffect } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import theme from "./../../assets/theme/index";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -54,7 +56,22 @@ const AlbumWrapper = styled.div`
   width: 344px;
 `;
 
+const LikeButton = styled.button`
+  width: 390px;
+  height: 70px;
+  background: none;
+  border: none;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 44px;
+`;
+
 const Store = () => {
+  const [isLikeClicked, setIsLikeClicked] = useState(false);
   const [recommendAlbum, setRecommendAlbum] = useState();
   const [recommendList, setRecommendList] = useState([
     {
@@ -118,44 +135,62 @@ const Store = () => {
   return (
     <Layout>
       <Header back title="스토어" />
+      <LikeButton onClick={() => setIsLikeClicked(!isLikeClicked)}>
+        {isLikeClicked === false ? (
+          <AiOutlineHeart size="28px" color="#AFAFAF" />
+        ) : (
+          <AiFillHeart size="28px" color={theme.colors.red} />
+        )}
+      </LikeButton>
       <Margin height="28" />
       <InputBox placeholder="검색어를 입력해 주세요" />
-      <Margin height="40" />
-      <TitleWrapper>
-        <Title>
-          <Typography bold24>
-            나의 관심
-            <br />
-            아티스트의 앨범
+      {isLikeClicked === true ? (
+        <>
+          <Margin height="250" />
+          <Typography regular16 color="gray">
+            해당하는 앨범이 없습니다
           </Typography>
-        </Title>
-        <MoreButton>
-          <Typography bold16 color="gray">
-            더보기
-          </Typography>
-        </MoreButton>
-      </TitleWrapper>
-      <Margin height="24" />
-      <FavoriteListWrapper>
-        <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
-      </FavoriteListWrapper>
-      <Margin height="24" />
-      <TitleWrapper>
-        <Title>
-          <Typography bold24>추천 앨범</Typography>
-        </Title>
-      </TitleWrapper>
-      <Margin height="24" />
-      <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
-      <Margin height="24" />
-      <TitleWrapper>
-        <Title>
-          <Typography bold24>최신 앨범</Typography>
-        </Title>
-      </TitleWrapper>
-      <Margin height="24" />
-      <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
-      <Margin height="88" />
+        </>
+      ) : (
+        <>
+          <Margin height="40" />
+          <TitleWrapper>
+            <Title>
+              <Typography bold24>
+                나의 관심
+                <br />
+                아티스트의 앨범
+              </Typography>
+            </Title>
+            <MoreButton>
+              <Typography bold16 color="gray">
+                더보기
+              </Typography>
+            </MoreButton>
+          </TitleWrapper>
+          <Margin height="24" />
+          <FavoriteListWrapper>
+            <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
+          </FavoriteListWrapper>
+          <Margin height="24" />
+          <TitleWrapper>
+            <Title>
+              <Typography bold24>추천 앨범</Typography>
+            </Title>
+          </TitleWrapper>
+          <Margin height="24" />
+          <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+          <Margin height="24" />
+          <TitleWrapper>
+            <Title>
+              <Typography bold24>최신 앨범</Typography>
+            </Title>
+          </TitleWrapper>
+          <Margin height="24" />
+          <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+          <Margin height="88" />
+        </>
+      )}
       <Footer active="store" />
     </Layout>
   );

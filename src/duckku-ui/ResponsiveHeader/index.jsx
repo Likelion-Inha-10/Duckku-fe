@@ -8,10 +8,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Wrapper = styled(Flex)`
+  max-width: 390px;
   width: 100%;
   height: 70px;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -59,7 +60,6 @@ const Header = (props) => {
 
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
-    console.log(currentY);
   });
 
   const moveToBack = () => {
@@ -68,7 +68,7 @@ const Header = (props) => {
 
   return (
     <Wrapper>
-      {currentY < 561 ? (
+      {currentY < 501 ? (
         <Wrapper>
           <Margin width="20" />
           <Back onClick={moveToBack} back={props.back}>

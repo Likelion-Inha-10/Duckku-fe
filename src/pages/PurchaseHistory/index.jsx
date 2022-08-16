@@ -14,6 +14,7 @@ const PurchaseBox = styled.div`
 `;
 
 // 구매한 상품  글 작성 div
+// 구매한 상품  작성 div
 const PurchaseContent = styled.div`
   display: flex;
   margin-left: 30px;
