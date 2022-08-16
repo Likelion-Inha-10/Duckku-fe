@@ -7,6 +7,7 @@ const CardContain = styled.div`
   width: 154px;
   height: 273px;
   margin: 10px;
+  margin-bottom: 20px;
 `;
 
 const CardImage = styled.div`
@@ -24,6 +25,7 @@ const CardImageWrraper = styled.div`
   height: auto;
   display: flex;
   justify-content: end;
+  margin-bottom: 10px;
 `;
 
 const HeartSection = styled.div`
