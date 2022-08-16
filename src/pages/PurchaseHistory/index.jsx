@@ -13,6 +13,7 @@ const PurchaseBox = styled.div`
   background: rgba(114, 105, 105, 0.1);
 `;
 
+// 구매한 상품  글 작성 div
 // 구매한 상품  작성 div
 const PurchaseContent = styled.div`
   display: flex;
