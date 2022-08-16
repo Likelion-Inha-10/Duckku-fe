@@ -29,7 +29,6 @@ const ButtonWrapper = styled.div`
   bottom: 56px;
 `;
 
-// 트랙 부분
 const TrackWrapper = styled.div`
   width: 80%;
   height: auto;

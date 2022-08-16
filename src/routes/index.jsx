@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
 import Store from "../pages/Store";
 import MainHome from "./../pages/MainHome/index";
+import Album from "../pages/Album/index";
 import FavoriteArtist from "./../pages/FavoriteArtist/index";
 import Wish from "../pages/Wish";
 import MyPage from "../pages/MyPage";
@@ -15,10 +16,8 @@ import MyInform from "../pages/MyInform";
 import MyFixInform from "../pages/MyFixInform";
 import Payment from "../pages/Payment";
 import PurchaseHistory from "../pages/PurchaseHistory";
-
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
 import ModalQrTest from "../pages/ModalQrTest";
-
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -34,12 +33,11 @@ const Router = () => (
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/store" element={<Store />} />
       <Route exact path="/main-home" element={<MainHome />} />
+      <Route exact path="/album" element={<Album />} />
       <Route exact path="/favorite-artist" element={<FavoriteArtist />} />
       <Route exact path="/my-page" element={<MyPage />} />
       <Route exact path="/my-inform" element={<MyInform />} />
-
       <Route exact path="/test" element={<ModalQrTest />} />
-
       <Route exact path="/my-inform-fix" element={<MyFixInform />} />
       <Route exact path="/payment" element={<Payment />} />
       <Route exact path="/purchase-history" element={<PurchaseHistory />} />
