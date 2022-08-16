@@ -20,13 +20,13 @@ const PhotoContainer = styled.div`
   cursor: pointer;
 `;
 
-const PhotoCategory = ({ data }) => {
+const TicketCategory = () => {
+  const [data, setData] = useState({
+    date: "2022.02.01",
+  });
   return (
     <>
-      {data.map((d) => {
-        <p>{d.name}</p>;
-      })}
-      {/* <PhotoContainer>
+      <PhotoContainer>
         <PhotoWrapper>
           <ImageCard src={album} />
           <Margin height="12" />
@@ -48,9 +48,9 @@ const PhotoCategory = ({ data }) => {
             {data.date}
           </Typography>
         </PhotoWrapper>
-      </PhotoContainer> */}
+      </PhotoContainer>
     </>
   );
 };
 
-export default PhotoCategory;
+export default TicketCategory;

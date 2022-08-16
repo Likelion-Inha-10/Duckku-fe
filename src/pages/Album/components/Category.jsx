@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Flex from "../../../duckku-ui/Flex";
 import Margin from "../../../duckku-ui/Margin";
+
 const Categories = styled(Flex)`
   gap: 8px;
   width: 100%;
   justify-content: flex-start;
 `;
-const Button = styled.button`
+const Button = styled.div`
   padding: 10px 12px;
   border-radius: 16px;
   border: none;
@@ -31,9 +32,15 @@ const Category = ({ categories, clickCategory, setClickCategory }) => {
       <Margin width="22" />
       {categories.map((category) =>
         category === clickCategory ? (
-          <Button onClick={() => setClickCategory(category)}>{category}</Button>
+          <Button key={category} onClick={() => setClickCategory(category)}>
+            {category}
+          </Button>
         ) : (
-          <Button none onClick={() => setClickCategory(category)}>
+          <Button
+            key={category}
+            none
+            onClick={() => setClickCategory(category)}
+          >
             {category}
           </Button>
         )

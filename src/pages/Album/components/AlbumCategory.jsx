@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 import Flex from "../../../duckku-ui/Flex";
@@ -52,66 +52,31 @@ const AlbumContainer = styled.div`
   column-gap: 19px;
 `;
 
-const AlbumCategory = () => {
-  const [data, setData] = useState({
-    name: "사랑으로",
-    when: "2022 EP",
-    songs: 1,
-  });
+const AlbumCategory = ({ data }) => {
   return (
     <>
       <AlbumContainer>
-        <AlbumWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Info>
-            <Text>
-              <Typography style={{ lineHeight: "1.3" }} regular16>
-                {data.name}
-              </Typography>
-              <Typography thin14>{data.when}</Typography>
-            </Text>
-            <Song>
-              <StyledIcon />
-              <Typography regular16>{data.songs}</Typography>
-            </Song>
-          </Info>
-          <Margin height="18" />
-        </AlbumWrapper>{" "}
-        <AlbumWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Info>
-            <Text>
-              <Typography style={{ lineHeight: "1.3" }} regular16>
-                {data.name}
-              </Typography>
-              <Typography thin14>{data.when}</Typography>
-            </Text>
-            <Song>
-              <StyledIcon />
-              <Typography regular16>{data.songs}</Typography>
-            </Song>
-          </Info>
-          <Margin height="18" />
-        </AlbumWrapper>{" "}
-        <AlbumWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Info>
-            <Text>
-              <Typography style={{ lineHeight: "1.3" }} regular16>
-                {data.name}
-              </Typography>
-              <Typography thin14>{data.when}</Typography>
-            </Text>
-            <Song>
-              <StyledIcon />
-              <Typography regular16>{data.songs}</Typography>
-            </Song>
-          </Info>
-          <Margin height="18" />
-        </AlbumWrapper>
+        {data.map((d) => (
+          <AlbumWrapper>
+            <ImageCard src={album} />
+            <Margin height="12" />
+            <Info>
+              <Text>
+                <Typography style={{ lineHeight: "1.3" }} regular16>
+                  {d.address.suite}
+                </Typography>
+                <Typography thin14>hi</Typography>
+              </Text>
+              <Song>
+                <StyledIcon />
+                <Typography style={{ paddingLeft: "3px" }} regular16>
+                  {d.id}
+                </Typography>
+              </Song>
+            </Info>
+            <Margin height="18" />
+          </AlbumWrapper>
+        ))}
       </AlbumContainer>
     </>
   );

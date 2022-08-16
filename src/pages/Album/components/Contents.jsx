@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 import Flex from "../../../duckku-ui/Flex";
@@ -7,6 +7,9 @@ import theme from "../../../assets/theme";
 import Margin from "../../../duckku-ui/Margin";
 import AlbumCategory from "./AlbumCategory";
 import PhotoCategory from "./PhotoCategory";
+import Album from "..";
+import TicketCategory from "./TicketCategory";
+import axios from "axios";
 
 const Title = styled(Flex)`
   width: 326px;
@@ -19,30 +22,32 @@ const Type = styled(Flex)`
 `;
 
 const Contents = ({ categories, clickCategory }) => {
-  const [selectCategory, setSelectCategory] = useState(categories[0]);
-  const [data, setData] = useState({
-    numbers: 3,
-    type: "앨범",
-    list: "등록순",
-  });
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://jsonplaceholder.typicode.com/users")
+      .then((r) => setData(r.data));
+  }, []);
 
   return (
-    <div>
+    <>
       <Title>
         <Typography>
-          총 {data.numbers}개의 {data.type}
+          총 {data.length}개의 {clickCategory}
         </Typography>
+
         <Type style={{ cursor: "pointer" }}>
-          <Typography color="gray">{data.list} </Typography>
+          <Typography color="gray">ㅗ</Typography>
           <IoChevronDownOutline size="16" color={theme.colors.gray} />
         </Type>
       </Title>
 
       <Margin height="30" />
-
-      <AlbumCategory />
-      <PhotoCategory />
-    </div>
+      {clickCategory === "앨범" && <AlbumCategory data={data} />}
+      {clickCategory === "포토카드" && <PhotoCategory data={data} />}
+      {clickCategory === "응모권" && <TicketCategory data={data} />}
+    </>
   );
 };
 
