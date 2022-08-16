@@ -10,7 +10,6 @@ import Slider from "react-slick";
 import Flex from "../../duckku-ui/Flex";
 import "./components/slick.css";
 import { useState } from "react";
-import SortMenu from "../../duckku-ui/SortMenu";
 
 const StyledSlider = styled(Slider)`
   &,
