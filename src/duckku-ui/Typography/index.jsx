@@ -83,7 +83,7 @@ const Typography = styled.div`
     ${(props) =>
     props.bold14 &&
     `
-      font-family: 'Pretendard-Bold';
+    font-family: 'Pretendard-Bold';
           font-size: 14px;
           `}
 
@@ -111,8 +111,8 @@ const Typography = styled.div`
     ${(props) =>
     props.bold28 &&
     `
-      font-family: 'Pretendard-Bold';
-          font-size: 24px;
+    font-family: 'Pretendard-Bold';
+          font-size: 28px;
       `}
 
     ${(props) =>
