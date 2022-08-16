@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
         font-weight: 700;
         font-style: normal;
-    }ㄴ
+    }
 
     * {
         box-sizing: border-box;

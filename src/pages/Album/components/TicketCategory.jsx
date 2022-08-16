@@ -1,26 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
-import Flex from "../../../duckku-ui/Flex";
 import Margin from "../../../duckku-ui/Margin";
-import ImageCard from "../../../duckku-ui/ImageCard";
-import album from "../../../assets/images/redvelvet.png";
-import { BsTagFill } from "react-icons/bs";
 import theme from "../../../assets/theme";
 import { ReactComponent as Duck } from "../../../assets/svgs/DuckPurple.svg";
 import A from "../../../assets/fonts/AlfaSlabOne-Regular.woff";
-
-const TicketContainer = styled(Flex)`
-  flex-direction: column;
-  align-items: flex-start;
-`;
 
 const TicketWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   cursor: pointer;
   column-gap: 10px;
-  row-gap: 20px;
+  row-gap: 25px;
 `;
 
 const Text = styled(Typography)`
@@ -65,18 +56,16 @@ const Circle = styled.div`
   width: 92px;
   border-radius: 50px;
   background: radial-gradient(
-        71.5% 71.5% at 25.5% 85.5%,
-        rgba(219, 0, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 99.99%,
-        rgba(255, 255, 255, 0) 100%
-      )
-      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+      71.5% 71.5% at 25.5% 85.5%,
+      rgba(219, 0, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 99.99%,
+      rgba(255, 255, 255, 0) 100%
+    ),
     radial-gradient(
-        75.5% 75.5% at 86% 60%,
-        rgba(112, 0, 255, 0.2) 0%,
-        rgba(112, 0, 255, 0) 100%
-      )
-      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+      75.5% 75.5% at 86% 60%,
+      rgba(112, 0, 255, 0.2) 0%,
+      rgba(112, 0, 255, 0) 100%
+    ),
     linear-gradient(
       161.36deg,
       rgba(175, 44, 255, 0.2) 18.26%,
@@ -93,7 +82,18 @@ const TicketCategory = ({ data }) => {
           <GradationBorder>
             <Circle>
               <Duck height="32px" width="32px" />
-              <Text style={{ fontFamily: "A" }}>TICKET</Text>
+              <Margin height="10" />
+              <Text
+                style={{
+                  fontFamily: "A",
+                  fontSize: "11px",
+                  background: theme.colors.main,
+                  color: "transparent",
+                  webkitBackgroundClip: "text",
+                }}
+              >
+                TICKET
+              </Text>
             </Circle>
           </GradationBorder>
         ))}

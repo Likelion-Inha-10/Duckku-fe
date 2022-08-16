@@ -9,6 +9,7 @@ import Typography from "../../duckku-ui/Typography";
 import Flex from "../../duckku-ui/Flex";
 import OptionButton from "./components/optionButton";
 import ArtistButton from "./components/artistButton";
+import Toast from "../../duckku-ui/Toast";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -278,6 +279,12 @@ const ArtistSelect = () => {
     setArtistNumber(counter);
   }, [searchTerm, searchAgency, artists, agencies]);
 
+  const onConfirm = () => {
+    if (artistNumber === 0) {
+      return Toast("아티스트를 선택해주세요");
+    }
+  };
+
   return (
     <Layout>
       <TopWrapper>
@@ -304,7 +311,10 @@ const ArtistSelect = () => {
       </TopWrapper>
       <ArtistWrapper>{artistButtons}</ArtistWrapper>
       <ButtonWrapper>
-        <Button backgroundColor={artistNumber === 0 ? "gray" : "main"}>
+        <Button
+          backgroundColor={artistNumber === 0 ? "gray" : "main"}
+          onClick={onConfirm}
+        >
           {artistNumber === 0
             ? "아티스트 선택하기"
             : artistNumber + "명의 아티스트 선택"}

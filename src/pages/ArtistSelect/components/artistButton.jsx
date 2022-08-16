@@ -7,6 +7,7 @@ const ButtonWrapper = styled.button`
   border: none;
   outline: none;
   background: none;
+  cursor: pointer;
 `;
 
 const ArtistProfile = styled.div`
