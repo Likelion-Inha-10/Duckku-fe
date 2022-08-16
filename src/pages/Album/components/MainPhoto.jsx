@@ -115,7 +115,7 @@ const MainPhoto = ({ data, clickCategory, children }) => {
             </ProfileBlur>
 
             <Info>
-              <Typography color="white" fontSize="28" fontWeight="700">
+              <Typography color="white" bold28>
                 {dummy.name}
               </Typography>
               <Typography color="white" regular16>
