@@ -83,11 +83,11 @@ const ButtonWrapper = styled.div`
 `;
 
 const Null = styled(Flex)`
-  height: 240px;
+  height: 130px;
   width: 100%;
 `;
 const TicketCategory = ({ data }) => {
-  const [isNull, setIsNull] = useState(data.length);
+  const [isNull, setIsNull] = useState(data.length ? false : true);
 
   const submitTicket = (data) => {
     Toast(`총 ${data.length}개의 응모권이 등록되었습니다!`);
@@ -96,7 +96,7 @@ const TicketCategory = ({ data }) => {
     <>
       <TicketWrapper>
         {data.map((d) =>
-          0 ? (
+          data.length ? (
             <GradationBorder key={d.id}>
               <Circle>
                 <Duck height="32px" width="32px" />
@@ -116,12 +116,14 @@ const TicketCategory = ({ data }) => {
             </GradationBorder>
           ) : null
         )}
-        {isNull ? (
-          <Null justify="center" align="center">
-            <Typography>비어있습니다</Typography>
-          </Null>
-        ) : null}
       </TicketWrapper>
+      {isNull ? (
+        <Null justify="center" align="center">
+          <Typography bold16 color="gray">
+            비어있습니다
+          </Typography>
+        </Null>
+      ) : null}
       <Margin height="150" />
       <ButtonWrapper>
         {data.length ? (

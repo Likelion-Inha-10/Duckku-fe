@@ -6,6 +6,7 @@ import Category from "./components/Category";
 import Margin from "../../duckku-ui/Margin";
 import Contents from "./components/Contents";
 import axios from "axios";
+import PhotoQr from "../ModalQrTest/PhotoQr";
 
 const Album = () => {
   const categories = ["앨범", "포토카드", "응모권"];

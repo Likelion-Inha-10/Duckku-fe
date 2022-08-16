@@ -5,7 +5,8 @@ import Flex from "../../../duckku-ui/Flex";
 import Margin from "../../../duckku-ui/Margin";
 import ImageCard from "../../../duckku-ui/ImageCard";
 import album from "../../../assets/images/redvelvet.png";
-
+import PhotoQr from "../../ModalQrTest/PhotoQr";
+import Img from "../../../assets/images/redvelvet.png";
 const PhotoWrapper = styled(Flex)`
   flex-direction: column;
   width: 154px;
@@ -26,7 +27,7 @@ const PhotoCategory = ({ data }) => {
       <PhotoContainer>
         {data.map((d) => (
           <PhotoWrapper>
-            <ImageCard src={album} />
+            <PhotoQr src={Img} />
             <Margin height="12" />
           </PhotoWrapper>
         ))}
