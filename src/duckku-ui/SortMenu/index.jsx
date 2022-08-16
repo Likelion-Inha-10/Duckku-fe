@@ -8,11 +8,12 @@ import { useState } from "react";
 const Wrapper = styled(Flex)`
   width: 86px;
   height: 27px;
+  cursor: pointer;
 `;
 
 const IconWrapper = styled(Flex)`
   width: 18px;
-  heigth: 18px;
+  height: 18px;
 `;
 
 const SortMenu = () => {
@@ -27,16 +28,12 @@ const SortMenu = () => {
   };
   return (
     <>
-      <Wrapper justify="center" align="center">
+      <Wrapper justify="center" align="center" onClick={() => toggleMenu()}>
         <Typography bold16 color="gray">
           {currentMenu}
         </Typography>
         <Margin width="2" />
-        <IconWrapper
-          justify="center"
-          align="center"
-          onClick={() => toggleMenu()}
-        >
+        <IconWrapper justify="center" align="center">
           <IoChevronDownOutline size="18" color="#AFAFAF" />
         </IconWrapper>
       </Wrapper>
