@@ -15,7 +15,7 @@ const IconWrapper = styled(Flex)`
   heigth: 18px;
 `;
 
-const SortMenu = (props) => {
+const SortMenu = () => {
   const [currentMenu, setCurrentMenu] = useState("등록순");
 
   const toggleMenu = () => {
