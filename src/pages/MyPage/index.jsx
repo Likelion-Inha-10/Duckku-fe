@@ -24,7 +24,6 @@ const InformBox = styled.div`
   border: 0.911215px solid rgba(114, 105, 105, 0.5);
   border-radius: 4.55607px;
   text-align: center;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -39,7 +38,6 @@ const EmailBox = styled.div`
 
 //e-mail 내용
 const EmailContent = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -67,7 +65,6 @@ const ListBox2 = styled.div`
 
 // 마이페이지 목록 content
 const ListContent = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;

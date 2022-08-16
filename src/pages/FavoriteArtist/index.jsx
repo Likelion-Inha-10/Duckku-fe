@@ -37,6 +37,7 @@ const PencilButton = styled.button`
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
 const ModalWrapper = styled.div`
@@ -63,6 +64,7 @@ const ModalInsideButton = styled.div`
   width: fit-content;
   background: none;
   border: none;
+  cursor: pointer;
 `;
 
 const ArtistCardWrapper = styled.div`

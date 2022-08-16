@@ -14,7 +14,6 @@ const PersonalBox = styled.div`
 
 //정보 수정 content
 const FixInformBox = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -40,7 +39,6 @@ const FixWrap = styled.div`
 const SetTitleBox = styled.div`
   width: 120px;
   height: 24px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -53,7 +51,6 @@ const SetTitleBox = styled.div`
 const FixContentBox = styled.div`
   height: 24px;
   width: 218px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

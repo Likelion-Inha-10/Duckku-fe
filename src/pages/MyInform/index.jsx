@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import Layout from '../../duckku-ui/Layout';
-import Header from '../../duckku-ui/Header';
-import Margin from '../../duckku-ui/Margin';
-import Flex from '../../duckku-ui/Flex';
-import {BsFillCircleFill} from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import Layout from "../../duckku-ui/Layout";
+import Header from "../../duckku-ui/Header";
+import Margin from "../../duckku-ui/Margin";
+import Flex from "../../duckku-ui/Flex";
+import { BsFillCircleFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 // 개인 정보 박스
 const PersonalBox = styled.div`
@@ -14,7 +14,6 @@ const PersonalBox = styled.div`
 
 //기본정보 content
 const MyInformBox = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -30,7 +29,6 @@ const InformBox = styled.div`
   border: 0.911215px solid rgba(114, 105, 105, 0.5);
   border-radius: 4.55607px;
   text-align: center;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -46,21 +44,20 @@ const SetWrap = styled.div`
 
 // 타이틀을 가지는 div
 const SetTitleBox = styled.div`
-  width: 101px;
+  width: 111px;
   height: 24px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   color: #000000;
   padding-left: 30px;
   padding-top: 5px;
+  word-break: keep-all;
 `;
 
 // 수정된 정보를 받는 div
 const SetContentBox = styled.div`
   height: 24px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -81,12 +78,11 @@ const Partition = styled.div`
 `;
 
 const MyInform = () => {
-
   const navigate = useNavigate();
 
   const goToFixInform = () => {
     navigate("/my-inform-fix");
-  }
+  };
 
   return (
     <Layout>
@@ -117,14 +113,14 @@ const MyInform = () => {
         <Flex direction="row">
           <SetTitleBox>비밀번호</SetTitleBox>
           <SetContentBox>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
-            <BsFillCircleFill className="icon" size="13"/>
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
+            <BsFillCircleFill className="icon" size="13" />
           </SetContentBox>
         </Flex>
       </SetWrap>
