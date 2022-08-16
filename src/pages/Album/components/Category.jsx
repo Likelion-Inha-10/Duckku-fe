@@ -9,7 +9,7 @@ const Categories = styled(Flex)`
   justify-content: flex-start;
 `;
 const Button = styled.div`
-  padding: 10px 12px;
+  padding: 11px 12px;
   border-radius: 16px;
   border: none;
   background: ${(props) => props.theme.colors.main};

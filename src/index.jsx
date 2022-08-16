@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
         font-weight: 700;
         font-style: normal;
-    }
+    }ㄴ
 
     * {
         box-sizing: border-box;
@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
 
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px white inset !important;
-     }
+    }
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

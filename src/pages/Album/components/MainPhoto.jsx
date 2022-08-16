@@ -93,9 +93,9 @@ const Profile = styled(Flex)`
   justify-content: space-between;
 `;
 
-const MainPhoto = ({ children }) => {
+const MainPhoto = ({ data, clickCategory, children }) => {
   //받아올 데이터 목록
-  const [data, setData] = useState({
+  const [dummy, setDummy] = useState({
     name: "혁오",
     albums: 3,
     image: `${hucko}`,
@@ -104,22 +104,22 @@ const MainPhoto = ({ children }) => {
 
   return (
     <>
-      <Photo url={data.image}>
+      <Photo url={dummy.image}>
         {children}
         <Dimmer>
           <Profile>
             <ProfileBlur>
               <GradationBorder>
-                <Logo url={data.logo} />
+                <Logo url={dummy.logo} />
               </GradationBorder>
             </ProfileBlur>
 
             <Info>
               <Typography color="white" fontSize="28" fontWeight="700">
-                {data.name}
+                {dummy.name}
               </Typography>
               <Typography color="white" regular16>
-                나의 앨범 {data.albums}개
+                나의 앨범 {data.length}개
               </Typography>
             </Info>
           </Profile>

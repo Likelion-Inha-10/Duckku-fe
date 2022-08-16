@@ -21,15 +21,7 @@ const Type = styled(Flex)`
   align-items: center;
 `;
 
-const Contents = ({ categories, clickCategory }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://jsonplaceholder.typicode.com/users")
-      .then((r) => setData(r.data));
-  }, []);
-
+const Contents = ({ data, categories, clickCategory }) => {
   return (
     <>
       <Title>

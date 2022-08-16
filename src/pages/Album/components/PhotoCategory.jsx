@@ -9,7 +9,7 @@ import album from "../../../assets/images/redvelvet.png";
 const PhotoWrapper = styled(Flex)`
   flex-direction: column;
   width: 154px;
-  height: 275px;
+  height: 250px;
   align-items: flex-start;
 `;
 
@@ -23,32 +23,14 @@ const PhotoContainer = styled.div`
 const PhotoCategory = ({ data }) => {
   return (
     <>
-      {data.map((d) => {
-        <p>{d.name}</p>;
-      })}
-      {/* <PhotoContainer>
-        <PhotoWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Typography style={{ paddingLeft: "8px" }} regular14 color="gray">
-            {data.date}
-          </Typography>
-        </PhotoWrapper>
-        <PhotoWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Typography style={{ paddingLeft: "8px" }} regular14 color="gray">
-            {data.date}
-          </Typography>
-        </PhotoWrapper>
-        <PhotoWrapper>
-          <ImageCard src={album} />
-          <Margin height="12" />
-          <Typography style={{ paddingLeft: "8px" }} regular14 color="gray">
-            {data.date}
-          </Typography>
-        </PhotoWrapper>
-      </PhotoContainer> */}
+      <PhotoContainer>
+        {data.map((d) => (
+          <PhotoWrapper>
+            <ImageCard src={album} />
+            <Margin height="12" />
+          </PhotoWrapper>
+        ))}
+      </PhotoContainer>
     </>
   );
 };

@@ -8,15 +8,11 @@ import ImageCard from "../../../duckku-ui/ImageCard";
 import album from "../../../assets/images/redvelvet.png";
 import { GrEmptyCircle } from "react-icons/gr";
 
-const Type = styled(Flex)`
-  width: 60px;
-  align-items: center;
-`;
-
 const Text = styled(Flex)`
   flex-direction: column;
   justify-content: space-between;
   height: 44px;
+  max-width: 100px;
 `;
 
 const AlbumWrapper = styled(Flex)`
@@ -63,9 +59,9 @@ const AlbumCategory = ({ data }) => {
             <Info>
               <Text>
                 <Typography style={{ lineHeight: "1.3" }} regular16>
-                  {d.address.suite}
+                  {d.username}
                 </Typography>
-                <Typography thin14>hi</Typography>
+                <Typography thin14>{d.address.suite}</Typography>
               </Text>
               <Song>
                 <StyledIcon />
