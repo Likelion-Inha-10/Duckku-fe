@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../../duckku-ui/Header";
 import Layout from "../../duckku-ui/Layout";
-import Album from "../Store/components/album";
+import Album from "../../duckku-ui/Album";
 import InputBox from "../ArtistSelect/components/inputBox";
 import Footer from "../../duckku-ui/Footer";
 import Margin from "../../duckku-ui/Margin";
@@ -27,6 +27,7 @@ const MoreButton = styled.button`
   border: none;
   padding-left: 8px;
   padding-right: 8px;
+  cursor: pointer;
 `;
 
 const FavoriteListWrapper = styled.div`
@@ -68,6 +69,7 @@ const LikeButton = styled.button`
   justify-content: right;
   align-items: center;
   padding-right: 44px;
+  cursor: pointer;
 `;
 
 const Store = () => {
