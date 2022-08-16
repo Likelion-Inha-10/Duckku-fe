@@ -8,8 +8,8 @@ const Categories = styled(Flex)`
   width: 100%;
   justify-content: flex-start;
 `;
-const Button = styled.div`
-  padding: 11px 12px;
+const Button = styled.button`
+  padding: 10px 12px;
   border-radius: 16px;
   border: none;
   background: ${(props) => props.theme.colors.main};

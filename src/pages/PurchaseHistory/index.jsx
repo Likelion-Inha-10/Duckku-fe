@@ -19,7 +19,6 @@ const PurchaseContent = styled.div`
   display: flex;
   margin-left: 30px;
   margin-top: 10px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -41,7 +40,6 @@ const DateContent = styled.div`
   height: 17px;
   margin-left: 30px;
   margin-top: 17px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -55,7 +53,6 @@ const TimeContent = styled.div`
   height: 17px;
   margin-left: 40px;
   margin-top: 17px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -69,7 +66,6 @@ const OrderNumber = styled.div`
   height: 17px;
   margin-left: 30px;
   margin-top: 7px;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

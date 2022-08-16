@@ -10,14 +10,15 @@ import PhotoCategory from "./PhotoCategory";
 import Album from "..";
 import TicketCategory from "./TicketCategory";
 import axios from "axios";
+import SortMenu from "../../../duckku-ui/SortMenu";
 
 const Title = styled(Flex)`
-  width: 326px;
+  width: 315px;
   justify-content: space-between;
 `;
 
 const Type = styled(Flex)`
-  width: 60px;
+  width: 64px;
   align-items: center;
 `;
 
@@ -25,13 +26,12 @@ const Contents = ({ data, categories, clickCategory }) => {
   return (
     <>
       <Title>
-        <Typography>
+        <Typography bold16>
           총 {data.length}개의 {clickCategory}
         </Typography>
 
         <Type style={{ cursor: "pointer" }}>
-          <Typography color="gray">ㅗ</Typography>
-          <IoChevronDownOutline size="16" color={theme.colors.gray} />
+          <SortMenu />
         </Type>
       </Title>
 

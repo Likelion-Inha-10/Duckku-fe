@@ -5,6 +5,9 @@ import Margin from "../../../duckku-ui/Margin";
 import theme from "../../../assets/theme";
 import { ReactComponent as Duck } from "../../../assets/svgs/DuckPurple.svg";
 import A from "../../../assets/fonts/AlfaSlabOne-Regular.woff";
+import Button from "../../../duckku-ui/Button";
+import Toast from "../../../duckku-ui/Toast";
+import Flex from "../../../duckku-ui/Flex";
 
 const TicketWrapper = styled.div`
   display: grid;
@@ -74,30 +77,61 @@ const Circle = styled.div`
     #f9f9f9;
 `;
 
+const ButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 56px;
+`;
+
+const Null = styled(Flex)`
+  height: 240px;
+  width: 100%;
+`;
 const TicketCategory = ({ data }) => {
+  const [isNull, setIsNull] = useState(data.length);
+
+  const submitTicket = (data) => {
+    Toast(`총 ${data.length}개의 응모권이 등록되었습니다!`);
+  };
   return (
     <>
       <TicketWrapper>
-        {data.map((d) => (
-          <GradationBorder>
-            <Circle>
-              <Duck height="32px" width="32px" />
-              <Margin height="10" />
-              <Text
-                style={{
-                  fontFamily: "A",
-                  fontSize: "11px",
-                  background: theme.colors.main,
-                  color: "transparent",
-                  webkitBackgroundClip: "text",
-                }}
-              >
-                TICKET
-              </Text>
-            </Circle>
-          </GradationBorder>
-        ))}
+        {data.map((d) =>
+          0 ? (
+            <GradationBorder key={d.id}>
+              <Circle>
+                <Duck height="32px" width="32px" />
+                <Margin height="10" />
+                <Text
+                  style={{
+                    fontFamily: "A",
+                    fontSize: "11px",
+                    background: theme.colors.main,
+                    color: "transparent",
+                    webkitBackgroundClip: "text",
+                  }}
+                >
+                  TICKET
+                </Text>
+              </Circle>
+            </GradationBorder>
+          ) : null
+        )}
+        {isNull ? (
+          <Null justify="center" align="center">
+            <Typography>비어있습니다</Typography>
+          </Null>
+        ) : null}
       </TicketWrapper>
+      <Margin height="150" />
+      <ButtonWrapper>
+        {data.length ? (
+          <Button onClick={() => submitTicket(data)}>모두 응모하기</Button>
+        ) : (
+          <Button backgroundColor="gray" onClick={() => submitTicket(data)}>
+            모두 응모하기
+          </Button>
+        )}
+      </ButtonWrapper>
     </>
   );
 };
