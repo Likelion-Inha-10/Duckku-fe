@@ -54,6 +54,12 @@ const StyledImg = styled.img`
   height: 447px;
 `;
 
+const ButtonWrapper = styled.div`
+  vertical-align: middle;
+  position: fixed;
+  bottom: 56px;
+`;
+
 const Intro = () => {
   const settings = {
     dots: true,
@@ -82,7 +88,7 @@ const Intro = () => {
 
   return (
     <Layout>
-      <Margin height="106" />
+      <Margin height="59" />
       <StyledSlider {...settings}>
         <SlideWrapper>
           <Flex justify="center">
@@ -158,26 +164,27 @@ const Intro = () => {
         </SlideWrapper>
       </StyledSlider>
 
-      <Margin height="36" />
-      {slide === 2 ? (
-        <Button
-          width="350"
-          height="60"
-          borderRadius="15"
-          backgroundColor="main"
-        >
-          서비스 시작하기
-        </Button>
-      ) : (
-        <Button
-          width="350"
-          height="60"
-          borderRadius="15"
-          backgroundColor="buttonGray"
-        >
-          서비스 시작하기
-        </Button>
-      )}
+      <ButtonWrapper>
+        {slide === 2 ? (
+          <Button
+            width="350"
+            height="60"
+            borderRadius="15"
+            backgroundColor="main"
+          >
+            서비스 시작하기
+          </Button>
+        ) : (
+          <Button
+            width="350"
+            height="60"
+            borderRadius="15"
+            backgroundColor="buttonGray"
+          >
+            서비스 시작하기
+          </Button>
+        )}
+      </ButtonWrapper>
     </Layout>
   );
 };
