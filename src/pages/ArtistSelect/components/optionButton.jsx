@@ -22,6 +22,7 @@ const OptionButton = styled.button`
   color: #afafaf;
   z-index: 10;
   transition: 0.5s;
+  cursor: pointer;
 
   ${(props) =>
     props.activated &&

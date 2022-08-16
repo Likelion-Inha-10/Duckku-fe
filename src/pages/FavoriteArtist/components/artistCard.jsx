@@ -10,6 +10,7 @@ const CardWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 `;
 
 const ArtistImageBox = styled.div`
@@ -31,6 +32,7 @@ const DeleteButton = styled.button`
   border: none;
   background: #f5f5f5;
   margin-left: 59px;
+  cursor: pointer;
 `;
 
 const NumberBox = styled.div`

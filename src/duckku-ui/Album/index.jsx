@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Typography from "../../../duckku-ui/Typography";
-import Margin from "./../../../duckku-ui/Margin/index";
+import Typography from "../Typography";
+import Margin from "../Margin/index";
 import { HiOutlineCheckCircle } from "react-icons/hi";
 
 const Box = styled.div`
@@ -11,6 +11,7 @@ const Box = styled.div`
   margin-left: 8px;
   margin-right: 8px;
   margin-bottom: 24px;
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -39,8 +40,8 @@ const BottomTextWrapper = styled.div`
 `;
 
 const IconSection = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 29px;
+  height: 29px;
   padding: 2px;
   overflow: visible;
   margin-left: 114px;
