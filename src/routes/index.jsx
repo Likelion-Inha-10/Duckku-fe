@@ -19,6 +19,7 @@ import PurchaseHistory from "../pages/PurchaseHistory";
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
 import ModalQrTest from "../pages/ModalQrTest";
 // 라우트명은 kebab-case 로 작성합니다
+const API_URL = "http://172.105.206.166:8000";
 
 const Router = () => (
   <BrowserRouter>
@@ -29,7 +30,7 @@ const Router = () => (
       <Route exact path="/interested-artist-albums" element={<Interested />} />
       <Route exact path="/artist-select" element={<ArtistSelect />} />
       <Route exact path="/login" element={<Login />} />
-      <Route exact path="/sign-up" element={<SignUp />} />
+      <Route exact path="/sign-up" element={<SignUp api_url={API_URL} />} />
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/store" element={<Store />} />
       <Route exact path="/main-home" element={<MainHome />} />
