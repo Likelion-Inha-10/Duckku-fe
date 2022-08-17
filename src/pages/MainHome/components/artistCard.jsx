@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 // 카드 전체 component
@@ -66,8 +68,8 @@ const ArtistNameBox = styled.div`
 
 // 아티스트 로고 component
 const ArtistLogoBox = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   margin-top: 16px;
   margin-left: 8px;
   border-radius: 50%;

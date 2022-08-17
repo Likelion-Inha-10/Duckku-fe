@@ -12,6 +12,7 @@ const Box = styled.div`
   margin-right: 8px;
   margin-bottom: 24px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const ImageContainer = styled.div`

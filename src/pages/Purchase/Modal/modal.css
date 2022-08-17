@@ -19,7 +19,6 @@
 .modal > section {
   width: 100%;
   max-width: 390px;
-  background-color: #fff;
   animation: modal-show 0.3s;
   position: fixed;
   bottom: 0;
@@ -34,7 +33,6 @@
   background-color: white;
   font-size: 16px;
   border-radius: 30% 30% 0 0;
-  color: black;
 }
 .modal > section > header button {
   position: absolute;
