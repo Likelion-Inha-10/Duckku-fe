@@ -23,6 +23,7 @@ const OptionButton = styled.button`
   z-index: 10;
   transition: 0.5s;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   ${(props) =>
     props.activated &&

@@ -16,6 +16,7 @@ const InputContainer = styled.div`
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#F5F5F5"};
   border-radius: 25px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const Input = styled.input`
