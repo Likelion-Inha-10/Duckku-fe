@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import "./modal.css";
 import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
@@ -13,7 +13,6 @@ const CardWrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
   border: none;
-  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const BackWrapper = styled.div`
@@ -27,14 +26,14 @@ const SingerNameSection = styled.div`
   text-align: center;
 `;
 
-const PhotoCardSection = styled.img`
+const PhotoCardSection = styled.div`
   width: 326px;
   height: 466px;
   background-image: url(${(props) => props.PhotoCard});
   background-size: cover;
   border-radius: 48px;
   border: none;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-repeat: no-repeat;
 `;
 
 const CardInfoWrapper = styled.div`
@@ -77,7 +76,18 @@ const Qrcode = styled.img`
 
 const ModalQr = (props) => {
   const { open, close } = props;
-
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
   return (
     <div className={open ? "openModal modalQr" : "modalQr"}>
       {open ? (
