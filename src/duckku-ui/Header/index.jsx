@@ -4,6 +4,7 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import theme from "../../assets/theme";
 import Margin from "../Margin";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled(Flex)`
   width: 100%;
@@ -30,6 +31,7 @@ const Title = styled.div`
 
 const Back = styled.div`
   visibility: hidden;
+  cursor: pointer;
 
   ${(props) =>
     props.back &&
@@ -39,8 +41,10 @@ const Back = styled.div`
 `;
 
 const Header = (props) => {
+  const navigate = useNavigate();
   const moveToBack = () => {
     // 추후 작성 예정
+    navigate(-1);
   };
   return (
     <Wrapper zIndex={props.zIndex}>

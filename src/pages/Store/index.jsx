@@ -9,6 +9,7 @@ import Typography from "../../duckku-ui/Typography";
 import { useState, useEffect } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import theme from "./../../assets/theme/index";
+import { useNavigate } from "react-router-dom";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -126,6 +127,11 @@ const Store = () => {
     },
   ]);
 
+  const navigate = useNavigate();
+  const onClickMore = () => {
+    navigate(`/interested-artist-albums`);
+  };
+
   useEffect(() => {
     setRecommendAlbum(
       recommendList.map((album) => (
@@ -135,6 +141,7 @@ const Store = () => {
           artist={album.artist}
           year={album.year}
           isChecked={album.isChecked}
+          link={"/purchase"}
         />
       ))
     );
@@ -172,7 +179,7 @@ const Store = () => {
                 아티스트의 앨범
               </Typography>
             </Title>
-            <MoreButton>
+            <MoreButton onClick={() => onClickMore()}>
               <Typography bold16 color="gray">
                 더보기
               </Typography>

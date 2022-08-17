@@ -9,6 +9,7 @@ import Toast from "../../duckku-ui/Toast";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { BsPencilSquare } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -162,6 +163,11 @@ const FavoriteArtist = () => {
     },
   ]);
 
+  const navigate = useNavigate();
+  const onClickAdd = () => {
+    navigate(`/artist-select`);
+  };
+
   const handleChange = (result) => {
     if (!result.destination) return;
     console.log(result);
@@ -228,7 +234,7 @@ const FavoriteArtist = () => {
             isPencilbuttonClicked === true && isDeleteModeActivated === false
           }
         >
-          <ModalInsideButton>
+          <ModalInsideButton onClick={() => onClickAdd()}>
             <Typography bold16>추가하기</Typography>
           </ModalInsideButton>
           <Margin height="10" />
