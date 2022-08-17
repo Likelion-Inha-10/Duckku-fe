@@ -95,6 +95,13 @@ const Typography = styled.div`
         `}
 
     ${(props) =>
+    props.bold18 &&
+    `
+    font-family: 'Pretendard-Bold';
+            font-size: 18px;
+        `}
+
+    ${(props) =>
     props.bold21 &&
     `
     font-family: 'Pretendard-Bold';
