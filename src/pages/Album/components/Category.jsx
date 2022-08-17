@@ -17,6 +17,7 @@ const Button = styled.button`
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   ${(props) =>
     props.none &&

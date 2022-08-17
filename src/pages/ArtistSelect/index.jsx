@@ -10,6 +10,7 @@ import Flex from "../../duckku-ui/Flex";
 import OptionButton from "./components/optionButton";
 import ArtistButton from "./components/artistButton";
 import Toast from "../../duckku-ui/Toast";
+import { useNavigate } from "react-router-dom";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -289,10 +290,13 @@ const ArtistSelect = () => {
     setArtistNumber(counter);
   }, [searchTerm, searchAgency, artists, agencies]);
 
+  const navigate = useNavigate();
+
   const onConfirm = () => {
     if (artistNumber === 0) {
       return Toast("아티스트를 선택해주세요");
     }
+    navigate(`/main-home`);
   };
 
   return (
