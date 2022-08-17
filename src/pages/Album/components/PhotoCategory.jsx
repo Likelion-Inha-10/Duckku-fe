@@ -27,7 +27,11 @@ const PhotoCategory = ({ data }) => {
       <PhotoContainer>
         {data.map((d) => (
           <PhotoWrapper>
-            <PhotoQr src={Img} />
+            <PhotoQr
+              Photo="http://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
+              SingerName="나연"
+              RegistDay="2022.02.01"
+            />
             <Margin height="12" />
           </PhotoWrapper>
         ))}
