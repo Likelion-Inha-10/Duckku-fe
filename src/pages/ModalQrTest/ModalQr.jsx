@@ -3,6 +3,7 @@ import "./modal.css";
 import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
+import Header from "../../duckku-ui/ResponsiveHeader";
 import { AiOutlineLeft } from "react-icons/ai";
 
 const CardWrapper = styled.div`
@@ -11,12 +12,13 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const BackWrapper = styled.div`
   width: 100%;
   height: auto;
-  margin-left: 15px;
 `;
 
 const SingerNameSection = styled.div`
@@ -30,8 +32,9 @@ const PhotoCardSection = styled.img`
   height: 466px;
   background-image: url(${(props) => props.PhotoCard});
   background-size: cover;
-  border-radius: 15%;
+  border-radius: 48px;
   border: none;
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const CardInfoWrapper = styled.div`
@@ -57,7 +60,7 @@ const QrCodeWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: linear-gradient(55deg, #5e3ab6 6.14%, #e13194 94.68%);
-  border-radius: 10%;
+  border-radius: 48px;
 `;
 
 const Qrcode = styled.img`
@@ -69,7 +72,7 @@ const Qrcode = styled.img`
   background-position: center;
   background-color: white;
   border: none;
-  border-radius: 10%;
+  border-radius: 24px;
 `;
 
 const ModalQr = (props) => {
@@ -79,14 +82,14 @@ const ModalQr = (props) => {
     <div className={open ? "openModal modalQr" : "modalQr"}>
       {open ? (
         <section>
-          <Margin width="340" height="100" />
+          <Margin width="340" height="18" />
           <BackWrapper>
             <button className="close" onClick={close}>
-              <AiOutlineLeft />
+              <Header back />
             </button>
           </BackWrapper>
 
-          <Margin width="340" height="10" />
+          <Margin width="340" height="18" />
           <SingerNameSection>
             <Typography color="white" bold24>
               {props.SingerName}
@@ -106,14 +109,6 @@ const ModalQr = (props) => {
             </Typography>
           </CardInfoWrapper>
 
-          <CardInfoWrapper>
-            <Typography color="white" regular16>
-              시리얼 넘버
-            </Typography>
-            <Typography color="white" regular16>
-              {props.SerialNumber}
-            </Typography>
-          </CardInfoWrapper>
           <Margin width="340" height="100" />
           <QrSection>
             <Typography color="white" bold24>
