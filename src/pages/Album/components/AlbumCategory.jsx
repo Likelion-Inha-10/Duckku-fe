@@ -7,6 +7,7 @@ import Margin from "../../../duckku-ui/Margin";
 import ImageCard from "../../../duckku-ui/ImageCard";
 import album from "../../../assets/images/redvelvet.png";
 import { GrEmptyCircle } from "react-icons/gr";
+import ListAlbum from "../../ModalAlbum/ListAlbum";
 
 const Text = styled(Flex)`
   flex-direction: column;
@@ -49,29 +50,45 @@ const AlbumContainer = styled.div`
 `;
 
 const AlbumCategory = ({ data }) => {
+  const Lists = [
+    { SingName: "1. Fell My Rhythm", SingTime: "3:31" },
+    { SingName: "2. Cheer up", SingTime: "5:31" },
+    { SingName: "3. 우아하게", SingTime: "3:41" },
+    { SingName: "4. Nothing", SingTime: "4:31" },
+    { SingName: "5. Achoo", SingTime: "2:32" },
+  ];
+
   return (
     <>
       <AlbumContainer>
         {data.map((d) => (
-          <AlbumWrapper>
-            <ImageCard src={album} />
-            <Margin height="12" />
-            <Info>
-              <Text>
-                <Typography style={{ lineHeight: "1.3" }} regular16>
-                  {d.username}
-                </Typography>
-                <Typography thin14>{d.address.suite}</Typography>
-              </Text>
-              <Song>
-                <StyledIcon />
-                <Typography style={{ paddingLeft: "3px" }} regular16>
-                  {d.id}
-                </Typography>
-              </Song>
-            </Info>
-            <Margin height="18" />
-          </AlbumWrapper>
+          <>
+            <AlbumWrapper>
+              <ListAlbum
+                Photo="http://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
+                AlbumName="The Festival 2022"
+                AlbumNumber="미니"
+                MadeDate="2022.02.01"
+                Lists={Lists}
+              />
+              <Margin height="12" />
+              <Info>
+                <Text>
+                  <Typography style={{ lineHeight: "1.3" }} regular16>
+                    {d.username}
+                  </Typography>
+                  <Typography thin14>{d.address.suite}</Typography>
+                </Text>
+                <Song>
+                  <StyledIcon />
+                  <Typography style={{ paddingLeft: "3px" }} regular16>
+                    {d.id}
+                  </Typography>
+                </Song>
+              </Info>
+              <Margin height="18" />
+            </AlbumWrapper>
+          </>
         ))}
       </AlbumContainer>
     </>
