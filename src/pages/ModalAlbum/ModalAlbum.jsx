@@ -128,7 +128,7 @@ const ModalAlbum = (props) => {
               수록곡
             </Typography>
             <Typography bold21 color="white">
-              총 6곡
+              총 {props.Lists.length}곡
             </Typography>
           </AlbumListTitleWrapper>
 
