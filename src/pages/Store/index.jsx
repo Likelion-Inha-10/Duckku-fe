@@ -28,6 +28,7 @@ const MoreButton = styled.button`
   padding-left: 8px;
   padding-right: 8px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const FavoriteListWrapper = styled.div`
@@ -57,11 +58,9 @@ const AlbumWrapper = styled.div`
   width: 344px;
 `;
 
-const LikeButton = styled.button`
+const LikeButtonWrapper = styled.div`
   width: 390px;
   height: 70px;
-  background: none;
-  border: none;
   position: fixed;
   top: 0;
   z-index: 20;
@@ -69,7 +68,14 @@ const LikeButton = styled.button`
   justify-content: right;
   align-items: center;
   padding-right: 44px;
+`;
+
+const LikeButton = styled.button`
+  background: none;
+  border: none;
+
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const Store = () => {
@@ -137,13 +143,15 @@ const Store = () => {
   return (
     <Layout>
       <Header back title="스토어" />
-      <LikeButton onClick={() => setIsLikeClicked(!isLikeClicked)}>
-        {isLikeClicked === false ? (
-          <AiOutlineHeart size="28px" color="#AFAFAF" />
-        ) : (
-          <AiFillHeart size="28px" color={theme.colors.red} />
-        )}
-      </LikeButton>
+      <LikeButtonWrapper>
+        <LikeButton onClick={() => setIsLikeClicked(!isLikeClicked)}>
+          {isLikeClicked === false ? (
+            <AiOutlineHeart size="28px" color="#AFAFAF" />
+          ) : (
+            <AiFillHeart size="28px" color={theme.colors.red} />
+          )}
+        </LikeButton>
+      </LikeButtonWrapper>
       <Margin height="28" />
       <InputBox placeholder="검색어를 입력해 주세요" />
       {isLikeClicked === true ? (

@@ -8,6 +8,7 @@ const ButtonWrapper = styled.button`
   outline: none;
   background: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const ArtistProfile = styled.div`
