@@ -64,16 +64,7 @@
   align-items: center;
   animation: modal-bg-show 0.3s;
 }
-.not_scroll {
-  position: fixed;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-.not_scroll .cont {
-  position: relative;
-  top: 0;
-}
+
 @keyframes modal-show {
   from {
     opacity: 0;

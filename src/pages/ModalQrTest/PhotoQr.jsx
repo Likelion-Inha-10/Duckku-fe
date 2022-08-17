@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalQr from "./ModalQr";
-import Button from "../../duckku-ui/Button";
 import ImageCard from "../../duckku-ui/ImageCard";
 
 const PhotoQr = (props) => {
@@ -8,9 +7,11 @@ const PhotoQr = (props) => {
 
   const openModal = () => {
     setModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
   const closeModal = () => {
     setModalOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
