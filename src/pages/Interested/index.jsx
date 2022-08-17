@@ -5,7 +5,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import styled from "styled-components";
-import InterestedCard from "./components/InterestedCard";
+import SortMenu from "../../duckku-ui/SortMenu";
 import { AiOutlineDown } from "react-icons/ai";
 
 const AllInterestedWrapper = styled.div`
@@ -17,12 +17,12 @@ const AllInterestedWrapper = styled.div`
 `;
 
 const ViewOrderWrapper = styled.div`
-  width: 80%;
+  width: 326px;
   height: auto;
   display: flex;
   justify-content: end;
-  margin: 5px;
   align-items: center;
+  margin-bottom: 16px;
 `;
 
 const IconCenter = styled.div`
@@ -98,15 +98,8 @@ const Interested = () => {
         <Header back title=" 나의 관심 아티스트의 앨범" />
 
         <ViewOrderWrapper>
-          <Margin width="10" height="10" />
-          <Typography inline bold16 color="gray">
-            최신순
-          </Typography>
-          <IconCenter>
-            <Typography bold21 color="gray">
-              <AiOutlineDown />
-            </Typography>
-          </IconCenter>
+          <Margin height="32" />
+          <SortMenu />
         </ViewOrderWrapper>
         <Margin height="16" />
         {interestedAlbum}
