@@ -28,9 +28,9 @@ const PhotoCategory = ({ data }) => {
         {data.map((d) => (
           <PhotoWrapper>
             <PhotoQr
-              Photo="http://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
-              SingerName="나연"
-              RegistDay="2022.02.01"
+              SingerName={d.username}
+              Photo={Img}
+              RegistDay={d.address.suite}
             />
             <Margin height="12" />
           </PhotoWrapper>
