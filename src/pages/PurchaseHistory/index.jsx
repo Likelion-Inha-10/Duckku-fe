@@ -5,6 +5,7 @@ import Header from '../../duckku-ui/Header';
 import Margin from '../../duckku-ui/Margin';
 import Flex from '../../duckku-ui/Flex';
 import PurchaseAlbum from './components/PurchaseAlbum';
+import Typography from '../../duckku-ui/Typography';
 
 // 구매한 상품 박스
 const PurchaseBox = styled.div`
@@ -14,6 +15,7 @@ const PurchaseBox = styled.div`
 `;
 
 // 구매한 상품  글 작성 div
+
 // 구매한 상품  작성 div
 const PurchaseContent = styled.div`
   display: flex;
@@ -28,56 +30,38 @@ const PurchaseContent = styled.div`
 // 주문 번호 wrap
 const DateBox = styled.div`
   width: 100%;
-  height: 68px;
-  background: #FFFFFF;
+  height: 40px;
+  background: white;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
 `;
 
 // 날짜 content
 const DateContent = styled.div`
   display: flex;
-  width: 72px;
-  height: 17px;
+  width: 100px;
+  height: 27px;
   margin-left: 30px;
-  margin-top: 17px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #000000;
+  margin-top: 8px;
+  letter-spacing: 0.55px;
 `;
 
-// 시간 content
-const TimeContent = styled.div`
+// 주문상세 content
+const DetailContent = styled.div`
   display: flex;
-  width: 34px;
-  height: 17px;
-  margin-left: 40px;
-  margin-top: 17px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #000000;
-`;
-
-// 주문번호 content
-const OrderNumber = styled.div`
-  display: flex;
-  width: 210px;
-  height: 17px;
-  margin-left: 30px;
+  width: 100px;
+  height: 27px;
+  margin-left: 150px;
   margin-top: 7px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #726969;
+  letter-spacing: 0.55px;
 `;
 
-// 중앙 분리선
-const Partition = styled.div`
+// 날짜 중앙 분리선
+const DatePartition = styled.div`
   width: 100%;
-  height: 3px;
-  background: rgba(114, 105, 105, 0.1);
+  height: 5px;
+  background: rgba(114, 105, 105, 0.18);
 `;
+
 
 
 
@@ -86,35 +70,44 @@ const PurchaseHistory = () => {
     <Layout>
       <Header back title="구매내역" />
       <Margin height="20" />
-      <PurchaseBox>
-        <PurchaseContent>구매한 상품</PurchaseContent>
-      </PurchaseBox>
+      <DatePartition />
       <DateBox>
         <Flex direction="row">
-          <DateContent>2022.08.09</DateContent>
-          <TimeContent>15:08</TimeContent>
+          <DateContent>
+            <Typography bold18 >22.07.17</Typography>
+          </DateContent>
+          <DetailContent>
+            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+          </DetailContent>
         </Flex>
-        <OrderNumber>주문번호  162481674815648431314</OrderNumber>
       </DateBox>
-      <Partition />
       <PurchaseAlbum />
+      <DatePartition />
       <DateBox>
         <Flex direction="row">
-          <DateContent>2022.08.09</DateContent>
-          <TimeContent>15:08</TimeContent>
+          <DateContent>
+            <Typography bold18 >22.06.11</Typography>
+          </DateContent>
+          <DetailContent>
+            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+          </DetailContent>
         </Flex>
-        <OrderNumber>주문번호  162481674815648431314</OrderNumber>
       </DateBox>
-      <Partition />
       <PurchaseAlbum />
+      <PurchaseAlbum />
+      <DatePartition />
       <DateBox>
         <Flex direction="row">
-          <DateContent>2022.08.09</DateContent>
-          <TimeContent>15:08</TimeContent>
+          <DateContent>
+            <Typography bold18 >22.06.04</Typography>
+          </DateContent>
+          <DetailContent>
+            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+          </DetailContent>
         </Flex>
-        <OrderNumber>주문번호  162481674815648431314</OrderNumber>
       </DateBox>
-      <Partition />
+      <PurchaseAlbum />
+      <PurchaseAlbum />
       <PurchaseAlbum />
     </Layout>
   );
