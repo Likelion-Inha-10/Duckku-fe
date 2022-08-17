@@ -6,6 +6,7 @@ import Input from "../../duckku-ui/Input";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
+import { useNavigate } from "react-router-dom";
 
 const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -32,12 +33,14 @@ const Login = () => {
   const [user, setUser] = useState({ email: "", pw: "" });
   const [colors, setColors] = useState({ email: "gray", pw: "gray" });
   const [valid, setValid] = useState({ pw: "hidden" });
+  const navigate = useNavigate();
 
   //로그인 버튼을 누르면 실행
   const loginSuccess = () => {
     //정보를 보내고 안된다고 다시 오면 안된다고 뜨게하기 , 아래에 쓴건 임시임
     if (user.pw === "") return setValid({ pw: "visible" });
     else setValid({ pw: "hidden" });
+    navigate(`/artist-select`);
   };
   const forgetAccount = () => {
     console.log("계정찾으러 가좡~!");

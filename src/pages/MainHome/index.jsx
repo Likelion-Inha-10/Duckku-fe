@@ -8,6 +8,7 @@ import CardCarousel from "./components/cardCarousel";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import FirstAlbum from "./components/firstAlbum";
 import NthAlbum from "./components/nthAlbum";
+import { useNavigate } from "react-router-dom";
 
 // 관심 아티스트와 앨범차트를 따로 감싸기 위한 component
 const PageWrapper = styled.div`
@@ -46,6 +47,7 @@ const EditButton = styled.button`
   margin-right: 8px;
   margin-top: -20px;
   z-index: 10;
+  cursor: pointer;
 `;
 
 // 앨범차트 더보기 버튼 component
@@ -72,6 +74,11 @@ const MoreViewTextWrapper = styled.div`
 `;
 
 const MainHome = () => {
+  const navigate = useNavigate();
+  const onClickEdit = () => {
+    navigate(`/favorite-artist`);
+  };
+
   return (
     <Layout>
       <PageWrapper>
@@ -88,9 +95,7 @@ const MainHome = () => {
         <Margin height="40" />
         <CardCarousel />
         <EditButtonWrapper>
-          <EditButton onClick={() => console.log("clicked")}>
-            + 수정하기
-          </EditButton>
+          <EditButton onClick={() => onClickEdit()}>+ 수정하기</EditButton>
         </EditButtonWrapper>
       </PageWrapper>
       <PageWrapper>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Typography from "../Typography";
 import Margin from "../Margin/index";
 import { HiOutlineCheckCircle } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -57,8 +58,14 @@ const IconSection = styled.div`
 `;
 
 const Album = (props) => {
+  const navigate = useNavigate();
+
+  const onClickAlbum = () => {
+    console.log(props.link);
+    navigate(`${props.link}`);
+  };
   return (
-    <Box>
+    <Box onClick={() => onClickAlbum()}>
       <svg width="0" height="0">
         <linearGradient id="purple" x1="100%" y1="100%" x2="0%" y2="0%">
           <stop stopColor="#7001FF" offset="0" />

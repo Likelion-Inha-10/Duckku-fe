@@ -4,8 +4,8 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import theme from "../../assets/theme";
 import Margin from "../Margin";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled(Flex)`
   max-width: 390px;
@@ -62,8 +62,10 @@ const Header = (props) => {
     window.addEventListener("scroll", updateScroll);
   });
 
+  const navigate = useNavigate();
   const moveToBack = () => {
     // 추후 작성 예정
+    navigate(-1);
   };
 
   return (

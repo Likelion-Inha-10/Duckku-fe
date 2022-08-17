@@ -22,6 +22,7 @@ const Button = styled.button`
   letter-spacing: 0.55px;
   cursor: pointer;
   vertical-align: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 export default withTheme(Button);

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "../../../duckku-ui/Button";
 import Typography from "../../../duckku-ui/Typography";
 import { HiOutlineChevronRight } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -92,6 +93,11 @@ const Flex = styled.div`
 
 // 버튼의 경우 Figma 기준으로 blur와 투명도가 들어갔으나, 해당 option이 없어 미구현
 const ArtistCard = (props) => {
+  const navigate = useNavigate();
+  const onClickButton = () => {
+    navigate(`/album`);
+  };
+
   return (
     <Wrapper>
       <CardWrapper imgLink={props.imgLink}>
@@ -104,7 +110,7 @@ const ArtistCard = (props) => {
           <ArtistLogoBox iconLink={props.iconLink} />
         </TopWrapper>
         <ButtomWrapper>
-          <StyledButton width="150" height="44">
+          <StyledButton width="150" height="44" onClick={() => onClickButton()}>
             <Flex>
               <Typography bold16 color="white">
                 앨범함 가기

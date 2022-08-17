@@ -8,10 +8,8 @@ const Typography = styled.div`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "16")}px;
 
   line-height: 1.5;
-  white-space: pre-wrap;
+  white-space: nowrap;
   z-index: inherit;
-  text-overflow: ellipsis;
-  overflow: hidden;
 
   ${(props) =>
     props.center &&
@@ -83,7 +81,7 @@ const Typography = styled.div`
     ${(props) =>
     props.bold14 &&
     `
-    font-family: 'Pretendard-Bold';
+      font-family: 'Pretendard-Bold';
           font-size: 14px;
           `}
 
