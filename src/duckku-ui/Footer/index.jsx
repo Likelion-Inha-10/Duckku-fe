@@ -3,6 +3,7 @@ import { FiHome } from "react-icons/fi";
 import Typography from "../Typography";
 import { IoDiamondOutline } from "react-icons/io5";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -31,6 +32,33 @@ const ElementWrapper = styled.div`
 `;
 
 const Footer = (props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const onClickHome = () => {
+    if (location.pathname === "/main-home") {
+      console.log("already home");
+    } else {
+      navigate(`/main-home`);
+    }
+  };
+
+  const onClickStore = () => {
+    if (location.pathname === "/store") {
+      console.log("already store");
+    } else {
+      navigate(`/store`);
+    }
+  };
+
+  const onClickMy = () => {
+    if (location.pathname === "/my-page") {
+      console.log("already my page");
+    } else {
+      navigate(`/my-page`);
+    }
+  };
+
   return (
     <>
       <svg width="0" height="0">
@@ -40,7 +68,7 @@ const Footer = (props) => {
         </linearGradient>
       </svg>
       <Wrapper>
-        <ElementWrapper>
+        <ElementWrapper onClick={() => onClickHome()}>
           {props.active === "home" ? (
             <>
               <FiHome size="24" style={{ stroke: "url(#mainColor)" }} />
@@ -58,7 +86,7 @@ const Footer = (props) => {
           )}
         </ElementWrapper>
 
-        <ElementWrapper>
+        <ElementWrapper onClick={() => onClickStore()}>
           {props.active === "store" ? (
             <>
               <IoDiamondOutline
@@ -79,7 +107,7 @@ const Footer = (props) => {
           )}
         </ElementWrapper>
 
-        <ElementWrapper>
+        <ElementWrapper onClick={() => onClickMy()}>
           {props.active === "my" ? (
             <>
               <HiOutlineUserCircle

@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import Flex from "../../duckku-ui/Flex";
 import "./components/slick.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledSlider = styled(Slider)`
   &,
@@ -85,7 +86,11 @@ const Intro = () => {
   };
 
   const [slide, setSlide] = useState(0);
+  const navigate = useNavigate();
 
+  const onClickButton = () => {
+    navigate(`/login`);
+  };
   return (
     <Layout>
       <Margin height="59" />
@@ -171,6 +176,7 @@ const Intro = () => {
             height="60"
             borderRadius="15"
             backgroundColor="main"
+            onClick={() => onClickButton()}
           >
             서비스 시작하기
           </Button>
@@ -179,7 +185,7 @@ const Intro = () => {
             width="350"
             height="60"
             borderRadius="15"
-            backgroundColor="buttonGray"
+            backgroundColor="btnGray"
           >
             서비스 시작하기
           </Button>

@@ -10,6 +10,7 @@ import Flex from "../../duckku-ui/Flex";
 import OptionButton from "./components/optionButton";
 import ArtistButton from "./components/artistButton";
 import Toast from "../../duckku-ui/Toast";
+import { useNavigate } from "react-router-dom";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -212,16 +213,26 @@ const ArtistSelect = () => {
 
   useEffect(() => {
     const onArtistClick = (e) => {
-      console.log(e.key);
-      setArtists(
-        artists.map((artist) => {
-          if (artist.key === e.key) {
-            if (artist.selected) return { ...artist, selected: false };
-            return { ...artist, selected: true };
-          }
-          return { ...artist };
-        })
-      );
+      function isArtistSame(element) {
+        if (element.key === e.key) {
+          return true;
+        }
+      }
+      const artist = artists.find(isArtistSame);
+      if (artistNumber + 1 === 5 && artist.selected === false) {
+        return Toast("최대 5명까지만 선택이 가능합니다.");
+      } else {
+        console.log(e.key);
+        setArtists(
+          artists.map((artist) => {
+            if (artist.key === e.key) {
+              if (artist.selected) return { ...artist, selected: false };
+              return { ...artist, selected: true };
+            }
+            return { ...artist };
+          })
+        );
+      }
     };
 
     const filteredArtist = artists
@@ -279,10 +290,13 @@ const ArtistSelect = () => {
     setArtistNumber(counter);
   }, [searchTerm, searchAgency, artists, agencies]);
 
+  const navigate = useNavigate();
+
   const onConfirm = () => {
     if (artistNumber === 0) {
       return Toast("아티스트를 선택해주세요");
     }
+    navigate(`/main-home`);
   };
 
   return (
