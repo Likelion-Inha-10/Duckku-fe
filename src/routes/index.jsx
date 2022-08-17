@@ -16,6 +16,8 @@ import MyInform from "../pages/MyInform";
 import MyFixInform from "../pages/MyFixInform";
 import Payment from "../pages/Payment";
 import PurchaseHistory from "../pages/PurchaseHistory";
+import Start from "../pages/Start";
+
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
 import ModalQrTest from "../pages/ModalQrTest";
 // 라우트명은 kebab-case 로 작성합니다
@@ -41,6 +43,7 @@ const Router = () => (
       <Route exact path="/my-inform-fix" element={<MyFixInform />} />
       <Route exact path="/payment" element={<Payment />} />
       <Route exact path="/purchase-history" element={<PurchaseHistory />} />
+      <Route exact path="/start" element={<Start />} />
     </Routes>
   </BrowserRouter>
 );
