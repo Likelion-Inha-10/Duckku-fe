@@ -11,7 +11,7 @@ const CardWrapper = styled.div`
   height: auto;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 48px;
   border: none;
 `;
 
