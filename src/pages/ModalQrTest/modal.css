@@ -8,7 +8,7 @@
   bottom: 0;
   left: 0;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modalQr button {
@@ -17,7 +17,6 @@
   border: 0;
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.01);
-  color: white;
   font-size: 30px;
 }
 .modalQr > section {
@@ -57,13 +56,23 @@
   font-weight: 700;
   text-align: center;
   color: #999;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modalQr.openModal {
   display: flex;
   align-items: center;
   animation: modal-bg-show 0.3s;
+}
+.not_scroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.not_scroll .cont {
+  position: relative;
+  top: 0;
 }
 @keyframes modal-show {
   from {

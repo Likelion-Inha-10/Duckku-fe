@@ -22,6 +22,11 @@ const CardContainer = styled.div`
   align-items: center;
 `;
 
+const CardSvgBox = styled.div`
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 15px;
+`;
+
 // 카드 내용 작성 랩
 const CardTextWrapper = styled.div`
   width: 262px;
@@ -47,7 +52,9 @@ export default class CardCarousel extends Component {
           <CardContainer>
             <Margin height="61" />
             <Flex justify="center">
-              <RedCard width="262" height="392" />
+              <CardSvgBox>
+                <RedCard width="262" height="392" />
+              </CardSvgBox>
             </Flex>
             <Margin height="29" />
             <Flex justify="center">
@@ -63,7 +70,9 @@ export default class CardCarousel extends Component {
           <CardContainer>
             <Margin height="61" />
             <Flex justify="center">
-              <OrangeCard width="262" height="392" />
+              <CardSvgBox>
+                <OrangeCard width="262" height="392" />
+              </CardSvgBox>
             </Flex>
             <Margin height="29" />
             <Flex justify="center">
@@ -79,7 +88,9 @@ export default class CardCarousel extends Component {
           <CardContainer>
             <Margin height="61" />
             <Flex justify="center">
-              <GreenCard width="262" height="392" />
+              <CardSvgBox>
+                <GreenCard width="262" height="392" />
+              </CardSvgBox>
             </Flex>
             <Margin height="29" />
             <Flex justify="center">
@@ -95,7 +106,9 @@ export default class CardCarousel extends Component {
           <CardContainer>
             <Margin height="61" />
             <Flex justify="center">
-              <BlackCard width="262" height="392" />
+              <CardSvgBox>
+                <BlackCard width="262" height="392" />
+              </CardSvgBox>
             </Flex>
             <Margin height="29" />
             <Flex justify="center">

@@ -9,6 +9,8 @@ const AlbumWrapper = styled.div`
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const AlbumInfoWrapper = styled.div`

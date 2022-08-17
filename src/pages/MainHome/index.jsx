@@ -45,9 +45,10 @@ const EditButton = styled.button`
   font-weight: 700;
   color: #979797;
   margin-right: 8px;
-  margin-top: -20px;
+  margin-top: -60px;
   z-index: 10;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 // 앨범차트 더보기 버튼 component
@@ -62,6 +63,8 @@ const MoreViewButton = styled.button`
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 // 앨범 더보기 버튼 내부 Wrapper component

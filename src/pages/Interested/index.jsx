@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Album from "../../duckku-ui/Album";
 import Header from "../../duckku-ui/Header";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import styled from "styled-components";
-import InterestedCard from "./components/InterestedCard";
+import SortMenu from "../../duckku-ui/SortMenu";
 import { AiOutlineDown } from "react-icons/ai";
 
 const AllInterestedWrapper = styled.div`
@@ -16,12 +17,12 @@ const AllInterestedWrapper = styled.div`
 `;
 
 const ViewOrderWrapper = styled.div`
-  width: 80%;
+  width: 326px;
   height: auto;
   display: flex;
   justify-content: end;
-  margin: 5px;
   align-items: center;
+  margin-bottom: 16px;
 `;
 
 const IconCenter = styled.div`
@@ -31,63 +32,77 @@ const IconCenter = styled.div`
 `;
 
 const Interested = () => {
+  const [interestedAlbum, setInterestedAlbum] = useState();
+  const [interestedList, setInterestedList] = useState([
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: true,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: true,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+    {
+      imgLink: "https://image.yes24.com/goods/71935476/XL",
+      albumTitle: "Fancy",
+      artist: "TWICE",
+      year: "2022",
+      isChecked: false,
+    },
+  ]);
+
+  useEffect(() => {
+    setInterestedAlbum(
+      interestedList.map((album) => (
+        <Album
+          imgLink={album.imgLink}
+          albumTitle={album.albumTitle}
+          artist={album.artist}
+          year={album.year}
+          isChecked={album.isChecked}
+        />
+      ))
+    );
+  }, [interestedList]);
+
   return (
     <Layout>
       <AllInterestedWrapper>
         <Header back title=" 나의 관심 아티스트의 앨범" />
 
         <ViewOrderWrapper>
-          <Margin width="10" height="10" />
-          <Typography inline bold16 color="gray">
-            최신순
-          </Typography>
-          <IconCenter>
-            <Typography bold21 color="gray">
-              <AiOutlineDown />
-            </Typography>
-          </IconCenter>
+          <Margin height="32" />
+          <SortMenu />
         </ViewOrderWrapper>
-        <InterestedCard
-          Img="https://i.pinimg.com/736x/8a/67/57/8a675780020a8172d765b3c0e8b19c26.jpg"
-          SingTitle="More and More"
-          Singer="트와이스"
-          SingYear="2022"
-        />
-
-        <InterestedCard
-          Img="https://upload.wikimedia.org/wikipedia/en/2/20/Iz%2AOne_-_Twelve_A.jpg"
-          SingTitle="More and More"
-          Singer="아이즈원"
-          SingYear="2020"
-        />
-
-        <InterestedCard
-          Img="https://images.genius.com/bfdf3da954dc9937c0e2bac2ea124576.1000x1000x1.png"
-          SingTitle="More and More"
-          Singer="레드벨벳"
-          SingYear="2022"
-        />
-
-        <InterestedCard
-          Img="https://blogger.googleusercontent.com/img/a/AVvXsEgc5SNyrAlpMMg4ovzxpIeYf6bk8uqdWhGLYOeKIpj-lhHXxmOXDrqFCc-RrkpIyGpbqovo3aTZ5jbb_PMOuGzQLcEpO7Nkzn61oSl9xqJLB8bmnrvieq9tD5qO4_LMpecp3r1d_ICjf62eul-cryA9IVYRo-dSN_5TniWYCYePgaDdedOmwrqV62Ix=w640-h568"
-          SingTitle="More and More"
-          Singer="블랙핑크"
-          SingYear="2020"
-        />
-
-        <InterestedCard
-          Img="https://images.genius.com/bfdf3da954dc9937c0e2bac2ea124576.1000x1000x1.png"
-          SingTitle="More and More"
-          Singer="방탄소년단"
-          SingYear="2022"
-        />
-
-        <InterestedCard
-          Img="https://blogger.googleusercontent.com/img/a/AVvXsEgc5SNyrAlpMMg4ovzxpIeYf6bk8uqdWhGLYOeKIpj-lhHXxmOXDrqFCc-RrkpIyGpbqovo3aTZ5jbb_PMOuGzQLcEpO7Nkzn61oSl9xqJLB8bmnrvieq9tD5qO4_LMpecp3r1d_ICjf62eul-cryA9IVYRo-dSN_5TniWYCYePgaDdedOmwrqV62Ix=w640-h568"
-          SingTitle="More and More"
-          Singer="트와이스"
-          SingYear="2022"
-        />
+        <Margin height="16" />
+        {interestedAlbum}
       </AllInterestedWrapper>
     </Layout>
   );
