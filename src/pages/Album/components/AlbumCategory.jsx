@@ -65,7 +65,7 @@ const AlbumCategory = ({ data }) => {
           <>
             <AlbumWrapper>
               <ListAlbum
-                Photo="http://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
+                Photo="https://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
                 AlbumName="The Festival 2022"
                 AlbumNumber="미니"
                 MadeDate="2022.02.02"
