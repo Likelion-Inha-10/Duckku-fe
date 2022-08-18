@@ -144,6 +144,7 @@ const MainHome = () => {
           </MoreViewTextWrapper>
         </MoreViewButton>
       </PageWrapper>
+      <Margin height="70" />
       <Footer active="home" />
     </Layout>
   );
