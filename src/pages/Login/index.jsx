@@ -7,6 +7,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
+import Toast from "../../duckku-ui/Toast";
 import axios from "axios";
 
 const InputWrapper = styled.div`
@@ -48,9 +49,13 @@ const Login = () => {
       })
       .then((r) => {
         console.log(r);
+        navigate(`/artist-select`);
+        Toast("로그인 되었습니다.");
+      })
+      .catch((error) => {
+        console.log(error);
+        Toast("아이디 혹은 비밀번호가 틀립니다.");
       });
-
-    navigate(`/artist-select`);
   };
   const forgetAccount = () => {
     console.log("계정찾으러 가좡~!");
