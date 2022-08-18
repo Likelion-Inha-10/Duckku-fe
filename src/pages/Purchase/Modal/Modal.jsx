@@ -1,5 +1,6 @@
 import React from "react";
 import "./modal.css";
+import Button from "../../../duckku-ui/Button";
 
 const Modal = (props) => {
   const { open, close } = props;
@@ -11,9 +12,9 @@ const Modal = (props) => {
           <main>{props.children}</main>
 
           <footer>
-            <button className="close" onClick={close}>
+            <Button className="close" onClick={close}>
               바로구매
-            </button>
+            </Button>
           </footer>
         </section>
       ) : null}
