@@ -45,11 +45,36 @@ const DatePartition = styled.div`
   background: rgba(114, 105, 105, 0.18);
 `;
 
+// map 함수 사용
+const PurchaseListMap = (props) => {
+  return props.Lists.map((v) => (
+    <PurchaseAlbum
+      key={v.Aibum}
+      Img={v.Img}
+      Title={v.Title}
+      Option={v.Option}
+      Price={v.Price}
+      Count={v.Count}
+    />
+  ));
+};
+
 const PurchaseHistory = () => {
   const navigate = useNavigate();
+
   const notFound = () => {
     navigate("/not-found");
   };
+
+  const Lists = [
+    {
+      Img: "http://www.akbobada.com/home/akbobada/archive/akbo/img/202208031533045.jpg",
+      Title: "Attention - NewJeans",
+      Option: "NewJeans 1st EP 'New Jeans",
+      Price: "₩11,000",
+      Count: "1",
+    },
+  ]
   return (
     <Layout>
       <Header back title="구매내역" />
@@ -67,7 +92,7 @@ const PurchaseHistory = () => {
           </DetailContent>
         </Flex>
       </DateBox>
-      <PurchaseAlbum />
+      <PurchaseListMap Lists={Lists} />
       <DatePartition />
       <DateBox>
         <Flex direction="row" onClick={notFound}>
@@ -81,8 +106,8 @@ const PurchaseHistory = () => {
           </DetailContent>
         </Flex>
       </DateBox>
-      <PurchaseAlbum />
-      <PurchaseAlbum />
+      <PurchaseListMap Lists={Lists} />
+      <PurchaseListMap Lists={Lists} />
       <DatePartition />
       <DateBox>
         <Flex direction="row" onClick={notFound}>
@@ -96,9 +121,9 @@ const PurchaseHistory = () => {
           </DetailContent>
         </Flex>
       </DateBox>
-      <PurchaseAlbum />
-      <PurchaseAlbum />
-      <PurchaseAlbum />
+      <PurchaseListMap Lists={Lists} />
+      <PurchaseListMap Lists={Lists} />
+      <PurchaseListMap Lists={Lists} />
     </Layout>
   );
 };

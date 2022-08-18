@@ -26,11 +26,13 @@ const AlbumCoverWrap = styled.div`
 `;
 
 // 앨범 커버
-const AlbumCover = styled.img`
+const AlbumCover = styled.div`
   width: 79px;
   height: 107px;
   display: flex;
   border-radius: 6px;
+  background-size: cover;
+  background-image: url(${(props) => (props.Img ? props.Img : "none")});
 `;
 
 // 결제완료 박스
@@ -58,7 +60,7 @@ const Title = styled.div`
 const Option = styled.div`
   width: 230px;
   height: 17px;
-  display: block;
+  display: flex;
   margin-left: 40px;
   margin-top: 7px;
   overflow: hidden;
@@ -89,12 +91,12 @@ const Price = styled.div`
   margin-top: 9px;
 `;
 
-const PurchaseAlbum = () => {
+const PurchaseAlbum = (props) => {
   return (
     <AlbumWrap>
       <Flex direction="row">
         <AlbumCoverWrap>
-          <AlbumCover src={loveImg} />
+          <AlbumCover Img={props.Img} />
         </AlbumCoverWrap>
           <Flex direction="column">
             <PurchaseSuccess>
@@ -113,20 +115,22 @@ const PurchaseAlbum = () => {
               </Typography>
             </PurchaseSuccess>
             <Title>
-              <Typography bold14>사랑으로 - 혁오</Typography>
+              <Typography bold14>{props.Title}</Typography>
             </Title>
             <Option>
-              <Typography thin14 color="darkGray">옵션명 : 사랑으로 - 혁오</Typography>
+              <Typography thin14 color="darkGray">옵션명 :&nbsp;</Typography>
+              <Typography thin14 color="darkGray">{props.Option}</Typography>
             </Option>
             <Ticket>
               <Typography thin14 color="darkGray">[응모권 미포함]</Typography>
             </Ticket>
             <Flex dorection="row">
               <Price>
-                <Typography thin16>₩9,700</Typography>
+                <Typography thin16>{props.Price}</Typography>
               </Price>
               <Amount>
-                <Typography thin14 color="darkGray">수량 : 1</Typography>
+                <Typography thin14 color="darkGray">수량 :&nbsp;</Typography>
+                <Typography thin14 color="darkGray">{props.Count}</Typography>
               </Amount>
             </Flex>
           </Flex>
