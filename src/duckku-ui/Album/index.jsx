@@ -62,8 +62,10 @@ const Album = (props) => {
   const navigate = useNavigate();
 
   const onClickAlbum = () => {
-    console.log(props.link);
-    navigate(`${props.link}`);
+    if (props.link) {
+      console.log(props.link);
+      navigate(`${props.link}`);
+    }
   };
   return (
     <Box onClick={() => onClickAlbum()}>
