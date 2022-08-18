@@ -6,7 +6,7 @@ import Typography from "../../../duckku-ui/Typography";
 import Modal from "../Modal/Modal";
 import { FaWonSign } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
-
+import { ImPlus } from "react-icons/im";
 // 이미지 부분
 
 const PurchaseImageWrapper = styled.div`
@@ -69,18 +69,14 @@ const IntrodSection = styled.div`
 `;
 
 const StyleFlex = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 0.3px;
-  padding-bottom: 0.5px;
+  text-align: center;
+  height: 8px;
+  width: 8px;
 `;
 
 const ModalUnderLine = styled.div`
   width: 100%;
-  border-bottom: 3px solid lightgray;
+  border-bottom: 2px solid lightgray;
   margin-top: 10px;
   margin-bottom: 20px;
 `;
@@ -131,7 +127,7 @@ const TotalPriceFlex = styled.div`
 `;
 
 const TotalPriceSection = styled.div`
-  width: 100%;
+  width: 343px;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -162,6 +158,23 @@ const TotalCountSection = styled.div`
   display: flex;
   justify-content: end;
   margin-right: 130px;
+`;
+
+const CircleButton = styled.button`
+  height: 13px;
+  width: 13px;
+  border: none;
+  color: white;
+  font-size: 12px;
+  border-radius: 10px;
+  background: ${(props) =>
+    props.backgroundColor
+      ? props.theme.colors[props.backgroundColor]
+      : props.theme.colors.main};
+`;
+
+const SmallTypo = styled.p`
+  line-height: 2px;
 `;
 
 const PurchaseBtn = () => {
@@ -209,16 +222,7 @@ const PurchaseBtn = () => {
   return (
     <React.Fragment>
       <ButtonFixed>
-        <Button
-          onClick={openModal}
-          borderRadius="15"
-          width="350"
-          height="60"
-          fontSize="24"
-          fontWeight="bold"
-        >
-          바로 구매
-        </Button>
+        <Button onClick={openModal}>바로 구매</Button>
       </ButtonFixed>
       <Modal open={modalOpen} close={closeModal}>
         <Margin width="300" height="38" />
@@ -232,34 +236,27 @@ const PurchaseBtn = () => {
           <CountingSection>
             <Margin width="10" />
 
-            <Button
-              fontSize="5"
-              height="13"
-              width="13"
+            <CircleButton
               onClick={decreaseIncludeNumber}
               backgroundColor="gray"
             >
-              <StyleFlex>-</StyleFlex>
-            </Button>
+              <SmallTypo>-</SmallTypo>
+            </CircleButton>
+
             <Margin width="10" />
             <Number>
               <Typography regular16>{numberInclude}</Typography>
             </Number>
             <Margin width="10" />
-            <Button
-              fontSize="5"
-              height="13"
-              width="13"
-              onClick={increaseIncludeNumber}
-            >
-              <StyleFlex>+</StyleFlex>
-            </Button>
+            <CircleButton onClick={increaseIncludeNumber}>
+              <SmallTypo>+</SmallTypo>
+            </CircleButton>
           </CountingSection>
           <PriceSection>
             <Price>
               <Typography regular16>
                 <WonPadding>
-                  <FaWonSign />
+                  <FaWonSign style={{ paddingTop: "4px" }} />
                 </WonPadding>
                 &nbsp;
                 {13700 * numberInclude}
@@ -278,34 +275,23 @@ const PurchaseBtn = () => {
         <PriceAllSection>
           <CountingSection>
             <Margin width="10" />
-            <Button
-              fontSize="8"
-              height="13"
-              width="13"
-              onClick={decreaseNotInclude}
-              backgroundColor="gray"
-            >
-              <StyleFlex>-</StyleFlex>
-            </Button>
+            <CircleButton onClick={decreaseNotInclude} backgroundColor="gray">
+              <SmallTypo>-</SmallTypo>
+            </CircleButton>
             <Margin width="10" />
             <Number>
               <Typography regular16>{numberNotInclude}</Typography>
             </Number>
             <Margin width="10" />
-            <Button
-              fontSize="5"
-              height="13"
-              width="13"
-              onClick={increaseNotInclude}
-            >
-              <StyleFlex>+</StyleFlex>
-            </Button>
+            <CircleButton onClick={increaseNotInclude}>
+              <SmallTypo>+</SmallTypo>
+            </CircleButton>
           </CountingSection>
 
           <PriceSection>
             <Price>
               <Typography regular16>
-                <FaWonSign />
+                <FaWonSign style={{ paddingTop: "4px" }} />
                 &nbsp;
                 {numberNotInclude * 9700}
               </Typography>
@@ -322,7 +308,7 @@ const PurchaseBtn = () => {
 
             <Price>
               <Typography bold16>
-                <FaWonSign />
+                <FaWonSign style={{ paddingTop: "4px" }} />
                 &nbsp;
                 {13700 * numberInclude + numberNotInclude * 9700}
               </Typography>
