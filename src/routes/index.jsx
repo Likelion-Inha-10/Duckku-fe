@@ -19,7 +19,7 @@ import PurchaseHistory from "../pages/PurchaseHistory";
 import Start from "../pages/Start";
 
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
-import ModalQrTest from "../pages/ModalQrTest";
+import ModalAlbumTest from "../pages/ModalQrTest";
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -39,7 +39,7 @@ const Router = () => (
       <Route exact path="/favorite-artist" element={<FavoriteArtist />} />
       <Route exact path="/my-page" element={<MyPage />} />
       <Route exact path="/my-inform" element={<MyInform />} />
-      <Route exact path="/test" element={<ModalQrTest />} />
+      <Route exact path="/test" element={<ModalAlbumTest />} />
       <Route exact path="/my-inform-fix" element={<MyFixInform />} />
       <Route exact path="/payment" element={<Payment />} />
       <Route exact path="/purchase-history" element={<PurchaseHistory />} />

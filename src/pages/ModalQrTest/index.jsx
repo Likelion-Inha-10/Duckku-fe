@@ -5,6 +5,7 @@ import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
 import PhotoQr from "./PhotoQr";
+import ListAlbum from "../ModalAlbum/ListAlbum";
 
 const ModalQrTest = () => {
   return (
@@ -16,4 +17,12 @@ const ModalQrTest = () => {
   );
 };
 
-export default ModalQrTest;
+const ModalAlbumTest = () => {
+  <>
+    <Layout>
+      <ListAlbum />
+    </Layout>
+  </>;
+};
+
+export default ModalAlbumTest;
