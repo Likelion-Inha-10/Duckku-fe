@@ -46,8 +46,9 @@ const Login = () => {
         password: user.pw,
       })
       .then((r) => {
+        navigate(`/main-home`);
+        console.log("로그인");
         console.log(r);
-        navigate(`/artist-select`);
       })
       .catch((e) => {
         console.log(e);
