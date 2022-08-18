@@ -20,6 +20,7 @@ import Start from "../pages/Start";
 
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
 import ModalAlbumTest from "../pages/ModalQrTest";
+import Lab from "../pages/Lab";
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
@@ -44,6 +45,7 @@ const Router = () => (
       <Route exact path="/payment" element={<Payment />} />
       <Route exact path="/purchase-history" element={<PurchaseHistory />} />
       <Route exact path="/start" element={<Start />} />
+      <Route exact path="/lab" element={<Lab />} />
     </Routes>
   </BrowserRouter>
 );
