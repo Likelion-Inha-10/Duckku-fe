@@ -5,9 +5,9 @@ const Modal = (props) => {
   const { open, close } = props;
 
   return (
-    <div className={open ? "openModal modal" : "modal"}>
+    <div className={open ? "openModal modal" : "modal"} onClick={close}>
       {open ? (
-        <section>
+        <section onClick={(e) => e.stopPropagation()}>
           <main>{props.children}</main>
 
           <footer>
