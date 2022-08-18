@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 import { AiFillHeart } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const CardContain = styled.div`
   width: 154px;
@@ -9,6 +10,7 @@ const CardContain = styled.div`
   margin-left: 9px;
   margin-right: 9px;
   margin-bottom: 24px;
+  cursor: pointer;
 `;
 
 const CardImage = styled.div`
@@ -63,8 +65,12 @@ const SingInfoWrapper = styled.div`
 `;
 
 const WishCard = (props) => {
+  const navigate = useNavigate();
+  const onClickCard = () => {
+    navigate(`/purchase`);
+  };
   return (
-    <CardContain>
+    <CardContain onClick={() => onClickCard()}>
       <CardImageWrraper>
         <HeartSection>
           <AiFillHeart />
