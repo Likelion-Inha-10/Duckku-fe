@@ -70,7 +70,7 @@ const PurchaseHistory = () => {
     {
       Img: "http://www.akbobada.com/home/akbobada/archive/akbo/img/202208031533045.jpg",
       Title: "Attention - NewJeans",
-      Option: "NewJeans 1st EP 'New Jeans",
+      Option: "NewJeans 1st EP 'New Jean'",
       Price: "₩11,000",
       Count: "1",
     },
