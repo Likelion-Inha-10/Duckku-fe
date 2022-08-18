@@ -6,14 +6,15 @@ import { AiFillHeart } from "react-icons/ai";
 const CardContain = styled.div`
   width: 154px;
   height: 273px;
-  margin: 10px;
-  margin-bottom: 20px;
+  margin-left: 9px;
+  margin-right: 9px;
+  margin-bottom: 24px;
 `;
 
 const CardImage = styled.div`
   width: 154px;
   height: 220px;
-  border-radius: 10% 10% 10% 10%;
+  border-radius: 20px;
   background-color: gray;
   background-image: url(${(props) => (props.Img ? props.Img : "none")});
   background-position: center;
@@ -32,8 +33,8 @@ const HeartSection = styled.div`
   width: 32px;
   height: 32px;
   background-color: white;
-  margin-right: 10px;
-  margin-top: 5px;
+  margin-right: 8px;
+  margin-top: 8px;
   opacity: 90%;
   position: absolute;
   border-radius: 50%;
@@ -46,9 +47,17 @@ const HeartSection = styled.div`
   color: red;
 `;
 
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-left: 8px;
+  padding-right: 8px;
+`;
+
 const SingInfoWrapper = styled.div`
-  width: 80%;
-  height: auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 `;
@@ -62,11 +71,17 @@ const WishCard = (props) => {
         </HeartSection>
         <CardImage Img={props.Img} />
       </CardImageWrraper>
-      <Typography bold16>{props.SingTitle}</Typography>
-      <SingInfoWrapper>
-        <Typography regular16>{props.Singer}</Typography>
-        <Typography regular16>{props.SingYear}</Typography>
-      </SingInfoWrapper>
+      <TextWrapper>
+        <Typography bold16>{props.SingTitle}</Typography>
+        <SingInfoWrapper>
+          <Typography thin14 color="gray">
+            {props.Singer}
+          </Typography>
+          <Typography thin14 color="gray">
+            {props.SingYear}
+          </Typography>
+        </SingInfoWrapper>
+      </TextWrapper>
     </CardContain>
   );
 };

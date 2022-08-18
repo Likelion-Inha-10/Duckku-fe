@@ -80,7 +80,6 @@ const LikeButton = styled.button`
 `;
 
 const Store = () => {
-  const [isLikeClicked, setIsLikeClicked] = useState(false);
   const [recommendAlbum, setRecommendAlbum] = useState();
   const [recommendList, setRecommendList] = useState([
     {
@@ -132,6 +131,10 @@ const Store = () => {
     navigate(`/interested-artist-albums`);
   };
 
+  const onClickLike = () => {
+    navigate(`/wish`);
+  };
+
   useEffect(() => {
     setRecommendAlbum(
       recommendList.map((album) => (
@@ -151,17 +154,13 @@ const Store = () => {
     <Layout>
       <Header back title="스토어" />
       <LikeButtonWrapper>
-        <LikeButton onClick={() => setIsLikeClicked(!isLikeClicked)}>
-          {isLikeClicked === false ? (
-            <AiOutlineHeart size="28px" color="#AFAFAF" />
-          ) : (
-            <AiFillHeart size="28px" color={theme.colors.red} />
-          )}
+        <LikeButton onClick={() => onClickLike()}>
+          <AiFillHeart size="28px" color={theme.colors.red} />
         </LikeButton>
       </LikeButtonWrapper>
       <Margin height="28" />
       <InputBox placeholder="검색어를 입력해 주세요" />
-      {isLikeClicked === true ? (
+      {false === true ? (
         <>
           <Margin height="250" />
           <Typography regular16 color="gray">
