@@ -21,16 +21,14 @@ const SubText = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  ${(props) => props.theme.flex.flexCenterColumn};
-  gap: 18px;
-  margin-bottom: 112px;
+  position: fixed;
+  bottom: 56px;
 `;
 
 const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
-  height: 100%;
-  min-height: 760px;
+  height: 370px;
   justify-content: space-between;
 `;
 
@@ -151,9 +149,10 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <Wrapper>
-        <Header back title="회원가입" />
+      <Header back title="회원가입" />
 
+      <Wrapper>
+        <Margin height="100" />
         <InputWrapper>
           <Input
             borderColor={colors.name}
@@ -226,17 +225,16 @@ const SignUp = () => {
             </Typography>
           </SubText>
         </InputWrapper>
-
-        <ButtonWrapper>
-          <Button
-            onClick={submit}
-            ref={last}
-            backgroundColor={colors.submitButton}
-          >
-            입력한 정보로 가입하기
-          </Button>
-        </ButtonWrapper>
       </Wrapper>
+      <ButtonWrapper>
+        <Button
+          onClick={submit}
+          ref={last}
+          backgroundColor={colors.submitButton}
+        >
+          입력한 정보로 가입하기
+        </Button>
+      </ButtonWrapper>
     </Layout>
   );
 };
