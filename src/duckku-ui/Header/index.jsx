@@ -21,7 +21,7 @@ const Title = styled.div`
   color: black;
   font-size: 24px;
   visibility: hidden;
-
+  margin-bottom: 4px;
   ${(props) =>
     props.title &&
     `
