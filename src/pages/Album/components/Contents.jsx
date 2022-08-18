@@ -18,7 +18,6 @@ const Title = styled(Flex)`
 `;
 
 const Type = styled(Flex)`
-  width: 64px;
   align-items: center;
 `;
 
