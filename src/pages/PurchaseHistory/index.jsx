@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import Layout from '../../duckku-ui/Layout';
-import Header from '../../duckku-ui/Header';
-import Margin from '../../duckku-ui/Margin';
-import Flex from '../../duckku-ui/Flex';
-import PurchaseAlbum from './components/PurchaseAlbum';
-import Typography from '../../duckku-ui/Typography';
+import React from "react";
+import styled from "styled-components";
+import Layout from "../../duckku-ui/Layout";
+import Header from "../../duckku-ui/Header";
+import Margin from "../../duckku-ui/Margin";
+import Flex from "../../duckku-ui/Flex";
+import PurchaseAlbum from "./components/PurchaseAlbum";
+import Typography from "../../duckku-ui/Typography";
+import { useNavigate } from "react-router-dom";
 
 // 구매한 상품 박스
 const PurchaseBox = styled.div`
@@ -64,34 +65,39 @@ const DatePartition = styled.div`
   background: rgba(114, 105, 105, 0.18);
 `;
 
-
-
-
 const PurchaseHistory = () => {
+  const navigate = useNavigate();
+  const notFound = () => {
+    navigate("/not-found");
+  };
   return (
     <Layout>
       <Header back title="구매내역" />
       <Margin height="20" />
       <DatePartition />
       <DateBox>
-        <Flex direction="row">
+        <Flex direction="row" onClick={notFound}>
           <DateContent>
-            <Typography bold18 >22.07.17</Typography>
+            <Typography bold18>22.07.17</Typography>
           </DateContent>
           <DetailContent>
-            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+            <Typography thin18 color="darkGray">
+              주문상세 {">"}
+            </Typography>
           </DetailContent>
         </Flex>
       </DateBox>
       <PurchaseAlbum />
       <DatePartition />
       <DateBox>
-        <Flex direction="row">
+        <Flex direction="row" onClick={notFound}>
           <DateContent>
-            <Typography bold18 >22.06.11</Typography>
+            <Typography bold18>22.06.11</Typography>
           </DateContent>
           <DetailContent>
-            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+            <Typography thin18 color="darkGray">
+              주문상세 {">"}
+            </Typography>
           </DetailContent>
         </Flex>
       </DateBox>
@@ -99,12 +105,14 @@ const PurchaseHistory = () => {
       <PurchaseAlbum />
       <DatePartition />
       <DateBox>
-        <Flex direction="row">
+        <Flex direction="row" onClick={notFound}>
           <DateContent>
-            <Typography bold18 >22.06.04</Typography>
+            <Typography bold18>22.06.04</Typography>
           </DateContent>
           <DetailContent>
-            <Typography thin18 color="darkGray">주문상세  {'>'}</Typography>
+            <Typography thin18 color="darkGray">
+              주문상세 {">"}
+            </Typography>
           </DetailContent>
         </Flex>
       </DateBox>
