@@ -64,7 +64,6 @@ const Option = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  letter-spacing: -0.447754px;
 `;
 
 // 옵션 박스
@@ -74,7 +73,6 @@ const Ticket = styled.div`
   display: block;
   margin-left: 85px;
   margin-top: 2px;
-  letter-spacing: -0.447754px;
 `;
 
 // 수량 박스

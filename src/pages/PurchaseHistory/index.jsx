@@ -8,26 +8,6 @@ import PurchaseAlbum from "./components/PurchaseAlbum";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
 
-// 구매한 상품 박스
-const PurchaseBox = styled.div`
-  width: 100%;
-  height: 32px;
-  background: rgba(114, 105, 105, 0.1);
-`;
-
-// 구매한 상품  글 작성 div
-
-// 구매한 상품  작성 div
-const PurchaseContent = styled.div`
-  display: flex;
-  margin-left: 30px;
-  margin-top: 10px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: #726969;
-`;
-
 // 주문 번호 wrap
 const DateBox = styled.div`
   width: 100%;
