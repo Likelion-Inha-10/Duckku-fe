@@ -19,10 +19,10 @@ const PersonalBox = styled.div`
 
 // 내 정보 박스
 const InformBox = styled.div`
-  width: 64px;
+  width: 72px;
   height: 28px;
-  border: 0.911215px solid rgba(114, 105, 105, 0.5);
-  border-radius: 4.55607px;
+  border: 1px solid rgba(114, 105, 105, 0.5);
+  border-radius: 5px;
   text-align: center;
   font-style: normal;
   font-weight: 400;
@@ -49,7 +49,7 @@ const EmailContent = styled.div`
 const ListBox = styled.div`
   cursor: pointer;
   width: 330px;
-  border-bottom: 0.911215px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 
   .icons {
     padding-top: 15px;
@@ -88,7 +88,7 @@ const MyPage = () => {
   const navigate = useNavigate();
 
   const goToInform = () => {
-    navigate("/my-inform");
+    navigate("/my-inform-fix");
   };
 
   return (
@@ -98,7 +98,7 @@ const MyPage = () => {
       <PersonalBox>
         <Flex direction="row" justify="space-between">
           <Typography bold21>김멋사</Typography>
-          <InformBox onClick={goToInform}>내 정보</InformBox>
+          <InformBox onClick={goToInform}>정보 수정</InformBox>
         </Flex>
       </PersonalBox>
       <Margin height="6" />
