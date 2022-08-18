@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import loveImg from "../../../assets/images/love.jpeg";
 import Flex from "../../../duckku-ui/Flex";
+import theme from "../../../assets/theme";
 import Typography from "../../../duckku-ui/Typography";
 
 // 앨범 wrap
@@ -8,7 +9,6 @@ const AlbumWrap = styled.div`
   width: 100%;
   height: 140px;
   background: #FFFFFF;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   border-bottom-style: solid;
   border-bottom-color: rgba(114, 105, 105, 0.18);
   border-bottom-width: 1px;
@@ -39,12 +39,7 @@ const PurchaseSuccess = styled.div`
   height: 17px;
   display: flex;
   margin-left: 40px;
-  margin-top: 17px;
-  background: linear-gradient(92.33deg, rgba(112, 1, 255, 0.8) 6.14%, rgba(193, 92, 255, 0.8) 94.68%);  color: transparent;
-  -webkit-background-clip: text;
-  font-family: "Pretendard";
-  font-size: 14px;
-  font-weight: 700;
+  margin-top: 12px;
 `;
 
 // 노래 제목 박스
@@ -53,6 +48,7 @@ const Title = styled.div`
   height: 17px;
   display: block;
   margin-left: 40px;
+  margin-top: 6px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -76,7 +72,7 @@ const Ticket = styled.div`
   width: 230px;
   height: 17px;
   display: block;
-  margin-left: 40px;
+  margin-left: 85px;
   margin-top: 2px;
   letter-spacing: -0.447754px;
 `;
@@ -84,7 +80,7 @@ const Ticket = styled.div`
 // 수량 박스
 const Amount = styled.div`
   display: flex;
-  margin-top: 13px;
+  margin-top: 10px;
 `;
 
 // 가격 박스
@@ -92,7 +88,7 @@ const Price = styled.div`
   width: 85px;
   display: flex;
   margin-left: 40px;
-  margin-top: 12px;
+  margin-top: 9px;
 `;
 
 const PurchaseAlbum = () => {
@@ -103,15 +99,29 @@ const PurchaseAlbum = () => {
           <AlbumCover src={loveImg} />
         </AlbumCoverWrap>
           <Flex direction="column">
-            <PurchaseSuccess>결제완료</PurchaseSuccess>
+            <PurchaseSuccess>
+              <Typography
+                style={{
+                  cursor: "pointer",
+                  fontFamily: "Pretendard-Regular",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  background: theme.colors.main,
+                  color: "transparent",
+                  webkitBackgroundClip: "text",
+                }}
+              >
+                결제완료
+              </Typography>
+            </PurchaseSuccess>
             <Title>
               <Typography bold14>사랑으로 - 혁오</Typography>
             </Title>
             <Option>
               <Typography thin14 color="darkGray">옵션명 : 사랑으로 - 혁오</Typography>
-              </Option>
+            </Option>
             <Ticket>
-              <Typography thin14 color="darkGray">               [응모권 미포함]</Typography>
+              <Typography thin14 color="darkGray">[응모권 미포함]</Typography>
             </Ticket>
             <Flex dorection="row">
               <Price>
