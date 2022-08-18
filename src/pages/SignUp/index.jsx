@@ -116,8 +116,6 @@ const SignUp = () => {
       password2: user.pw2,
     };
 
-    console.log(process.env.REACT_APP_API);
-
     axios
       .post(`${process.env.REACT_APP_API}/Signup`, JSON.stringify(dataSet), {
         headers: {
