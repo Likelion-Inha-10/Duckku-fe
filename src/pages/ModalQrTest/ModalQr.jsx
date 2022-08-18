@@ -4,7 +4,7 @@ import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
 import Header from "../../duckku-ui/ResponsiveHeader";
-import { AiOutlineLeft } from "react-icons/ai";
+import { VscChevronLeft } from "react-icons/vsc";
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -18,6 +18,9 @@ const CardWrapper = styled.div`
 const BackWrapper = styled.div`
   width: 100%;
   height: auto;
+  margin-left: 19px;
+  position: fixed;
+  top: 10;
 `;
 
 const SingerNameSection = styled.div`
@@ -62,7 +65,7 @@ const QrCodeWrapper = styled.div`
   border-radius: 48px;
 `;
 
-const Qrcode = styled.img`
+const Qrcode = styled.div`
   width: 276px;
   height: 276px;
   background-image: url("https://itwiki.kr/images/b/b5/IT%EC%9C%84%ED%82%A4_QR_%EC%BD%94%EB%93%9C.png");
@@ -84,7 +87,7 @@ const ModalQr = (props) => {
           <Margin width="340" height="18" />
           <BackWrapper>
             <button className="close" onClick={close}>
-              <Header back />
+              <VscChevronLeft size="36" color="white" />
             </button>
           </BackWrapper>
 
