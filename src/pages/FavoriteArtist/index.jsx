@@ -207,7 +207,9 @@ const FavoriteArtist = () => {
       setIsPencilButtonClicked(false);
       setIsDeleteModeActivated(false);
     } else {
-      return Toast("완료되었습니다");
+      Toast("완료되었습니다");
+      setTimeout(1000);
+      navigate(-1);
     }
   };
 
