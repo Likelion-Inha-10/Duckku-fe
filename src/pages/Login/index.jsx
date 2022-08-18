@@ -8,6 +8,7 @@ import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-simple-toasts";
 
 const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -18,15 +19,13 @@ const InputWrapper = styled.div`
 const Password = styled.div``;
 
 const ButtonWrapper = styled.div`
-  ${(props) => props.theme.flex.flexCenterColumn};
-  gap: 18px;
-  margin-bottom: 130px;
+  position: fixed;
+  bottom: 56px;
 `;
 
 const Wrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
   width: 100%;
-  min-height: 780px;
   justify-content: space-between;
 `;
 
@@ -48,12 +47,12 @@ const Login = () => {
       })
       .then((r) => {
         console.log(r);
+        navigate(`/artist-select`);
+      })
+      .catch((e) => {
+        console.log(e);
+        toast("올바른 정보를 입력해주세요");
       });
-
-    navigate(`/artist-select`);
-  };
-  const forgetAccount = () => {
-    console.log("계정찾으러 가좡~!");
   };
 
   //인풋에 변화가 생기면 실행
@@ -67,9 +66,10 @@ const Login = () => {
 
   return (
     <Layout>
-      <Wrapper>
-        <Header back title="로그인" />
+      <Header back title="로그인" />
+      <Margin height="100" />
 
+      <Wrapper>
         <InputWrapper>
           <Input
             name="email"
@@ -98,19 +98,10 @@ const Login = () => {
             </Typography>
           </Password>
         </InputWrapper>
-
-        <ButtonWrapper>
-          <Button onClick={loginSuccess}>로그인</Button>
-          <Typography
-            style={{ cursor: "pointer" }}
-            onClick={forgetAccount}
-            fontWeight="400"
-            color="gray"
-          >
-            비밀번호를 잊어버렸어요
-          </Typography>
-        </ButtonWrapper>
       </Wrapper>
+      <ButtonWrapper>
+        <Button onClick={loginSuccess}>로그인</Button>
+      </ButtonWrapper>
     </Layout>
   );
 };

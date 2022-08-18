@@ -38,7 +38,7 @@ const SignUp = () => {
   const inputPW = useRef();
   const inputPW2 = useRef();
   const last = useRef();
-
+  const navigate = useNavigate();
   const [user, setUser] = useState({ name: "", email: "", pw: "", pw2: "" });
   const [alert, setAlert] = useState({
     email: true,
@@ -122,6 +122,8 @@ const SignUp = () => {
       })
       .then((response) => {
         console.log(response);
+        toast("가입이 완료되었습니다.");
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
