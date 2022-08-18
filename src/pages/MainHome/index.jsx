@@ -9,6 +9,8 @@ import { HiOutlineChevronDown } from "react-icons/hi";
 import FirstAlbum from "./components/firstAlbum";
 import NthAlbum from "./components/nthAlbum";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 // 관심 아티스트와 앨범차트를 따로 감싸기 위한 component
 const PageWrapper = styled.div`
@@ -82,6 +84,26 @@ const MainHome = () => {
     navigate(`/favorite-artist`);
   };
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/userinfo`)
+      .then((response) => {
+        console.log("메인홈");
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(`${process.env.REACT_APP_API}/my_artist_list`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <Layout>
       <PageWrapper>
@@ -144,6 +166,7 @@ const MainHome = () => {
           </MoreViewTextWrapper>
         </MoreViewButton>
       </PageWrapper>
+      <Margin height="70" />
       <Footer active="home" />
     </Layout>
   );
