@@ -24,6 +24,7 @@ const Wrapper = styled.div`
 `;
 
 const ElementWrapper = styled.div`
+  width: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
