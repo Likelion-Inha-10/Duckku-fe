@@ -32,7 +32,9 @@ const DateBox = styled.div`
   width: 100%;
   height: 40px;
   background: white;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom-style: solid;
+  border-bottom-color: rgba(114, 105, 105, 0.18);
+  border-bottom-width: 1px;
 `;
 
 // 날짜 content
@@ -41,7 +43,7 @@ const DateContent = styled.div`
   width: 100px;
   height: 27px;
   margin-left: 30px;
-  margin-top: 8px;
+  margin-top: 6px;
   letter-spacing: 0.55px;
 `;
 
@@ -51,7 +53,7 @@ const DetailContent = styled.div`
   width: 100px;
   height: 27px;
   margin-left: 150px;
-  margin-top: 7px;
+  margin-top: 6px;
   letter-spacing: 0.55px;
 `;
 
