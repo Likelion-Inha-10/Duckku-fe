@@ -8,6 +8,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import toast from "react-simple-toasts";
+import axios from "axios";
 
 const InputWrapper = styled.div`
   margin-top: 10px;
@@ -108,7 +109,27 @@ const SignUp = () => {
       }
     }
     //가입 성공했다는 토스트와 페이지 이동
-    console.log("성공!");
+    let dataSet = {
+      userName: user.name,
+      userEmail: user.email,
+      password1: user.pw,
+      password2: user.pw2,
+    };
+
+    console.log(process.env.REACT_APP_API);
+
+    axios
+      .post(`${process.env.REACT_APP_API}/Signup`, JSON.stringify(dataSet), {
+        headers: {
+          "Content-Type": `application/json`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   //이건 있어도 되고 없어도 되는 기능
