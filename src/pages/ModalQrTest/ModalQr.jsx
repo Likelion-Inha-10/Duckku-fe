@@ -1,11 +1,11 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "./modal.css";
 import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
 import Header from "../../duckku-ui/ResponsiveHeader";
 import { VscChevronLeft } from "react-icons/vsc";
-
+import { BsChevronCompactDown } from "react-icons/bs";
 const CardWrapper = styled.div`
   width: 100%;
   height: auto;
@@ -77,54 +77,70 @@ const Qrcode = styled.div`
   border-radius: 24px;
 `;
 
+const Down = styled.div`
+  max-width: 390px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const ModalQr = (props) => {
   const { open, close } = props;
 
   return (
-    <div className={open ? "openModal modalQr" : "modalQr"}>
-      {open ? (
-        <section>
-          <Margin width="340" height="18" />
-          <BackWrapper>
-            <button className="close" onClick={close}>
-              <VscChevronLeft size="36" color="white" />
-            </button>
-          </BackWrapper>
+    <>
+      <div className={open ? "openModal modalQr" : "modalQr"}>
+        {open ? (
+          <section>
+            <Down>
+              <BsChevronCompactDown size="40" color="gray" />
+            </Down>
+            <Margin width="340" height="18" />
+            <BackWrapper>
+              <button className="close" onClick={close}>
+                <VscChevronLeft size="36" color="white" />
+              </button>
+            </BackWrapper>
 
-          <Margin width="340" height="18" />
-          <SingerNameSection>
-            <Typography color="white" bold24>
-              {props.SingerName}
-            </Typography>
-          </SingerNameSection>
-          <CardWrapper>
-            <PhotoCardSection PhotoCard={props.PhotoCard} />
-          </CardWrapper>
+            <Margin width="340" height="18" />
+            <SingerNameSection>
+              <Typography color="white" bold24>
+                {props.SingerName}
+              </Typography>
+            </SingerNameSection>
+            <CardWrapper>
+              <PhotoCardSection PhotoCard={props.PhotoCard} />
+            </CardWrapper>
 
-          <Margin width="340" height="40" />
-          <CardInfoWrapper>
-            <Typography color="white" regular16>
-              등록일
-            </Typography>
-            <Typography color="white" regular16>
-              {props.RegistDay}
-            </Typography>
-          </CardInfoWrapper>
+            <Margin width="340" height="40" />
+            <CardInfoWrapper>
+              <Typography color="white" regular16>
+                등록일
+              </Typography>
+              <Typography color="white" regular16>
+                {props.RegistDay}
+              </Typography>
+            </CardInfoWrapper>
 
-          <Margin width="340" height="100" />
-          <QrSection>
-            <Typography color="white" bold24>
-              실물 QR코드
-            </Typography>
-            <QrCodeWrapper>
-              <Qrcode />
-            </QrCodeWrapper>
-          </QrSection>
+            <Margin width="340" height="100" />
+            <QrSection>
+              <Typography color="white" bold24>
+                실물 QR코드
+              </Typography>
+              <QrCodeWrapper>
+                <Qrcode />
+              </QrCodeWrapper>
+            </QrSection>
 
-          <Margin width="340" height="200" />
-        </section>
-      ) : null}
-    </div>
+            <Margin width="340" height="200" />
+          </section>
+        ) : null}
+      </div>
+    </>
   );
 };
 
