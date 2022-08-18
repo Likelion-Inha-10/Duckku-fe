@@ -7,8 +7,8 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
+import Toast from "../../duckku-ui/Toast";
 import axios from "axios";
-import toast from "react-simple-toasts";
 
 const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -51,7 +51,7 @@ const Login = () => {
       })
       .catch((e) => {
         console.log(e);
-        toast("올바른 정보를 입력해주세요");
+        Toast("올바른 정보를 입력해주세요");
       });
   };
 
