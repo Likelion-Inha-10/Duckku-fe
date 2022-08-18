@@ -89,7 +89,7 @@ const Intro = () => {
   const navigate = useNavigate();
 
   const onClickButton = () => {
-    navigate(`/login`);
+    navigate(`/start`);
   };
   return (
     <Layout>
