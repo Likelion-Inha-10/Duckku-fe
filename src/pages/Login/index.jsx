@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "../../duckku-ui/Button";
 import Header from "../../duckku-ui/Header";
@@ -7,6 +7,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -37,9 +38,18 @@ const Login = () => {
 
   //로그인 버튼을 누르면 실행
   const loginSuccess = () => {
-    //정보를 보내고 안된다고 다시 오면 안된다고 뜨게하기 , 아래에 쓴건 임시임
     if (user.pw === "") return setValid({ pw: "visible" });
-    else setValid({ pw: "hidden" });
+    setValid({ pw: "hidden" });
+
+    axios
+      .post(`${process.env.REACT_APP_API}/Login`, {
+        userEmail: user.email,
+        password: user.pw,
+      })
+      .then((r) => {
+        console.log(r);
+      });
+
     navigate(`/artist-select`);
   };
   const forgetAccount = () => {

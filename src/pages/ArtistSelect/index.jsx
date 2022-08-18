@@ -11,6 +11,7 @@ import OptionButton from "./components/optionButton";
 import ArtistButton from "./components/artistButton";
 import Toast from "../../duckku-ui/Toast";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -212,6 +213,9 @@ const ArtistSelect = () => {
   }, [agencies]);
 
   useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API}/userinfo`).then((r) => {
+      console.log(r);
+    });
     const onArtistClick = (e) => {
       function isArtistSame(element) {
         if (element.key === e.key) {
