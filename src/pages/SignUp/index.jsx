@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const SignUp = ({ api_url }) => {
+const SignUp = () => {
   const inputName = useRef();
   const inputEmail = useRef();
   const inputPW = useRef();
@@ -109,18 +109,26 @@ const SignUp = ({ api_url }) => {
       }
     }
     //가입 성공했다는 토스트와 페이지 이동
+    let dataSet = {
+      userName: user.name,
+      userEmail: user.email,
+      password1: user.pw,
+      password2: user.pw2,
+    };
+
+    console.log(process.env.REACT_APP_API);
+
     axios
-      .post(`${api_url}/Signup`, {
-        userName: user.name,
-        userEmail: user.email,
-        password1: user.pw,
-        password2: user.pw2,
+      .post(`${process.env.REACT_APP_API}/Signup`, JSON.stringify(dataSet), {
+        headers: {
+          "Content-Type": `application/json`,
+        },
       })
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   };
 
