@@ -18,9 +18,9 @@ const Wish = () => {
     <Layout>
       <AllWishWrapper>
         <Header back title=" 찜한 앨범" />
-
+        <Margin height="80" />
         <WishCard
-          Img="https://i.pinimg.com/736x/8a/67/57/8a675780020a8172d765b3c0e8b19c26.jpg"
+          Img="https://upload.wikimedia.org/wikipedia/en/2/20/Iz%2AOne_-_Twelve_A.jpg"
           SingTitle="More and More"
           Singer="트와이스"
           SingYear="2022"
