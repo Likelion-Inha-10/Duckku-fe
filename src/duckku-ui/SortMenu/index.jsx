@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Flex from "../Flex";
 import Typography from "../Typography";
-import { IoChevronDownOutline } from "react-icons/io5";
-import Margin from "../Margin";
 import { useState } from "react";
 
 const Wrapper = styled(Flex)`
