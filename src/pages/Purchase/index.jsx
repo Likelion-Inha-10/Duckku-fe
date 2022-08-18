@@ -34,7 +34,26 @@ const TrackWrapper = styled.div`
   height: auto;
 `;
 
+const ListsMap = (props) => {
+  return props.Lists.map((v) => (
+    <SingList
+      key={v.SingName}
+      Num={props.Lists.indexOf(v) + 1}
+      SingName={v.SingName}
+      SingTime={v.SingTime}
+    />
+  ));
+};
+
 const Purchase = () => {
+  const Lists = [
+    { SingName: "Fell My Rhythm", SingTime: "3:31" },
+    { SingName: "Cheer up", SingTime: "5:31" },
+    { SingName: "우아하게", SingTime: "3:41" },
+    { SingName: "Nothing", SingTime: "4:31" },
+    { SingName: "힘들어 죽겠다...", SingTime: "2:32" },
+  ];
+
   return (
     <Layout>
       <Header zIndex="10" back title="   앨범 구매하기" />
@@ -49,12 +68,7 @@ const Purchase = () => {
         <TrackWrapper>
           <Typography bold16>수록곡</Typography>
 
-          <SingList Num="1" SingName="Lonely" SingTime="3:21" />
-          <SingList Num="2" SingName="Feel like Rooler" SingTime="3:21" />
-          <SingList Num="3" SingName="Ohio" SingTime="3:21" />
-          <SingList Num="4" SingName="위잉위잉" SingTime="3:21" />
-          <SingList Num="5" SingName="Our place" SingTime="3:21" />
-          <SingList Num="6" SingName="Cheer up" SingTime="3:21" />
+          <ListsMap Lists={Lists} />
         </TrackWrapper>
         <Margin width="300px" height="130" />
       </AllWrapper>
