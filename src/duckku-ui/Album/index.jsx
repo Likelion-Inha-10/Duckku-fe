@@ -58,6 +58,12 @@ const IconSection = styled.div`
   align-items: center;
 `;
 
+const StyledTypo = styled(Typography)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 const Album = (props) => {
   const navigate = useNavigate();
 
@@ -86,7 +92,7 @@ const Album = (props) => {
       </ImageContainer>
       <Margin height="13" />
       <AlbumInfoWrapper>
-        <Typography bold16>{props.albumTitle}</Typography>
+        <StyledTypo bold16>{props.albumTitle}</StyledTypo>
         <BottomTextWrapper>
           <Typography thin14 color="gray">
             {props.artist}
