@@ -8,6 +8,7 @@ import styled from "styled-components";
 import SortMenu from "../../duckku-ui/SortMenu";
 import { AiOutlineDown } from "react-icons/ai";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const AllInterestedWrapper = styled.div`
   width: 100%;
@@ -34,50 +35,33 @@ const IconCenter = styled.div`
 
 const Interested = () => {
   const [interestedAlbum, setInterestedAlbum] = useState();
-  const [interestedList, setInterestedList] = useState([
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-  ]);
+  const [interestedList, setInterestedList] = useState([]);
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+
+    axios
+      .get(
+        `${process.env.REACT_APP_API}/my_artist_list/show_album_list/sort_popular/${id}`
+      )
+      .then((response) => {
+        console.log(response);
+        let albumArray = [];
+        response.data.map((album) => {
+          albumArray.push({
+            imgLink: album.album_image,
+            albumTitle: album.name,
+            artist: album.artist_name,
+            year: album.created_at,
+            isChecked: false,
+          });
+        });
+        setInterestedList(albumArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     setInterestedAlbum(
