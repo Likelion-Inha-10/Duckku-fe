@@ -49,7 +49,7 @@ const AlbumContainer = styled.div`
   column-gap: 19px;
 `;
 
-const AlbumCategory = ({ data }) => {
+const AlbumCategory = ({ data, albums }) => {
   const Lists = [
     { SingName: "1. Fell My Rhythm", SingTime: "3:31" },
     { SingName: "2. Cheer up", SingTime: "5:31" },
@@ -61,28 +61,28 @@ const AlbumCategory = ({ data }) => {
   return (
     <>
       <AlbumContainer>
-        {data.map((d) => (
+        {albums.map((d) => (
           <>
             <AlbumWrapper>
               <ListAlbum
-                Photo="https://img.tf.co.kr/article/stars/2016/10/17/20169331476691408.jpg"
-                AlbumName="The Festival 2022"
-                AlbumNumber="미니"
-                MadeDate="2022.02.02"
+                Photo={d.album_image}
+                AlbumName={d.name}
+                AlbumNumber={d.album_id}
+                MadeDate={d.created_at}
                 Lists={Lists}
               />
               <Margin height="12" />
               <Info>
                 <Text>
                   <Typography style={{ lineHeight: "1.3" }} regular16>
-                    {d.username}
+                    {d.name}
                   </Typography>
-                  <Typography thin14>{d.address.suite}</Typography>
+                  <Typography thin14>{d.album_type}</Typography>
                 </Text>
                 <Song>
                   <StyledIcon />
                   <Typography style={{ paddingLeft: "3px" }} regular16>
-                    {d.id}
+                    {d.album_id}
                   </Typography>
                 </Song>
               </Info>

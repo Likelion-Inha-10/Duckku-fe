@@ -8,18 +8,59 @@ import Contents from "./components/Contents";
 import axios from "axios";
 import PhotoQr from "../ModalQrTest/PhotoQr";
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 const Album = () => {
   const categories = ["앨범", "포토카드", "응모권"];
   const [clickCategory, setClickCategory] = useState(categories[0]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({}); //골라진 아티스트 정보
+  const [albums, setAlbums] = useState([]); //해당 아티스트가 갖고있는 앨범들
+  const [ticket, setTicket] = useState(); //해당 아티스트에 갖고있는 응모권
+  const [photo, setPhoto] = useState([]); //해당 아티스트의 포토카드들
 
+  const { artistId } = useParams();
+  let artists = [];
   useEffect(() => {
     const id = localStorage.getItem("id");
-
     axios
-      .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
-      .then((r) => console.log(r));
+      .get(`${process.env.REACT_APP_API}/${artistId}/buy_album_list/${id}`)
+      .then((r) => {
+        axios
+          .get(`${process.env.REACT_APP_API}/show_all_artist_info`)
+          .then((r) => {
+            artists = r.data;
+            for (let a of artists) {
+              if (a.id == artistId) {
+                setData(a);
+              }
+            }
+          });
+
+        axios
+          .get(`${process.env.REACT_APP_API}/get_all_purchased_albums/${id}`)
+          .then((r) => {
+            console.log(r);
+            setAlbums(r.data);
+          });
+
+        //포카
+        axios
+          .get(
+            `${process.env.REACT_APP_API}/${artistId}/buy_photo_card_list/${id}`
+          )
+          .then((r) => {
+            console.log(r);
+            setPhoto(r.data);
+          });
+        //티켓
+        axios
+          .get(
+            `${process.env.REACT_APP_API}/${artistId}/buy_ticket_count/${id}`
+          )
+          .then((r) => {
+            setTicket(r.data.tickets_count);
+          });
+      });
   }, []);
 
   return (
@@ -33,7 +74,11 @@ const Album = () => {
         <Layout>
           <Header back />
 
-          <MainPhoto data={data} clickCategory={clickCategory}></MainPhoto>
+          <MainPhoto
+            data={data}
+            albums={albums}
+            clickCategory={clickCategory}
+          ></MainPhoto>
           <Margin height="30" />
 
           <Category
@@ -44,7 +89,11 @@ const Album = () => {
           <Margin height="30" />
 
           <Contents
+            aid={data.id}
             data={data}
+            photo={photo}
+            ticket={ticket}
+            albums={albums}
             categories={categories}
             clickCategory={clickCategory}
           />

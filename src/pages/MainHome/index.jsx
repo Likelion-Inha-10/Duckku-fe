@@ -171,7 +171,7 @@ const MainHome = () => {
               albumInfo="미니"
             />
             <Margin height="16" />
-            <MoreViewButton>
+            <MoreViewButton onClick={() => navigate("/store")}>
               <MoreViewTextWrapper>
                 <Typography regular16 color="gray">
                   더보기
