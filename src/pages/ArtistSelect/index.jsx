@@ -99,8 +99,6 @@ const ArtistSelect = () => {
   useEffect(() => {
     let artistArray = [];
 
-    const id = localStorage.getItem("id");
-
     axios
       .get(`${process.env.REACT_APP_API}/show_all_artist_info`)
       .then((response) => {
@@ -110,7 +108,7 @@ const ArtistSelect = () => {
             key: artist.artist_name,
             agency: artist.agency,
             selected: false,
-            link: process.env.REACT_APP_API + artist.artist_image,
+            link: `${artist.artist_image}`,
             color: "gray",
           });
         });
@@ -240,6 +238,8 @@ const ArtistSelect = () => {
 
     if (artistNumber === 0) {
       return Toast("아티스트를 선택해주세요");
+    } else if (artistNumber === 1) {
+      return Toast("최소 2명 이상을 선택해주세요.");
     } else {
       let subArray = [];
       artists.map((artist) => {
@@ -298,7 +298,9 @@ const ArtistSelect = () => {
           <ArtistWrapper>{artistButtons}</ArtistWrapper>
           <ButtonWrapper>
             <Button
-              backgroundColor={artistNumber === 0 ? "gray" : "main"}
+              backgroundColor={
+                artistNumber === 0 || artistNumber === 1 ? "gray" : "main"
+              }
               onClick={onConfirm}
             >
               {artistNumber === 0

@@ -127,10 +127,6 @@ const Store = () => {
       });
   }, []);
 
-  useEffect(() => {
-    const id = localStorage.getItem("id");
-  }, [allAlbum]);
-
   return (
     <>
       <motion.div

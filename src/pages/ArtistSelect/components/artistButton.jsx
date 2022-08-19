@@ -18,7 +18,7 @@ const ArtistProfile = styled.div`
   margin-right: 8px;
   box-sizing: border-box;
   border: 2px solid white;
-  background: url(${(props) => (props.link ? props.link : "")}) no-repeat;
+  background: url(${(props) => (props.link ? props.link : "")}) no-repeat center;
   background-size: cover;
   border-radius: 50%;
   transition: 0.5s;

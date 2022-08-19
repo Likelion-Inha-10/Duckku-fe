@@ -7,7 +7,8 @@ import Margin from "../../duckku-ui/Margin";
 import ArtistCard from "./components/artistCard";
 import Toast from "../../duckku-ui/Toast";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { BsPencilSquare } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -114,59 +115,38 @@ const getListStyle = () => ({
 const FavoriteArtist = () => {
   const [isPencilbuttonClicked, setIsPencilButtonClicked] = useState(false);
   const [isDeleteModeActivated, setIsDeleteModeActivated] = useState(false);
-  const [artistCards, setArtistCards] = useState([
-    {
-      id: "1",
-      deleted: false,
-      artistName: "레드벨벳",
-      date: "2022.01.24",
-      imgLink:
-        "https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg",
-    },
-    {
-      id: "2",
-      deleted: false,
-      artistName: "트와이스",
-      date: "2022.01.24",
-      imgLink:
-        "https://images.chosun.com/resizer/uB6vnQh-PQORlwDuYYHC8NxvWm4=/530x742/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/VDJKJKQEWSDFO3LJCKOIZTN5IA.jpg",
-    },
-    {
-      id: "3",
-      deleted: false,
-      artistName: "아이브",
-      date: "2022.01.24",
-      imgLink:
-        "https://cdn.ggilbo.com/news/photo/202112/884273_714154_1042.jpg",
-    },
-    {
-      id: "4",
-      deleted: false,
-      artistName: "아이들",
-      date: "2022.01.24",
-      imgLink:
-        "https://image.ajunews.com/content/image/2021/01/13/20210113100103775790.jpg",
-    },
-    {
-      id: "5",
-      deleted: false,
-      artistName: "소녀시대",
-      date: "2022.01.24",
-      imgLink:
-        "https://biz.chosun.com/resizer/hWv4Z8dawBQ0aR90Sv2ij_k_lZ4=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/XNO57WRNL43O7KMGWOIKN533NI.jpg",
-    },
-    {
-      id: "6",
-      deleted: false,
-      artistName: "BTS",
-      date: "2022.01.24",
-      imgLink: "https://pbs.twimg.com/media/EpU5qZuUUAI27rk.jpg:large",
-    },
-  ]);
+  const [artistCards, setArtistCards] = useState([]);
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+
+    axios
+      .get(`${process.env.REACT_APP_API}/my_artist_list/${id}`)
+      .then((response) => {
+        console.log(response);
+        const artistArray = [];
+        let counter = 1;
+        response.data.map((artist) => {
+          artistArray.push({
+            id: `${counter}`,
+            key: artist.id,
+            deleted: false,
+            artistName: artist.artist_name,
+            date: "2022.08.20",
+            imgLink: artist.artist_image,
+          });
+          counter += 1;
+        });
+        setArtistCards(artistArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const navigate = useNavigate();
   const onClickAdd = () => {
-    navigate(`/artist-select`);
+    Toast("현재 아티스트를 추가할 수 없습니다.");
   };
 
   const handleChange = (result) => {
@@ -188,14 +168,27 @@ const FavoriteArtist = () => {
 
   const setDeleteState = (e) => {
     console.log(e);
-    setArtistCards(
-      artistCards.map((artist) => {
-        if (artist.artistName === e) {
-          return { ...artist, deleted: true };
+    const allLength = Object.keys(artistCards).length;
+    const deletedLength = Object.keys(
+      artistCards.filter((artist) => {
+        if (artist.deleted === true) {
+          return artist;
         }
-        return { ...artist };
+        return 0;
       })
-    );
+    ).length;
+    if (allLength - deletedLength === 2) {
+      Toast("최소 2명의 아티스트가 필요합니다.");
+    } else {
+      setArtistCards(
+        artistCards.map((artist) => {
+          if (artist.artistName === e) {
+            return { ...artist, deleted: true };
+          }
+          return { ...artist };
+        })
+      );
+    }
   };
 
   const activateDeleteMode = () => {
@@ -204,9 +197,29 @@ const FavoriteArtist = () => {
   };
 
   const onComfirm = () => {
+    const id = localStorage.getItem("id");
+
     if (isDeleteModeActivated === true) {
       setIsPencilButtonClicked(false);
       setIsDeleteModeActivated(false);
+      let subArray = [];
+      artistCards.map((artist) => {
+        if (artist.deleted === true) {
+          subArray.push(artist.key);
+        }
+      });
+      console.log(subArray);
+      axios
+        .delete(`${process.env.REACT_APP_API}/sub_artist/${id}`, {
+          artists: subArray,
+        })
+        .then((response) => {
+          console.log(response);
+          Toast("삭제가 완료되었습니다");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       Toast("완료되었습니다");
       setTimeout(1000);
