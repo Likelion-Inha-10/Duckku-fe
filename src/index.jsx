@@ -63,10 +63,7 @@ const GlobalStyle = createGlobalStyle`
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px white inset !important;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> b36ace68edf91138f9738117f34f65a9c932353a
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

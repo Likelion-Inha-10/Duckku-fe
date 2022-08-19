@@ -197,6 +197,7 @@ const PurchaseBtn = () => {
         console.log(Ticket);
         setWithNoTicket(response.data.price_without_ticket);
         console.log(response.data);
+        console.log(id);
       })
       .catch((error) => {
         console.log(error);
