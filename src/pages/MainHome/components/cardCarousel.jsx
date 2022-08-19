@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slick.css";
+import { useNavigate } from "react-router-dom";
 
 const CarouselWrapper = styled.div`
   width: 100%;
@@ -15,7 +16,6 @@ const CarouselWrapper = styled.div`
 const CardCarousel = () => {
   const settings = {
     dots: true,
-    fade: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -39,6 +39,11 @@ const CardCarousel = () => {
 
   const [artistList, setArtistList] = useState([]);
   const [artistCards, setArtistCards] = useState();
+  const navigate = useNavigate();
+
+  const moveToAlbum = (artist) => {
+    navigate(`/album/${artist.key}`);
+  };
 
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -50,10 +55,10 @@ const CardCarousel = () => {
         let artistArray = [];
         response.data.map((artist) => {
           artistArray.push({
-            imgLink:
-              "https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg",
-            iconLink:
-              "https://kkukowiki.kr/images/e/e0/%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3_%EB%A1%9C%EA%B3%A0.png",
+            key: artist.id,
+            artistid: artist.id,
+            imgLink: artist.artist_image,
+            iconLink: artist.logo_image,
             artistName: artist.artist_name,
             color1: artist.gradient_color_1,
             color2: artist.gradient_color_2,
@@ -71,13 +76,18 @@ const CardCarousel = () => {
   useEffect(() => {
     setArtistCards(
       artistList.map((artist) => (
-        <ArtistCard
-          imgLink={artist.imgLink}
-          iconLink={artist.iconLink}
-          artistName={artist.artistName}
-          color1={artist.color1}
-          color2={artist.color2}
-        />
+        <div onClick={() => moveToAlbum(artist)}>
+          <ArtistCard
+            key={artist.key}
+            artistid={artist.artistid}
+            imgLink={artist.imgLink}
+            iconLink={artist.iconLink}
+            artistName={artist.artistName}
+            color1={artist.color1}
+            color2={artist.color2}
+            nClick={moveToAlbum}
+          />
+        </div>
       ))
     );
   }, [artistList]);
