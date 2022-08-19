@@ -88,8 +88,13 @@ const Null = styled(Flex)`
   width: 100%;
 `;
 const TicketCategory = ({ data, ticket, aid }) => {
-  const [isNull, setIsNull] = useState(ticket ? false : true);
+  const [isNull, setIsNull] = useState(ticket === 0 ? false : true);
+  const [numberArray, setNumberArray] = useState([]);
   var number = [];
+  for (var i = 0; i < ticket; i++) {
+    number.push({ id: i });
+    console.log(isNull);
+  }
 
   const submitTicket = (ticket) => {
     Toast(`총 ${ticket}개의 응모권이 등록되었습니다!`);
@@ -103,16 +108,14 @@ const TicketCategory = ({ data, ticket, aid }) => {
   };
 
   useEffect(() => {
-    for (var i = 0; i < ticket; i++) {
-      number.push({ id: i });
-    }
+    setNumberArray(number);
   }, []);
 
   return (
     <>
       <TicketWrapper>
         {number.map((d) =>
-          number.length ? (
+          isNull ? (
             <GradationBorder>
               <Circle>
                 <Duck height="32px" width="32px" />
@@ -133,13 +136,13 @@ const TicketCategory = ({ data, ticket, aid }) => {
           ) : null
         )}
       </TicketWrapper>
-      {isNull ? (
+      {isNull ? null : (
         <Null justify="center" align="center">
           <Typography bold16 color="gray">
             비어있습니다
           </Typography>
         </Null>
-      ) : null}
+      )}
       <Margin height="150" />
       <ButtonWrapper>
         {ticket ? (
