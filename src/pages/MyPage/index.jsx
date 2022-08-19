@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Layout from "../../duckku-ui/Layout";
 import Header from "../../duckku-ui/Header";
@@ -12,6 +12,7 @@ import { FiLayers } from "react-icons/fi";
 import { BsCreditCard } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 // 마이페이지 개인 정보 박스
 const PersonalBox = styled.div`
@@ -87,6 +88,15 @@ const Partition = styled.div`
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+
+    axios.get(`${process.env.REACT_APP_API}/userinfo/${id}`).then((r) => {
+      setUser(r.data[0]);
+    });
+  }, []);
 
   const goToInform = () => {
     navigate("/my-inform-fix");
@@ -105,14 +115,14 @@ const MyPage = () => {
           <Margin height="16" />
           <PersonalBox>
             <Flex direction="row" justify="space-between">
-              <Typography bold21>김멋사</Typography>
+              <Typography bold21>{user.userName}</Typography>
               <InformBox onClick={goToInform}>정보 수정</InformBox>
             </Flex>
           </PersonalBox>
           <Margin height="6" />
           <EmailBox>
             <Flex direction="row" justify="left">
-              <EmailContent>likelion123@gmail.com</EmailContent>
+              <EmailContent>{user.userEmail}</EmailContent>
             </Flex>
           </EmailBox>
           <Margin height="6" />
