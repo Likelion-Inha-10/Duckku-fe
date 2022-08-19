@@ -32,6 +32,7 @@ const Title = styled.div`
 const Back = styled.div`
   visibility: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   ${(props) =>
     props.back &&

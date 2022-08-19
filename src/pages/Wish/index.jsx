@@ -61,8 +61,8 @@ const Wish = () => {
   ];
   return (
     <Layout>
+      <Header back title=" 찜한 앨범" />
       <AllWishWrapper>
-        <Header back title=" 찜한 앨범" />
         <Margin height="80" />
         <AlbumListsMap Lists={Lists} />
       </AllWishWrapper>
