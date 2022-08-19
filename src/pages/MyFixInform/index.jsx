@@ -121,6 +121,8 @@ const MyFixInform = () => {
       })
       .then((r) => {
         console.log(r);
+        navigate(-1);
+        Toast("개인정보가 수정되었습니다.");
       });
   };
 

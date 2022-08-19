@@ -31,7 +31,7 @@ const ArtistLogoBox = styled.div`
   border-radius: 50%;
   background: white url(${(props) => (props.iconLink ? props.iconLink : "")})
     no-repeat;
-  background-size: 44px;
+  background-size: 50px;
   background-position: center;
   display: flex;
   align-items: center;
