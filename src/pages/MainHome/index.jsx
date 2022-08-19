@@ -160,7 +160,7 @@ const MainHome = () => {
               albumInfo="정규 4집"
             />
             <Margin height="16" />
-            <MoreViewButton>
+            <MoreViewButton onClick={() => navigate("/store")}>
               <MoreViewTextWrapper>
                 <Typography regular16 color="gray">
                   더보기
