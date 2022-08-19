@@ -82,7 +82,7 @@ const MoreViewTextWrapper = styled.div`
 const MainHome = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
-  const [musicList, setMusicList] = useState([]);
+  const [musicList, setMusicList] = useState({});
   const onClickEdit = () => {
     navigate(`/favorite-artist`);
   };
@@ -100,11 +100,11 @@ const MainHome = () => {
         console.log(error);
       });
 
-    const musicArray = [];
     axios
-      .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
+      .get(`${process.env.REACT_APP_API}/get_all_albums`)
       .then((response) => {
         console.log(response);
+        setMusicList(response);
       })
       .catch((error) => {
         console.log(error);
@@ -148,27 +148,27 @@ const MainHome = () => {
             </TitleBox>
             <Margin height="24" />
             <FirstAlbum
-              albumLink="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/639/088/82639088_1653623843808_1_600x600.JPG/dims/resize/Q_80,0"
-              iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-              albumName="Face The Sun"
-              artistName="Seventeen"
-              albumInfo="정규 4집"
+              albumLink="https://ll-inha-hkt.s3.ap-northeast-2.amazonaws.com/sang_album_img/2.jpg"
+              iconLink="https://ll-inha-hkt.s3.ap-northeast-2.amazonaws.com/logo/1.png"
+              albumName="FOREVER 1"
+              artistName="소녀시대"
+              albumInfo="정규 7집"
             />
             <Margin height="16" />
             <NthAlbum
               rank="2"
-              iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-              albumName="Face The Sun"
-              artistName="Seventeen"
-              albumInfo="정규 4집"
+              iconLink="https://ll-inha-hkt.s3.ap-northeast-2.amazonaws.com/logo/1.png"
+              albumName="Lion Heart"
+              artistName="소녀시대"
+              albumInfo="정규 5집"
             />
             <Margin height="16" />
             <NthAlbum
               rank="3"
-              iconLink="https://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-              albumName="Face The Sun"
-              artistName="Seventeen"
-              albumInfo="정규 4집"
+              iconLink="https://ll-inha-hkt.s3.ap-northeast-2.amazonaws.com/logo/2.png"
+              albumName="The ReVe Festival 2022"
+              artistName="레드벨벳"
+              albumInfo="미니"
             />
             <Margin height="16" />
             <MoreViewButton>
