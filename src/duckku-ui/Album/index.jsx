@@ -74,7 +74,15 @@ const Album = (props) => {
     }
   };
   return (
-    <Box onClick={() => onClickAlbum()}>
+    <Box
+      imgLink={props.imgLink}
+      albumTitle={props.albumTitle}
+      artist={props.artist}
+      year={props.year}
+      isChecked={props.isChecked}
+      link={props.link}
+      onClick={() => onClickAlbum()}
+    >
       <svg width="0" height="0">
         <linearGradient id="purple" x1="100%" y1="100%" x2="0%" y2="0%">
           <stop stopColor="#7001FF" offset="0" />
