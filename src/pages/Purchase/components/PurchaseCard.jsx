@@ -202,19 +202,6 @@ const PurchaseBtn = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    axios
-      .post(`${process.env.REACT_APP_API}/buy_albums/${albumId}/${id}`, {
-        album_with_ticket: { numberInclude },
-        album_without_ticket: { numberNotInclude },
-      })
-      .then((response) => {
-        console.log(response);
-        console.log("구매가 완료되었습니다.");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }, []);
 
   const openModal = () => {
@@ -261,7 +248,12 @@ const PurchaseBtn = () => {
       <ButtonFixed>
         <Button onClick={openModal}>바로 구매</Button>
       </ButtonFixed>
-      <Modal open={modalOpen} close={closeModal}>
+      <Modal
+        open={modalOpen}
+        close={closeModal}
+        withNotTicket={numberNotInclude}
+        withTicket={numberInclude}
+      >
         <Margin width="300" height="38" />
         <PurchaseInline>
           <Typography bold16>응모권 포함</Typography>&nbsp;
