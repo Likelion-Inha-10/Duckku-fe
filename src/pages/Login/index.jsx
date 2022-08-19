@@ -47,9 +47,22 @@ const Login = () => {
         password: user.pw,
       })
       .then((r) => {
-        navigate(`/main-home`);
-        console.log("로그인");
-        console.log(r);
+        localStorage.setItem("id", r.data.id);
+        console.log("로그인 성공");
+        const id = localStorage.getItem("id");
+        axios
+          .get(`${process.env.REACT_APP_API}/my_artist_list/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.length === 0) {
+              navigate(`/artist-select`);
+            } else {
+              navigate(`/main-home`);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((e) => {
         console.log(e);

@@ -60,7 +60,11 @@ const ArtistNameBox = styled.div`
   padding-left: 13px;
   padding-right: 13px;
   border-radius: 10px;
-  background: linear-gradient(98.1deg, #ff9b7b 8.9%, #ffc6b4 85.16%);
+  background: linear-gradient(
+    98.1deg,
+    ${(props) => props.color1 || "black"} 8.9%,
+    ${(props) => props.color2 || "black"} 85.16%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,9 +108,9 @@ const ArtistCard = (props) => {
     <Wrapper>
       <CardWrapper imgLink={props.imgLink}>
         <TopWrapper>
-          <ArtistNameBox>
+          <ArtistNameBox color1={props.color1} color2={props.color2}>
             <Typography bold16 color="white">
-              RedVelvet
+              {props.artistName}
             </Typography>
           </ArtistNameBox>
           <ArtistLogoBox iconLink={props.iconLink} />
