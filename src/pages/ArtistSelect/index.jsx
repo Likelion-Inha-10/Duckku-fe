@@ -98,6 +98,8 @@ const ArtistSelect = () => {
   useEffect(() => {
     let artistArray = [];
 
+    const id = localStorage.getItem("id");
+
     axios
       .get(`${process.env.REACT_APP_API}/show_all_artist_info`)
       .then((response) => {
@@ -233,6 +235,8 @@ const ArtistSelect = () => {
   const navigate = useNavigate();
 
   const onConfirm = () => {
+    const id = localStorage.getItem("id");
+
     if (artistNumber === 0) {
       return Toast("아티스트를 선택해주세요");
     } else {
@@ -244,7 +248,15 @@ const ArtistSelect = () => {
       });
       console.log({ artists: subArray });
       axios
-        .patch(`${process.env.REACT_APP_API}/sub_artist`, {
+        .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      axios
+        .patch(`${process.env.REACT_APP_API}/sub_artist/${id}`, {
           artists: [1, 2, 3, 4, 5],
         })
         .then((response) => {

@@ -46,9 +46,9 @@ const Login = () => {
         password: user.pw,
       })
       .then((r) => {
-        navigate(`/main-home`);
-        console.log("로그인");
-        console.log(r);
+        localStorage.setItem("id", r.data.id);
+        navigate(`/artist-select`);
+        console.log("로그인 성공");
       })
       .catch((e) => {
         console.log(e);
