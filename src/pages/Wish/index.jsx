@@ -4,6 +4,7 @@ import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
 import styled from "styled-components";
 import WishCard from "./components/WishCard";
+import { motion } from "framer-motion";
 
 const AllWishWrapper = styled.div`
   width: 100%;
@@ -60,13 +61,22 @@ const Wish = () => {
     },
   ];
   return (
-    <Layout>
-      <AllWishWrapper>
-        <Header back title=" 찜한 앨범" />
-        <Margin height="80" />
-        <AlbumListsMap Lists={Lists} />
-      </AllWishWrapper>
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <AllWishWrapper>
+            <Header back title=" 찜한 앨범" />
+            <Margin height="80" />
+            <AlbumListsMap Lists={Lists} />
+          </AllWishWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

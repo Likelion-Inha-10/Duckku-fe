@@ -5,6 +5,10 @@ import reset from "styled-reset";
 import theme from "./assets/theme";
 import reportWebVitals from "./reportWebVitals";
 import Router from "./routes";
+import axios from "axios";
+
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -58,7 +62,8 @@ const GlobalStyle = createGlobalStyle`
 
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    }
+    }import { axios } from 'axios';
+
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

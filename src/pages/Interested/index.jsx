@@ -7,6 +7,7 @@ import Typography from "../../duckku-ui/Typography";
 import styled from "styled-components";
 import SortMenu from "../../duckku-ui/SortMenu";
 import { AiOutlineDown } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 const AllInterestedWrapper = styled.div`
   width: 100%;
@@ -93,18 +94,27 @@ const Interested = () => {
   }, [interestedList]);
 
   return (
-    <Layout>
-      <AllInterestedWrapper>
-        <Header back title=" 나의 관심 아티스트의 앨범" />
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <AllInterestedWrapper>
+            <Header back title=" 나의 관심 아티스트의 앨범" />
 
-        <ViewOrderWrapper>
-          <Margin height="32" />
-          <SortMenu />
-        </ViewOrderWrapper>
-        <Margin height="16" />
-        {interestedAlbum}
-      </AllInterestedWrapper>
-    </Layout>
+            <ViewOrderWrapper>
+              <Margin height="32" />
+              <SortMenu />
+            </ViewOrderWrapper>
+            <Margin height="16" />
+            {interestedAlbum}
+          </AllInterestedWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

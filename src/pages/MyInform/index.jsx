@@ -6,6 +6,7 @@ import Margin from "../../duckku-ui/Margin";
 import Flex from "../../duckku-ui/Flex";
 import { BsFillCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // 개인 정보 박스
 const PersonalBox = styled.div`
@@ -85,48 +86,57 @@ const MyInform = () => {
   };
 
   return (
-    <Layout>
-      <Header back title="내 정보" />
-      <Margin height="22" />
-      <PersonalBox>
-        <Flex direction="row" justify="space-between">
-          <MyInformBox>기본정보</MyInformBox>
-          <InformBox onClick={goToFixInform}>정보수정</InformBox>
-        </Flex>
-      </PersonalBox>
-      <Margin height="20" />
-      <SetWrap>
-        <Flex direction="row">
-          <SetTitleBox>이름</SetTitleBox>
-          <SetContentBox>김멋사</SetContentBox>
-        </Flex>
-      </SetWrap>
-      <Margin height="28" />
-      <SetWrap>
-        <Flex direction="row">
-          <SetTitleBox>이메일</SetTitleBox>
-          <SetContentBox>likelion123@gmail.com</SetContentBox>
-        </Flex>
-      </SetWrap>
-      <Margin height="28" />
-      <SetWrap>
-        <Flex direction="row">
-          <SetTitleBox>비밀번호</SetTitleBox>
-          <SetContentBox>
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-            <BsFillCircleFill className="icon" size="13" />
-          </SetContentBox>
-        </Flex>
-      </SetWrap>
-      <Margin height="27" />
-      <Partition />
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Header back title="내 정보" />
+          <Margin height="22" />
+          <PersonalBox>
+            <Flex direction="row" justify="space-between">
+              <MyInformBox>기본정보</MyInformBox>
+              <InformBox onClick={goToFixInform}>정보수정</InformBox>
+            </Flex>
+          </PersonalBox>
+          <Margin height="20" />
+          <SetWrap>
+            <Flex direction="row">
+              <SetTitleBox>이름</SetTitleBox>
+              <SetContentBox>김멋사</SetContentBox>
+            </Flex>
+          </SetWrap>
+          <Margin height="28" />
+          <SetWrap>
+            <Flex direction="row">
+              <SetTitleBox>이메일</SetTitleBox>
+              <SetContentBox>likelion123@gmail.com</SetContentBox>
+            </Flex>
+          </SetWrap>
+          <Margin height="28" />
+          <SetWrap>
+            <Flex direction="row">
+              <SetTitleBox>비밀번호</SetTitleBox>
+              <SetContentBox>
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+                <BsFillCircleFill className="icon" size="13" />
+              </SetContentBox>
+            </Flex>
+          </SetWrap>
+          <Margin height="27" />
+          <Partition />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

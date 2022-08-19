@@ -13,7 +13,6 @@ const Width = styled.div`
 
 const BackColor = styled.div`
   width: 100%;
-  background-color: #d3d3d3;
   display: flex;
   justify-content: center;
   align-items: center;

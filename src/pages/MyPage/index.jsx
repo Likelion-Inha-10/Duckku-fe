@@ -11,6 +11,7 @@ import { BsGrid } from "react-icons/bs";
 import { FiLayers } from "react-icons/fi";
 import { BsCreditCard } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // 마이페이지 개인 정보 박스
 const PersonalBox = styled.div`
@@ -92,54 +93,63 @@ const MyPage = () => {
   };
 
   return (
-    <Layout>
-      <Header title="마이 페이지" />
-      <Margin height="16" />
-      <PersonalBox>
-        <Flex direction="row" justify="space-between">
-          <Typography bold21>김멋사</Typography>
-          <InformBox onClick={goToInform}>정보 수정</InformBox>
-        </Flex>
-      </PersonalBox>
-      <Margin height="6" />
-      <EmailBox>
-        <Flex direction="row" justify="left">
-          <EmailContent>likelion123@gmail.com</EmailContent>
-        </Flex>
-      </EmailBox>
-      <Margin height="6" />
-      <ListBox onClick={() => navigate("/favorite-artist")}>
-        <Flex direction="row" justify="left">
-          <BiHeartCircle className="icons" size="36" />
-          <ListContent>내 아티스트 관리</ListContent>
-        </Flex>
-      </ListBox>
-      <Margin height="7" />
-      <ListBox2 onClick={() => navigate("/not-found")}>
-        <Flex direction="row" justify="left">
-          <BsGrid className="icons" size="36" />
-          <ListContent>내 뱃지 관리</ListContent>
-        </Flex>
-      </ListBox2>
-      <Partition />
-      <Margin height="7" />
-      <ListBox onClick={() => navigate("/purchase-history")}>
-        <Flex direction="row" justify="left">
-          <FiLayers className="icons" size="36" />
-          <ListContent>구매내역</ListContent>
-        </Flex>
-      </ListBox>
-      <ListBox
-        onClick={() => navigate("/payment")}
-        style={{ paddingTop: "6px" }}
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
       >
-        <Flex direction="row" justify="left">
-          <BsCreditCard className="icons" size="36" />
-          <ListContent>결제수단 관리</ListContent>
-        </Flex>
-      </ListBox>
-      <Footer active="my" />
-    </Layout>
+        <Layout>
+          <Header title="마이 페이지" />
+          <Margin height="16" />
+          <PersonalBox>
+            <Flex direction="row" justify="space-between">
+              <Typography bold21>김멋사</Typography>
+              <InformBox onClick={goToInform}>정보 수정</InformBox>
+            </Flex>
+          </PersonalBox>
+          <Margin height="6" />
+          <EmailBox>
+            <Flex direction="row" justify="left">
+              <EmailContent>likelion123@gmail.com</EmailContent>
+            </Flex>
+          </EmailBox>
+          <Margin height="6" />
+          <ListBox onClick={() => navigate("/favorite-artist")}>
+            <Flex direction="row" justify="left">
+              <BiHeartCircle className="icons" size="36" />
+              <ListContent>내 아티스트 관리</ListContent>
+            </Flex>
+          </ListBox>
+          <Margin height="7" />
+          <ListBox2 onClick={() => navigate("/not-found")}>
+            <Flex direction="row" justify="left">
+              <BsGrid className="icons" size="36" />
+              <ListContent>내 뱃지 관리</ListContent>
+            </Flex>
+          </ListBox2>
+          <Partition />
+          <Margin height="7" />
+          <ListBox onClick={() => navigate("/purchase-history")}>
+            <Flex direction="row" justify="left">
+              <FiLayers className="icons" size="36" />
+              <ListContent>구매내역</ListContent>
+            </Flex>
+          </ListBox>
+          <ListBox
+            onClick={() => navigate("/payment")}
+            style={{ paddingTop: "6px" }}
+          >
+            <Flex direction="row" justify="left">
+              <BsCreditCard className="icons" size="36" />
+              <ListContent>결제수단 관리</ListContent>
+            </Flex>
+          </ListBox>
+          <Footer active="my" />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
