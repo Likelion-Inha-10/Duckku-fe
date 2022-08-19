@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Flex from "../../../duckku-ui/Flex";
 import Typography from "../../../duckku-ui/Typography";
@@ -93,7 +93,7 @@ const Profile = styled(Flex)`
   justify-content: space-between;
 `;
 
-const MainPhoto = ({ data, clickCategory, children }) => {
+const MainPhoto = ({ data, albums, clickCategory, children }) => {
   //받아올 데이터 목록
   const [dummy, setDummy] = useState({
     name: "혁오",
@@ -102,24 +102,27 @@ const MainPhoto = ({ data, clickCategory, children }) => {
     logo: `${name}`,
   });
 
+  useEffect(() => {
+    console.log(data);
+  }, []);
   return (
     <>
-      <Photo url={dummy.image}>
+      <Photo url={data.artist_image}>
         {children}
         <Dimmer>
           <Profile>
             <ProfileBlur>
               <GradationBorder>
-                <Logo url={dummy.logo} />
+                <Logo url={data.logo_image} />
               </GradationBorder>
             </ProfileBlur>
 
             <Info>
               <Typography color="white" bold28>
-                {dummy.name}
+                {data.artist_name}
               </Typography>
               <Typography color="white" regular16>
-                나의 앨범 {data.length}개
+                {/* 나의 앨범 {albums.length}개 */}
               </Typography>
             </Info>
           </Profile>

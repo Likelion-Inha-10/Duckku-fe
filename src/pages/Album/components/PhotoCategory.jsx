@@ -21,16 +21,16 @@ const PhotoContainer = styled.div`
   cursor: pointer;
 `;
 
-const PhotoCategory = ({ data }) => {
+const PhotoCategory = ({ data, photo }) => {
   return (
     <>
       <PhotoContainer>
-        {data.map((d) => (
+        {photo.map((d) => (
           <PhotoWrapper>
             <PhotoQr
-              SingerName={d.username}
-              Photo={Img}
-              RegistDay={d.address.suite}
+              SingerName={d.name}
+              Photo={d.img}
+              RegistDay={d.register_at}
             />
             <Margin height="12" />
           </PhotoWrapper>
