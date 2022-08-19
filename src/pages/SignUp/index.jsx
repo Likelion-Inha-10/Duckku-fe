@@ -117,6 +117,7 @@ const SignUp = () => {
 
     axios
       .post(`${process.env.REACT_APP_API}/Signup`, JSON.stringify(dataSet), {
+        crossDomain: true,
         headers: {
           "Content-Type": `application/json`,
         },

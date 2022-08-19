@@ -253,7 +253,7 @@ const ArtistSelect = () => {
           artists: subArray,
         })
         .then((response) => {
-          console.log(response);
+          navigate(`/main-home`);
         })
         .catch((error) => {
           console.log(error);

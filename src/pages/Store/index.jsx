@@ -11,6 +11,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import theme from "./../../assets/theme/index";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -82,50 +83,12 @@ const LikeButton = styled.button`
 
 const Store = () => {
   const [recommendAlbum, setRecommendAlbum] = useState();
-  const [recommendList, setRecommendList] = useState([
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-    },
-  ]);
+  const [recommendList, setRecommendList] = useState([]);
+  const [suggestAlbum1, setSuggestAlbum1] = useState();
+  const [suggestList1, setSuggestList1] = useState([]);
+  const [suggestAlbum2, setSuggestAlbum2] = useState();
+  const [suggestList2, setSuggestList2] = useState([]);
+  const [allAlbum, setAllAlbum] = useState([]);
 
   const navigate = useNavigate();
   const onClickMore = () => {
@@ -137,19 +100,36 @@ const Store = () => {
   };
 
   useEffect(() => {
-    setRecommendAlbum(
-      recommendList.map((album) => (
-        <Album
-          imgLink={album.imgLink}
-          albumTitle={album.albumTitle}
-          artist={album.artist}
-          year={album.year}
-          isChecked={album.isChecked}
-          link={"/purchase"}
-        />
-      ))
-    );
-  }, [recommendList]);
+    const id = localStorage.getItem("id");
+    axios
+      .get(`${process.env.REACT_APP_API}/my_artist_list/show_album_list/${id}`)
+      .then((response) => {
+        console.log("성공");
+        console.log(response.data);
+        setRecommendList(response.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log("실패");
+        console.log(error);
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_API}/get_all_albums`)
+      .then((response) => {
+        console.log("전체 앨범 성공");
+        console.log(response.data);
+        setAllAlbum(response.data);
+      })
+      .catch((error) => {
+        console.log("실패");
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+  }, [allAlbum]);
 
   return (
     <>
@@ -203,7 +183,41 @@ const Store = () => {
                 </Title>
               </TitleWrapper>
               <Margin height="24" />
-              <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+              <AlbumWrapper>
+                {/* <Album
+                  imgLink={allAlbum[0].album_image}
+                  albumTitle={allAlbum[0].name}
+                  artist={allAlbum[0].artist_name}
+                  year={allAlbum[0].created_at.substring(
+                    0,
+                    allAlbum[0].created_at.indexOf("-")
+                  )}
+                  isChecked={false}
+                  link={"/purchase"}
+                />
+                <Album
+                  imgLink={allAlbum[1].album_image}
+                  albumTitle={allAlbum[1].name}
+                  artist={allAlbum[1].artist_name}
+                  year={allAlbum[1].created_at.substring(
+                    0,
+                    allAlbum[1].created_at.indexOf("-")
+                  )}
+                  isChecked={false}
+                  link={"/purchase"}
+                />
+                <Album
+                  imgLink={allAlbum[2].album_image}
+                  albumTitle={allAlbum[2].name}
+                  artist={allAlbum[2].artist_name}
+                  year={allAlbum[2].created_at.substring(
+                    0,
+                    allAlbum[2].created_at.indexOf("-")
+                  )}
+                  isChecked={false}
+                  link={"/purchase"}
+                /> */}
+              </AlbumWrapper>
               <Margin height="24" />
               <TitleWrapper>
                 <Title>
