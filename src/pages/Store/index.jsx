@@ -82,57 +82,10 @@ const LikeButton = styled.button`
 `;
 
 const Store = () => {
-  const [recommendAlbum, setRecommendAlbum] = useState();
-  const [recommendList, setRecommendList] = useState([
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-      id: "1",
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: true,
-      id: "2",
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-      id: "3",
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-      id: "4",
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-      id: "5",
-    },
-    {
-      imgLink: "https://image.yes24.com/goods/71935476/XL",
-      albumTitle: "Fancy",
-      artist: "TWICE",
-      year: "2022",
-      isChecked: false,
-      id: "6",
-    },
-  ]);
+  const [interestAlbum, setInterestAlbum] = useState([]);
+  const [interestList, setInterestList] = useState([]);
+  const [allAlbum, setAllAlbum] = useState([]);
+  const [allList, setAllList] = useState([]);
 
   const navigate = useNavigate();
   const onClickMore = () => {
@@ -143,20 +96,58 @@ const Store = () => {
     navigate(`/wish`);
   };
 
+  const id = localStorage.getItem("id");
   useEffect(() => {
-    setRecommendAlbum(
-      recommendList.map((album) => (
+    axios
+      .get(`${process.env.REACT_APP_API}/my_artist_list/show_album_list/${id}`)
+      .then((response) => {
+        setInterestList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_API}/get_all_albums`)
+      .then((response) => {
+        console.log(response.data[0].album_image);
+        setAllList(response.data);
+        let albumArray = [];
+        response.data.map((album) => {
+          albumArray.push({});
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    setInterestAlbum(
+      interestList.map((album) => (
         <Album
-          imgLink={album.imgLink}
-          albumTitle={album.albumTitle}
-          artist={album.artist}
-          year={album.year}
-          isChecked={album.isChecked}
+          imgLink={album.album_image}
+          albumTitle={album.name}
+          artist={album.artist_name}
+          year={album.created_at.substring(0, 4)}
+          isChecked={false}
           link={`/purchase/${album.id}`}
         />
       ))
     );
-  }, [recommendList]);
+  }, [interestList]);
+
+  // var recommendList = [];
+  // var newList = [];
+  // for (var i = 0; i < 6; i++) {
+  //   recommendList.push({ id: i });
+  // }
+
+  // console.log(recommendList);
+
+  // for (var j = 6; j < 12; j++) {
+  //   newList.push({ id: j });
+  // }
 
   return (
     <>
@@ -201,7 +192,7 @@ const Store = () => {
               </TitleWrapper>
               <Margin height="24" />
               <FavoriteListWrapper>
-                <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
+                <FavoriteListContainer>{interestAlbum}</FavoriteListContainer>
               </FavoriteListWrapper>
               <Margin height="24" />
               <TitleWrapper>
@@ -210,7 +201,70 @@ const Store = () => {
                 </Title>
               </TitleWrapper>
               <Margin height="24" />
-              <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+              <AlbumWrapper>
+                {/* <Album
+                  imgLink={allList[0].album_image}
+                  albumTitle={allList[0].name}
+                  artist={allList[0].artist_name}
+                  year={allList[0].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[0].id}`}
+                />
+                <Album
+                  imgLink={allList[1].album_image}
+                  albumTitle={allList[1].name}
+                  artist={allList[1].artist_name}
+                  year={allList[1].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[1].id}`}
+                />
+                <Album
+                  imgLink={allList[2].album_image}
+                  albumTitle={allList[2].name}
+                  artist={allList[2].artist_name}
+                  year={allList[2].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[2].id}`}
+                />
+                <Album
+                  imgLink={allList[3].album_image}
+                  albumTitle={allList[3].name}
+                  artist={allList[3].artist_name}
+                  year={allList[3].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[3].id}`}
+                />
+                <Album
+                  imgLink={allList[4].album_image}
+                  albumTitle={allList[4].name}
+                  artist={allList[4].artist_name}
+                  year={allList[4].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[4].id}`}
+                />
+                <Album
+                  imgLink={allList[5].album_image}
+                  albumTitle={allList[5].name}
+                  artist={allList[5].artist_name}
+                  year={allList[5].created_at.substring(0, 4)}
+                  isChecked={false}
+                  link={`/purchase/${allList[5].id}`}
+                /> */}
+                {/* {recommendList.map((i) => {
+                  console.log(allList[i.id].album_image);
+                  var ii = allList[i.id].album_image;
+                  return (
+                    <Album
+                      imgLink={ii}
+                      albumTitle={allList[0].name}
+                      artist={allList[0].artist_name}
+                      year={allList[0].created_at.substring(0, 4)}
+                      isChecked={false}
+                      link={`/purchase/${allList[0].id}`}
+                    />
+                  );
+                })} */}
+              </AlbumWrapper>
               <Margin height="24" />
               <TitleWrapper>
                 <Title>
@@ -218,7 +272,7 @@ const Store = () => {
                 </Title>
               </TitleWrapper>
               <Margin height="24" />
-              <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+              <AlbumWrapper></AlbumWrapper>
               <Margin height="88" />
             </>
           )}
