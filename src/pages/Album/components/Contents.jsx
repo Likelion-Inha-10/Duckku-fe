@@ -22,6 +22,7 @@ const Type = styled(Flex)`
 `;
 
 const Contents = ({
+  aid,
   data,
   photo,
   albums,
@@ -59,7 +60,7 @@ const Contents = ({
         <PhotoCategory photo={photo} data={data} />
       )}
       {clickCategory === "응모권" && (
-        <TicketCategory ticket={ticket} data={data} />
+        <TicketCategory aid={aid} ticket={ticket} data={data} />
       )}
     </>
   );
