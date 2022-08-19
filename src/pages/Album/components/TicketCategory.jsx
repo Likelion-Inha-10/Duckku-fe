@@ -8,6 +8,7 @@ import A from "../../../assets/fonts/AlfaSlabOne-Regular.woff";
 import Button from "../../../duckku-ui/Button";
 import Toast from "../../../duckku-ui/Toast";
 import Flex from "../../../duckku-ui/Flex";
+import axios from "axios";
 
 const TicketWrapper = styled.div`
   display: grid;
@@ -86,12 +87,19 @@ const Null = styled(Flex)`
   height: 130px;
   width: 100%;
 `;
-const TicketCategory = ({ data, ticket }) => {
+const TicketCategory = ({ data, ticket, aid }) => {
   const [isNull, setIsNull] = useState(ticket ? false : true);
   var number = [];
 
-  const submitTicket = (data) => {
-    Toast(`총 ${data.length}개의 응모권이 등록되었습니다!`);
+  const submitTicket = (ticket) => {
+    Toast(`총 ${ticket}개의 응모권이 등록되었습니다!`);
+    const id = localStorage.getItem("id");
+
+    axios
+      .post(`${process.env.REACT_APP_API}/${aid}/ticket_use_complete/${id}`)
+      .then((r) => {
+        console.log(r);
+      });
   };
 
   useEffect(() => {
@@ -104,7 +112,7 @@ const TicketCategory = ({ data, ticket }) => {
     <>
       <TicketWrapper>
         {number.map((d) =>
-          d ? (
+          number.length ? (
             <GradationBorder>
               <Circle>
                 <Duck height="32px" width="32px" />
