@@ -32,6 +32,7 @@ const AlbumInfoWrapper = styled.div`
   align-items: baseline;
   padding-left: 8px;
   padding-right: 8px;
+  overflow: hidden;
 `;
 
 const BottomTextWrapper = styled.div`
