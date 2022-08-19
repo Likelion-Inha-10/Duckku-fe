@@ -82,6 +82,7 @@ const MoreViewTextWrapper = styled.div`
 const MainHome = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
+  const [musicList, setMusicList] = useState([]);
   const onClickEdit = () => {
     navigate(`/favorite-artist`);
   };
@@ -93,6 +94,16 @@ const MainHome = () => {
       .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
       .then((response) => {
         setUserName(response.data[0].userName);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    const musicArray = [];
+    axios
+      .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
+      .then((response) => {
         console.log(response);
       })
       .catch((error) => {
