@@ -11,6 +11,7 @@ const CardContain = styled.div`
   margin-right: 9px;
   margin-bottom: 24px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 const CardImage = styled.div`
