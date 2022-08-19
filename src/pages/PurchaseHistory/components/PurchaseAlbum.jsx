@@ -29,6 +29,7 @@ const AlbumCover = styled.div`
   width: 79px;
   height: 107px;
   display: flex;
+  justify-content: center;
   border-radius: 6px;
   background-size: cover;
   background-image: url(${(props) => (props.Img ? props.Img : "none")});
@@ -124,7 +125,8 @@ const PurchaseAlbum = (props) => {
               </Flex>
             </Option>
             <Ticket>
-              <Typography thin14 color="darkGray">[응모권 미포함]</Typography>
+              <Typography thin14 color="darkGray">[응모권 &nbsp;</Typography>
+              <Typography thin14 color="darkGray">{props.Include}</Typography>
             </Ticket>
             <Flex dorection="row">
               <Price>

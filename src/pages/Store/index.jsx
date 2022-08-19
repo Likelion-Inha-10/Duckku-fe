@@ -11,6 +11,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import theme from "./../../assets/theme/index";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -89,6 +90,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: true,
+      id: "1",
     },
     {
       imgLink: "https://image.yes24.com/goods/71935476/XL",
@@ -96,6 +98,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: true,
+      id: "2",
     },
     {
       imgLink: "https://image.yes24.com/goods/71935476/XL",
@@ -103,6 +106,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: false,
+      id: "3",
     },
     {
       imgLink: "https://image.yes24.com/goods/71935476/XL",
@@ -110,6 +114,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: false,
+      id: "4",
     },
     {
       imgLink: "https://image.yes24.com/goods/71935476/XL",
@@ -117,6 +122,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: false,
+      id: "5",
     },
     {
       imgLink: "https://image.yes24.com/goods/71935476/XL",
@@ -124,6 +130,7 @@ const Store = () => {
       artist: "TWICE",
       year: "2022",
       isChecked: false,
+      id: "6",
     },
   ]);
 
@@ -145,7 +152,7 @@ const Store = () => {
           artist={album.artist}
           year={album.year}
           isChecked={album.isChecked}
-          link={"/purchase"}
+          link={`/purchase/${album.id}`}
         />
       ))
     );
