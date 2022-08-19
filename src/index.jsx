@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
 
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    }import { axios } from 'axios';
+    }
 
 `;
 
