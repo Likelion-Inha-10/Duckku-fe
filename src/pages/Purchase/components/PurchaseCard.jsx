@@ -23,6 +23,7 @@ const PurchaseImage = styled.img`
   border-radius: 10% 10% 30% 30%;
   margin-top: 50px;
   background-color: gray;
+  object-fit: cover;
 `;
 
 const ImageHeartWrapper = styled.div`
@@ -62,12 +63,9 @@ const HeartButton = () => {
     if (like === true) {
       setLike(false);
       axios
-        .post(
-          `${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}
-      `
-        )
-
+        .post(`${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}`)
         .then((response) => {
+          console.log(response);
           console.log("찜하기 취소 성공");
         })
         .catch((error) => {
@@ -76,12 +74,9 @@ const HeartButton = () => {
     } else {
       setLike(true);
       axios
-        .post(
-          `${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}
-      `
-        )
-
+        .post(`${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}`)
         .then((response) => {
+          console.log(response);
           console.log("찜하기 성공");
         })
         .catch((error) => {
@@ -89,6 +84,17 @@ const HeartButton = () => {
         });
     }
   };
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/show_subalbum_list/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <HeartSection onClick={WishClicked}>

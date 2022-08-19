@@ -18,7 +18,8 @@ const CardWrapper = styled.div`
   width: 326px;
   height: 484px;
   margin-bottom: 29px;
-  background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat;
+  background: url(${(props) => (props.imgLink ? props.imgLink : "")}) no-repeat
+    center;
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 20px;

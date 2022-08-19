@@ -110,12 +110,19 @@ const Store = () => {
     axios
       .get(`${process.env.REACT_APP_API}/get_all_albums`)
       .then((response) => {
-        console.log(response.data[0].album_image);
-        setAllList(response.data);
+        console.log(response.data);
         let albumArray = [];
         response.data.map((album) => {
-          albumArray.push({});
+          albumArray.push({
+            id: album.id,
+            imgLink: album.album_image,
+            albumTitle: album.name,
+            artist: album.artist_name,
+            year: album.created_at.substring(0, 4),
+            isChecked: false,
+          });
         });
+        setAllList(albumArray);
       })
       .catch((error) => {
         console.log(error);
@@ -137,17 +144,20 @@ const Store = () => {
     );
   }, [interestList]);
 
-  // var recommendList = [];
-  // var newList = [];
-  // for (var i = 0; i < 6; i++) {
-  //   recommendList.push({ id: i });
-  // }
-
-  // console.log(recommendList);
-
-  // for (var j = 6; j < 12; j++) {
-  //   newList.push({ id: j });
-  // }
+  useEffect(() => {
+    setAllAlbum(
+      allList.map((album) => (
+        <Album
+          imgLink={album.imgLink}
+          albumTitle={album.albumTitle}
+          artist={album.artist}
+          year={album.year}
+          isChecked={false}
+          link={`/purchase/${album.id}`}
+        />
+      ))
+    );
+  }, [allList]);
 
   return (
     <>
@@ -201,76 +211,8 @@ const Store = () => {
                 </Title>
               </TitleWrapper>
               <Margin height="24" />
-              <AlbumWrapper>
-                {/* <Album
-                  imgLink={allList[0].album_image}
-                  albumTitle={allList[0].name}
-                  artist={allList[0].artist_name}
-                  year={allList[0].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[0].id}`}
-                />
-                <Album
-                  imgLink={allList[1].album_image}
-                  albumTitle={allList[1].name}
-                  artist={allList[1].artist_name}
-                  year={allList[1].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[1].id}`}
-                />
-                <Album
-                  imgLink={allList[2].album_image}
-                  albumTitle={allList[2].name}
-                  artist={allList[2].artist_name}
-                  year={allList[2].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[2].id}`}
-                />
-                <Album
-                  imgLink={allList[3].album_image}
-                  albumTitle={allList[3].name}
-                  artist={allList[3].artist_name}
-                  year={allList[3].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[3].id}`}
-                />
-                <Album
-                  imgLink={allList[4].album_image}
-                  albumTitle={allList[4].name}
-                  artist={allList[4].artist_name}
-                  year={allList[4].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[4].id}`}
-                />
-                <Album
-                  imgLink={allList[5].album_image}
-                  albumTitle={allList[5].name}
-                  artist={allList[5].artist_name}
-                  year={allList[5].created_at.substring(0, 4)}
-                  isChecked={false}
-                  link={`/purchase/${allList[5].id}`}
-                /> */}
-                {/* {recommendList.map((i) => {
-                  console.log(allList[i.id].album_image);
-                  var ii = allList[i.id].album_image;
-                  return (
-                    <Album
-                      imgLink={ii}
-                      albumTitle={allList[0].name}
-                      artist={allList[0].artist_name}
-                      year={allList[0].created_at.substring(0, 4)}
-                      isChecked={false}
-                      link={`/purchase/${allList[0].id}`}
-                    />
-                  );
-                })} */}
-              </AlbumWrapper>
+              <AlbumWrapper>{allAlbum}</AlbumWrapper>
               <Margin height="24" />
-              <TitleWrapper>
-                <Title>
-                  <Typography bold24>최신 앨범</Typography>
-                </Title>
-              </TitleWrapper>
               <Margin height="24" />
               <AlbumWrapper></AlbumWrapper>
               <Margin height="88" />
