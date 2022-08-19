@@ -52,7 +52,9 @@ const Contents = ({
       </Title>
 
       <Margin height="30" />
-      {clickCategory === "앨범" && <AlbumCategory data={data} />}
+      {clickCategory === "앨범" && (
+        <AlbumCategory albums={albums} data={data} />
+      )}
       {clickCategory === "포토카드" && (
         <PhotoCategory photo={photo} data={data} />
       )}

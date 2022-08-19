@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 import Margin from "../../../duckku-ui/Margin";
@@ -86,18 +86,26 @@ const Null = styled(Flex)`
   height: 130px;
   width: 100%;
 `;
-const TicketCategory = ({ data }) => {
-  const [isNull, setIsNull] = useState(data.length ? false : true);
+const TicketCategory = ({ data, ticket }) => {
+  const [isNull, setIsNull] = useState(ticket ? false : true);
+  var number = [];
 
   const submitTicket = (data) => {
     Toast(`총 ${data.length}개의 응모권이 등록되었습니다!`);
   };
+
+  useEffect(() => {
+    for (var i = 0; i < ticket; i++) {
+      number.push({ id: i });
+    }
+  }, []);
+
   return (
     <>
       <TicketWrapper>
-        {data.map((d) =>
-          data.length ? (
-            <GradationBorder key={d.id}>
+        {number.map((d) =>
+          d ? (
+            <GradationBorder>
               <Circle>
                 <Duck height="32px" width="32px" />
                 <Margin height="10" />
@@ -126,10 +134,10 @@ const TicketCategory = ({ data }) => {
       ) : null}
       <Margin height="150" />
       <ButtonWrapper>
-        {data.length ? (
-          <Button onClick={() => submitTicket(data)}>모두 응모하기</Button>
+        {ticket ? (
+          <Button onClick={() => submitTicket(ticket)}>모두 응모하기</Button>
         ) : (
-          <Button backgroundColor="gray" onClick={() => submitTicket(data)}>
+          <Button backgroundColor="gray" onClick={() => submitTicket(ticket)}>
             모두 응모하기
           </Button>
         )}

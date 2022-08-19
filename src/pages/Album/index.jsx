@@ -40,6 +40,7 @@ const Album = () => {
           .get(`${process.env.REACT_APP_API}/get_all_purchased_albums/${id}`)
           .then((r) => {
             console.log(r);
+            setAlbums(r.data);
           });
 
         //포카
@@ -91,6 +92,7 @@ const Album = () => {
             data={data}
             photo={photo}
             ticket={ticket}
+            albums={albums}
             categories={categories}
             clickCategory={clickCategory}
           />

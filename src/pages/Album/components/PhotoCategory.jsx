@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Typography from "../../../duckku-ui/Typography";
 import Flex from "../../../duckku-ui/Flex";
@@ -22,6 +22,9 @@ const PhotoContainer = styled.div`
 `;
 
 const PhotoCategory = ({ data, photo }) => {
+  useEffect(() => {
+    console.log(photo);
+  });
   return (
     <>
       <PhotoContainer>
