@@ -12,6 +12,7 @@ import "./components/slick.css";
 import { ReactComponent as StartTitle } from "../../assets/svgs/startTitle.svg";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const StyledSlider = styled(Slider)`
   &,
@@ -117,111 +118,120 @@ const Intro = () => {
   }, []);
 
   return (
-    <Layout>
-      <StartPageWrapper visible={startLoad}>
-        <Typography bold16>나만의 덕질 꾸미기</Typography>
-        <Margin height="18" />
-        <StartTitle />
-      </StartPageWrapper>
-      <Margin height="59" />
-      <StyledSlider {...settings}>
-        <SlideWrapper>
-          <Flex justify="center">
-            <Title thin24 color="black">
-              좋아하는
-              <br />
-              <StyledSpan>아티스트를 등록</StyledSpan>
-              하세요
-            </Title>
-          </Flex>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <StartPageWrapper visible={startLoad}>
+            <Typography bold16>나만의 덕질 꾸미기</Typography>
+            <Margin height="18" />
+            <StartTitle />
+          </StartPageWrapper>
+          <Margin height="59" />
+          <StyledSlider {...settings}>
+            <SlideWrapper>
+              <Flex justify="center">
+                <Title thin24 color="black">
+                  좋아하는
+                  <br />
+                  <StyledSpan>아티스트를 등록</StyledSpan>
+                  하세요
+                </Title>
+              </Flex>
 
-          <Margin height="36" />
-          <Flex justify="center">
-            <SubTitle thin16 color="black">
-              좋아하는 아티스트가 설정되면
-              <br />
-              당신에게 최적화된 서비스를 지원합니다.
-            </SubTitle>
-          </Flex>
+              <Margin height="36" />
+              <Flex justify="center">
+                <SubTitle thin16 color="black">
+                  좋아하는 아티스트가 설정되면
+                  <br />
+                  당신에게 최적화된 서비스를 지원합니다.
+                </SubTitle>
+              </Flex>
 
-          <Margin height="36" />
-          <Flex justify="center">
-            <StyledImg src={Tutorial01} />
-          </Flex>
-        </SlideWrapper>
+              <Margin height="36" />
+              <Flex justify="center">
+                <StyledImg src={Tutorial01} />
+              </Flex>
+            </SlideWrapper>
 
-        <SlideWrapper>
-          <Flex justify="center">
-            <Title thin24 color="black">
-              <StyledSpan>토큰형 앨범</StyledSpan>으로
-              <br />
-              저렴하게 구매하세요
-            </Title>
-          </Flex>
-          <Margin height="36" />
-          <Flex justify="center">
-            <SubTitle thin16 color="black">
-              실물 앨범의 제작, 유통비용을 없애,
-              <br />
-              필요로 했던 상품들을 합리적인 가격에 판매합니다.
-            </SubTitle>
-          </Flex>
+            <SlideWrapper>
+              <Flex justify="center">
+                <Title thin24 color="black">
+                  <StyledSpan>토큰형 앨범</StyledSpan>으로
+                  <br />
+                  저렴하게 구매하세요
+                </Title>
+              </Flex>
+              <Margin height="36" />
+              <Flex justify="center">
+                <SubTitle thin16 color="black">
+                  실물 앨범의 제작, 유통비용을 없애,
+                  <br />
+                  필요로 했던 상품들을 합리적인 가격에 판매합니다.
+                </SubTitle>
+              </Flex>
 
-          <Margin height="36" />
+              <Margin height="36" />
 
-          <Flex justify="center">
-            <StyledImg src={Tutorial02} />
-          </Flex>
-        </SlideWrapper>
+              <Flex justify="center">
+                <StyledImg src={Tutorial02} />
+              </Flex>
+            </SlideWrapper>
 
-        <SlideWrapper>
-          <Flex justify="center">
-            <Title thin24 color="black">
-              구매한 앨범을
-              <br />
-              <StyledSpan>편리하게 보관</StyledSpan>하세요
-            </Title>
-          </Flex>
-          <Margin height="36" />
-          <Flex justify="center">
-            <SubTitle thin16 color="black">
-              소중한 나의 앨범을
-              <br />
-              온라인 상에서 편리하게 보관하세요.
-            </SubTitle>
-          </Flex>
+            <SlideWrapper>
+              <Flex justify="center">
+                <Title thin24 color="black">
+                  구매한 앨범을
+                  <br />
+                  <StyledSpan>편리하게 보관</StyledSpan>하세요
+                </Title>
+              </Flex>
+              <Margin height="36" />
+              <Flex justify="center">
+                <SubTitle thin16 color="black">
+                  소중한 나의 앨범을
+                  <br />
+                  온라인 상에서 편리하게 보관하세요.
+                </SubTitle>
+              </Flex>
 
-          <Margin height="36" />
+              <Margin height="36" />
 
-          <Flex justify="center">
-            <StyledImg src={Tutorial03} />
-          </Flex>
-        </SlideWrapper>
-      </StyledSlider>
+              <Flex justify="center">
+                <StyledImg src={Tutorial03} />
+              </Flex>
+            </SlideWrapper>
+          </StyledSlider>
 
-      <ButtonWrapper>
-        {slide === 2 ? (
-          <Button
-            width="350"
-            height="60"
-            borderRadius="15"
-            backgroundColor="main"
-            onClick={() => onClickButton()}
-          >
-            서비스 시작하기
-          </Button>
-        ) : (
-          <Button
-            width="350"
-            height="60"
-            borderRadius="15"
-            backgroundColor="btnGray"
-          >
-            서비스 시작하기
-          </Button>
-        )}
-      </ButtonWrapper>
-    </Layout>
+          <ButtonWrapper>
+            {slide === 2 ? (
+              <Button
+                width="350"
+                height="60"
+                borderRadius="15"
+                backgroundColor="main"
+                onClick={() => onClickButton()}
+              >
+                서비스 시작하기
+              </Button>
+            ) : (
+              <Button
+                width="350"
+                height="60"
+                borderRadius="15"
+                backgroundColor="btnGray"
+              >
+                서비스 시작하기
+              </Button>
+            )}
+          </ButtonWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

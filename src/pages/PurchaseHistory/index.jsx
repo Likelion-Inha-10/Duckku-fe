@@ -7,6 +7,7 @@ import Flex from "../../duckku-ui/Flex";
 import PurchaseAlbum from "./components/PurchaseAlbum";
 import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // 주문 번호 wrap
 const DateBox = styled.div`
@@ -74,59 +75,67 @@ const PurchaseHistory = () => {
       Price: "₩11,000",
       Count: "1",
     },
-  ]
+  ];
   return (
-    <Layout>
-      <Header back title="구매내역" />
-      <Margin height="20" />
-      <DatePartition />
-      <DateBox>
-        <Flex direction="row" onClick={notFound}>
-          <DateContent>
-            <Typography bold18>22.07.17</Typography>
-          </DateContent>
-          <DetailContent>
-            <Typography thin18 color="darkGray">
-              주문상세 {">"}
-            </Typography>
-          </DetailContent>
-        </Flex>
-      </DateBox>
-      <PurchaseListMap Lists={Lists} />
-      <DatePartition />
-      <DateBox>
-        <Flex direction="row" onClick={notFound}>
-          <DateContent>
-            <Typography bold18>22.06.11</Typography>
-          </DateContent>
-          <DetailContent>
-            <Typography thin18 color="darkGray">
-              주문상세 {">"}
-            </Typography>
-          </DetailContent>
-        </Flex>
-      </DateBox>
-      <PurchaseListMap Lists={Lists} />
-      <PurchaseListMap Lists={Lists} />
-      <DatePartition />
-      <DateBox>
-        <Flex direction="row" onClick={notFound}>
-          <DateContent>
-            <Typography bold18>22.06.04</Typography>
-          </DateContent>
-          <DetailContent>
-            <Typography thin18 color="darkGray">
-              주문상세 {">"}
-            </Typography>
-          </DetailContent>
-        </Flex>
-      </DateBox>
-      <PurchaseListMap Lists={Lists} />
-      <PurchaseListMap Lists={Lists} />
-      <PurchaseListMap Lists={Lists} />
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Header back title="구매내역" />
+          <Margin height="20" />
+          <DatePartition />
+          <DateBox>
+            <Flex direction="row" onClick={notFound}>
+              <DateContent>
+                <Typography bold18>22.07.17</Typography>
+              </DateContent>
+              <DetailContent>
+                <Typography thin18 color="darkGray">
+                  주문상세 {">"}
+                </Typography>
+              </DetailContent>
+            </Flex>
+          </DateBox>
+          <PurchaseListMap Lists={Lists} />
+          <DatePartition />
+          <DateBox>
+            <Flex direction="row" onClick={notFound}>
+              <DateContent>
+                <Typography bold18>22.06.11</Typography>
+              </DateContent>
+              <DetailContent>
+                <Typography thin18 color="darkGray">
+                  주문상세 {">"}
+                </Typography>
+              </DetailContent>
+            </Flex>
+          </DateBox>
+          <PurchaseListMap Lists={Lists} />
+          <PurchaseListMap Lists={Lists} />
+          <DatePartition />
+          <DateBox>
+            <Flex direction="row" onClick={notFound}>
+              <DateContent>
+                <Typography bold18>22.06.04</Typography>
+              </DateContent>
+              <DetailContent>
+                <Typography thin18 color="darkGray">
+                  주문상세 {">"}
+                </Typography>
+              </DetailContent>
+            </Flex>
+          </DateBox>
+          <PurchaseListMap Lists={Lists} />
+          <PurchaseListMap Lists={Lists} />
+          <PurchaseListMap Lists={Lists} />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
 export default PurchaseHistory;
-

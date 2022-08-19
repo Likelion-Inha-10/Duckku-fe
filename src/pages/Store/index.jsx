@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import theme from "./../../assets/theme/index";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TitleWrapper = styled.div`
   width: 326px;
@@ -151,64 +152,73 @@ const Store = () => {
   }, [recommendList]);
 
   return (
-    <Layout>
-      <Header back title="스토어" />
-      <LikeButtonWrapper>
-        <LikeButton onClick={() => onClickLike()}>
-          <AiFillHeart size="28px" color={theme.colors.red} />
-        </LikeButton>
-      </LikeButtonWrapper>
-      <Margin height="28" />
-      <InputBox placeholder="검색어를 입력해 주세요" />
-      {false === true ? (
-        <>
-          <Margin height="250" />
-          <Typography regular16 color="gray">
-            해당하는 앨범이 없습니다
-          </Typography>
-        </>
-      ) : (
-        <>
-          <Margin height="40" />
-          <TitleWrapper>
-            <Title>
-              <Typography bold24>
-                나의 관심
-                <br />
-                아티스트의 앨범
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Header back title="스토어" />
+          <LikeButtonWrapper>
+            <LikeButton onClick={() => onClickLike()}>
+              <AiFillHeart size="28px" color={theme.colors.red} />
+            </LikeButton>
+          </LikeButtonWrapper>
+          <Margin height="28" />
+          <InputBox placeholder="검색어를 입력해 주세요" />
+          {false === true ? (
+            <>
+              <Margin height="250" />
+              <Typography regular16 color="gray">
+                해당하는 앨범이 없습니다
               </Typography>
-            </Title>
-            <MoreButton onClick={() => onClickMore()}>
-              <Typography bold16 color="gray">
-                더보기
-              </Typography>
-            </MoreButton>
-          </TitleWrapper>
-          <Margin height="24" />
-          <FavoriteListWrapper>
-            <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
-          </FavoriteListWrapper>
-          <Margin height="24" />
-          <TitleWrapper>
-            <Title>
-              <Typography bold24>추천 앨범</Typography>
-            </Title>
-          </TitleWrapper>
-          <Margin height="24" />
-          <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
-          <Margin height="24" />
-          <TitleWrapper>
-            <Title>
-              <Typography bold24>최신 앨범</Typography>
-            </Title>
-          </TitleWrapper>
-          <Margin height="24" />
-          <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
-          <Margin height="88" />
-        </>
-      )}
-      <Footer active="store" />
-    </Layout>
+            </>
+          ) : (
+            <>
+              <Margin height="40" />
+              <TitleWrapper>
+                <Title>
+                  <Typography bold24>
+                    나의 관심
+                    <br />
+                    아티스트의 앨범
+                  </Typography>
+                </Title>
+                <MoreButton onClick={() => onClickMore()}>
+                  <Typography bold16 color="gray">
+                    더보기
+                  </Typography>
+                </MoreButton>
+              </TitleWrapper>
+              <Margin height="24" />
+              <FavoriteListWrapper>
+                <FavoriteListContainer>{recommendAlbum}</FavoriteListContainer>
+              </FavoriteListWrapper>
+              <Margin height="24" />
+              <TitleWrapper>
+                <Title>
+                  <Typography bold24>추천 앨범</Typography>
+                </Title>
+              </TitleWrapper>
+              <Margin height="24" />
+              <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+              <Margin height="24" />
+              <TitleWrapper>
+                <Title>
+                  <Typography bold24>최신 앨범</Typography>
+                </Title>
+              </TitleWrapper>
+              <Margin height="24" />
+              <AlbumWrapper>{recommendAlbum}</AlbumWrapper>
+              <Margin height="88" />
+            </>
+          )}
+          <Footer active="store" />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

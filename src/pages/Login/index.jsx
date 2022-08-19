@@ -9,6 +9,7 @@ import Typography from "../../duckku-ui/Typography";
 import { useNavigate } from "react-router-dom";
 import Toast from "../../duckku-ui/Toast";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const InputWrapper = styled.div`
   ${(props) => props.theme.flex.flexCenterColumn};
@@ -47,8 +48,21 @@ const Login = () => {
       })
       .then((r) => {
         localStorage.setItem("id", r.data.id);
-        navigate(`/artist-select`);
         console.log("로그인 성공");
+        const id = localStorage.getItem("id");
+        axios
+          .get(`${process.env.REACT_APP_API}/my_artist_list/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.length === 0) {
+              navigate(`/artist-select`);
+            } else {
+              navigate(`/main-home`);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((e) => {
         console.log(e);
@@ -66,44 +80,53 @@ const Login = () => {
   };
 
   return (
-    <Layout>
-      <Header back title="로그인" />
-      <Margin height="100" />
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Header back title="로그인" />
+          <Margin height="100" />
 
-      <Wrapper>
-        <InputWrapper>
-          <Input
-            name="email"
-            onChange={onChange}
-            borderColor={colors.email}
-            placeholder="이메일"
-            value={user.email}
-          />
-          <Password>
-            <Input
-              name="pw"
-              onChange={onChange}
-              borderColor={colors.pw}
-              placeholder="비밀번호"
-              type="password"
-              value={user.pw}
-            />
-            <Margin height="5" />
-            <Typography
-              style={{ visibility: valid.pw }}
-              fontSize="14"
-              color="red"
-              fontWeight="400"
-            >
-              아이디 혹은 비밀번호가 틀렸습니다
-            </Typography>
-          </Password>
-        </InputWrapper>
-      </Wrapper>
-      <ButtonWrapper>
-        <Button onClick={loginSuccess}>로그인</Button>
-      </ButtonWrapper>
-    </Layout>
+          <Wrapper>
+            <InputWrapper>
+              <Input
+                name="email"
+                onChange={onChange}
+                borderColor={colors.email}
+                placeholder="이메일"
+                value={user.email}
+              />
+              <Password>
+                <Input
+                  name="pw"
+                  onChange={onChange}
+                  borderColor={colors.pw}
+                  placeholder="비밀번호"
+                  type="password"
+                  value={user.pw}
+                />
+                <Margin height="5" />
+                <Typography
+                  style={{ visibility: valid.pw }}
+                  fontSize="14"
+                  color="red"
+                  fontWeight="400"
+                >
+                  아이디 혹은 비밀번호가 틀렸습니다
+                </Typography>
+              </Password>
+            </InputWrapper>
+          </Wrapper>
+          <ButtonWrapper>
+            <Button onClick={loginSuccess}>로그인</Button>
+          </ButtonWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

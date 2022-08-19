@@ -10,6 +10,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TopWrapper = styled.div`
   width: 100%;
@@ -214,85 +215,97 @@ const FavoriteArtist = () => {
   };
 
   return (
-    <Layout>
-      <TopWrapper>
-        <Header back title="나의 관심 아티스트" zIndex="20" />
-        <Margin height="26" />
-        <TitleWrapper>
-          <Typography bold24 color="headerText">
-            총 {Object.keys(artistCards).length}명의 아티스트
-          </Typography>
-          <PencilButton onClick={changePencilButtonState}>
-            <BsPencilSquare
-              size="24px"
-              color={isPencilbuttonClicked === false ? "black" : "#AFAFAF"}
-            />
-          </PencilButton>
-        </TitleWrapper>
-      </TopWrapper>
-      <ModalWrapper>
-        <ModalButtonWrapper
-          active={
-            isPencilbuttonClicked === true && isDeleteModeActivated === false
-          }
-        >
-          <ModalInsideButton onClick={() => onClickAdd()}>
-            <Typography bold16>추가하기</Typography>
-          </ModalInsideButton>
-          <Margin height="10" />
-          <ModalInsideButton onClick={activateDeleteMode}>
-            <Typography bold16>제거하기</Typography>
-          </ModalInsideButton>
-        </ModalButtonWrapper>
-      </ModalWrapper>
-      <ArtistCardWrapper>
-        <DragDropContext onDragEnd={handleChange}>
-          <Droppable droppableId="artistCards">
-            {(provided) => (
-              <div
-                className="artistCards"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={getListStyle()}
-              >
-                {artistCards.map(
-                  ({ id, deleted, artistName, date, imgLink }, index) => (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.dragHandleProps}
-                          {...provided.draggableProps}
-                          style={getItemStyle(provided.draggableProps.style)}
-                        >
-                          <ArtistCard
-                            id={index + 1}
-                            deleted={deleted}
-                            activate={isDeleteModeActivated}
-                            artistName={artistName}
-                            date={date}
-                            imgLink={imgLink}
-                            setDeleteState={setDeleteState}
-                          />
-                        </div>
-                      )}
-                    </Draggable>
-                  )
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <TopWrapper>
+            <Header back title="나의 관심 아티스트" zIndex="20" />
+            <Margin height="26" />
+            <TitleWrapper>
+              <Typography bold24 color="headerText">
+                총 {Object.keys(artistCards).length}명의 아티스트
+              </Typography>
+              <PencilButton onClick={changePencilButtonState}>
+                <BsPencilSquare
+                  size="24px"
+                  color={isPencilbuttonClicked === false ? "black" : "#AFAFAF"}
+                />
+              </PencilButton>
+            </TitleWrapper>
+          </TopWrapper>
+          <ModalWrapper>
+            <ModalButtonWrapper
+              active={
+                isPencilbuttonClicked === true &&
+                isDeleteModeActivated === false
+              }
+            >
+              <ModalInsideButton onClick={() => onClickAdd()}>
+                <Typography bold16>추가하기</Typography>
+              </ModalInsideButton>
+              <Margin height="10" />
+              <ModalInsideButton onClick={activateDeleteMode}>
+                <Typography bold16>제거하기</Typography>
+              </ModalInsideButton>
+            </ModalButtonWrapper>
+          </ModalWrapper>
+          <ArtistCardWrapper>
+            <DragDropContext onDragEnd={handleChange}>
+              <Droppable droppableId="artistCards">
+                {(provided) => (
+                  <div
+                    className="artistCards"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={getListStyle()}
+                  >
+                    {artistCards.map(
+                      ({ id, deleted, artistName, date, imgLink }, index) => (
+                        <Draggable key={id} draggableId={id} index={index}>
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.dragHandleProps}
+                              {...provided.draggableProps}
+                              style={getItemStyle(
+                                provided.draggableProps.style
+                              )}
+                            >
+                              <ArtistCard
+                                id={index + 1}
+                                deleted={deleted}
+                                activate={isDeleteModeActivated}
+                                artistName={artistName}
+                                date={date}
+                                imgLink={imgLink}
+                                setDeleteState={setDeleteState}
+                              />
+                            </div>
+                          )}
+                        </Draggable>
+                      )
+                    )}
+                    {provided.placeholder}
+                  </div>
                 )}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </ArtistCardWrapper>
-      <ButtonWrapper>
-        <Button width="350" height="68" onClick={onComfirm}>
-          <Typography bold24 color="white">
-            {isDeleteModeActivated ? "삭제 완료" : "완료"}
-          </Typography>
-        </Button>
-      </ButtonWrapper>
-    </Layout>
+              </Droppable>
+            </DragDropContext>
+          </ArtistCardWrapper>
+          <ButtonWrapper>
+            <Button width="350" height="68" onClick={onComfirm}>
+              <Typography bold24 color="white">
+                {isDeleteModeActivated ? "삭제 완료" : "완료"}
+              </Typography>
+            </Button>
+          </ButtonWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
