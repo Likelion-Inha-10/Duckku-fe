@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Typography from "../../duckku-ui/Typography";
 import { PurchaseCard, PurchaseBtn } from "./components/PurchaseCard";
 import SingList from "./components/SingList";
+import { motion } from "framer-motion";
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -55,25 +56,27 @@ const Purchase = () => {
   ];
 
   return (
-    <Layout>
-      <Header zIndex="10" back title="   앨범 구매하기" />
-      <AllWrapper>
-        <PurchaseCard
-          Img="https://th.bing.com/th/id/R.5e9ac488f0fe4831728673c1ae26cdb1?rik=utuJcfkDCV%2bY0A&riu=http%3a%2f%2fimage.yes24.com%2fmomo%2fTopCate2520%2fMidCate005%2f251947388.jpg&ehk=2kmSkQWNOz%2b7c%2fRy7B7uuI6tZQmtzG42pUuSVkRK6N8%3d&risl=&pid=ImgRaw&r=0"
-          SingName="The ReVe Festival ‘Day2’"
-          SingerName="레드벨벳"
-        />
-        <Margin width="390" height="50" />
+    <>
+      <Layout>
+        <Header zIndex="10" back title="   앨범 구매하기" />
+        <AllWrapper>
+          <PurchaseCard
+            Img="https://th.bing.com/th/id/R.5e9ac488f0fe4831728673c1ae26cdb1?rik=utuJcfkDCV%2bY0A&riu=http%3a%2f%2fimage.yes24.com%2fmomo%2fTopCate2520%2fMidCate005%2f251947388.jpg&ehk=2kmSkQWNOz%2b7c%2fRy7B7uuI6tZQmtzG42pUuSVkRK6N8%3d&risl=&pid=ImgRaw&r=0"
+            SingName="The ReVe Festival ‘Day2’"
+            SingerName="레드벨벳"
+          />
+          <Margin width="390" height="50" />
 
-        <TrackWrapper>
-          <Typography bold16>수록곡</Typography>
+          <TrackWrapper>
+            <Typography bold16>수록곡</Typography>
 
-          <ListsMap Lists={Lists} />
-        </TrackWrapper>
-        <Margin width="300px" height="130" />
-      </AllWrapper>
-      <PurchaseBtn />
-    </Layout>
+            <ListsMap Lists={Lists} />
+          </TrackWrapper>
+          <Margin width="300px" height="130" />
+        </AllWrapper>
+        <PurchaseBtn />
+      </Layout>
+    </>
   );
 };
 
