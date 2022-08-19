@@ -57,10 +57,8 @@ const CardCarousel = () => {
           artistArray.push({
             key: artist.id,
             artistid: artist.id,
-            imgLink:
-              "https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg",
-            iconLink:
-              "https://kkukowiki.kr/images/e/e0/%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3_%EB%A1%9C%EA%B3%A0.png",
+            imgLink: artist.artist_image,
+            iconLink: artist.logo_image,
             artistName: artist.artist_name,
             color1: artist.gradient_color_1,
             color2: artist.gradient_color_2,
