@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import loveImg from "../../../assets/images/love.jpeg";
 import Flex from "../../../duckku-ui/Flex";
 import theme from "../../../assets/theme";
 import Typography from "../../../duckku-ui/Typography";
@@ -51,18 +50,19 @@ const Title = styled.div`
   display: block;
   margin-left: 40px;
   margin-top: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 // 옵션 박스
 const Option = styled.div`
   width: 230px;
   height: 17px;
-  display: flex;
+  display: block;
   margin-left: 40px;
   margin-top: 7px;
+`;
+
+// 글 길이가 길면 말줄임표로 대체하는 속성
+const StyledTypo = styled(Typography)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -72,7 +72,7 @@ const Option = styled.div`
 const Ticket = styled.div`
   width: 230px;
   height: 17px;
-  display: block;
+  display: flex;
   margin-left: 85px;
   margin-top: 2px;
 `;
@@ -115,11 +115,13 @@ const PurchaseAlbum = (props) => {
               </Typography>
             </PurchaseSuccess>
             <Title>
-              <Typography bold14>{props.Title}</Typography>
+              <StyledTypo bold14>{props.Title}</StyledTypo>
             </Title>
             <Option>
-              <Typography thin14 color="darkGray">옵션명 :&nbsp;</Typography>
-              <Typography thin14 color="darkGray">{props.Option}</Typography>
+              <Flex dorection="row">
+                <Typography thin14 color="darkGray">옵션명 :&nbsp;</Typography>
+                <StyledTypo thin14 color="darkGray">{props.Option}</StyledTypo>
+              </Flex>
             </Option>
             <Ticket>
               <Typography thin14 color="darkGray">[응모권 미포함]</Typography>
