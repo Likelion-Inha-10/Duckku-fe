@@ -21,23 +21,46 @@ const Type = styled(Flex)`
   align-items: center;
 `;
 
-const Contents = ({ data, categories, clickCategory }) => {
+const Contents = ({
+  data,
+  photo,
+  albums,
+  ticket,
+  categories,
+  clickCategory,
+}) => {
   return (
     <>
       <Title>
-        <Typography bold16>
-          총 {data.length}개의 {clickCategory}
-        </Typography>
+        {clickCategory === "앨범" && (
+          <Typography bold16>
+            총 {albums.length}개의 {clickCategory}
+          </Typography>
+        )}
+        {clickCategory === "포토카드" && (
+          <Typography bold16>
+            총 {photo.length}개의 {clickCategory}
+          </Typography>
+        )}
+        {clickCategory === "응모권" && (
+          <Typography bold16>
+            총 {ticket}개의 {clickCategory}
+          </Typography>
+        )}
 
-        <Type style={{ cursor: "pointer" }}>
-          <SortMenu />
-        </Type>
+        <Type style={{ cursor: "pointer" }}></Type>
       </Title>
 
       <Margin height="30" />
-      {clickCategory === "앨범" && <AlbumCategory data={data} />}
-      {clickCategory === "포토카드" && <PhotoCategory data={data} />}
-      {clickCategory === "응모권" && <TicketCategory data={data} />}
+      {clickCategory === "앨범" && (
+        <AlbumCategory albums={albums} data={data} />
+      )}
+      {clickCategory === "포토카드" && (
+        <PhotoCategory photo={photo} data={data} />
+      )}
+      {clickCategory === "응모권" && (
+        <TicketCategory ticket={ticket} data={data} />
+      )}
     </>
   );
 };
