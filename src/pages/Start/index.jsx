@@ -7,6 +7,7 @@ import theme from "../../assets/theme";
 import Flex from "../../duckku-ui/Flex";
 import Margin from "../../duckku-ui/Margin";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Wrapper = styled(Flex)`
   max-height: 780px;
@@ -22,55 +23,64 @@ const Login = styled(Flex)``;
 const Start = () => {
   const navigate = useNavigate();
   return (
-    <Layout>
-      <Margin height="80" />
-      <Wrapper>
-        <Typography bold24 center style={{ lineHeight: "29px" }}>
-          어차피 덕질할거
-          <br />
-          행복하게 덕질하자
-        </Typography>
-        <Duck height="120px" width="120px" />
-        <Login>
-          <Typography
-            onClick={() => navigate("/sign-up")}
-            regular16
-            style={{
-              cursor: "pointer",
-              color: "#999999",
-            }}
-          >
-            이메일 회원가입
-          </Typography>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Margin height="80" />
+          <Wrapper>
+            <Typography bold24 center style={{ lineHeight: "29px" }}>
+              어차피 덕질할거
+              <br />
+              행복하게 덕질하자
+            </Typography>
+            <Duck height="120px" width="120px" />
+            <Login>
+              <Typography
+                onClick={() => navigate("/sign-up")}
+                regular16
+                style={{
+                  cursor: "pointer",
+                  color: "#999999",
+                }}
+              >
+                이메일 회원가입
+              </Typography>
 
-          <Typography
-            regular16
-            style={{
-              marginLeft: "20px",
-              marginRight: "20px",
-              color: "#999999",
-            }}
-          >
-            I
-          </Typography>
+              <Typography
+                regular16
+                style={{
+                  marginLeft: "20px",
+                  marginRight: "20px",
+                  color: "#999999",
+                }}
+              >
+                I
+              </Typography>
 
-          <Typography
-            onClick={() => navigate("/login")}
-            style={{
-              cursor: "pointer",
-              fontFamily: "Pretendard-Regular",
-              fontSize: "16px",
-              fontWeight: "700",
-              background: theme.colors.main,
-              color: "transparent",
-              webkitBackgroundClip: "text",
-            }}
-          >
-            이메일 로그인
-          </Typography>
-        </Login>
-      </Wrapper>
-    </Layout>
+              <Typography
+                onClick={() => navigate("/login")}
+                style={{
+                  cursor: "pointer",
+                  fontFamily: "Pretendard-Regular",
+                  fontSize: "16px",
+                  fontWeight: "700",
+                  background: theme.colors.main,
+                  color: "transparent",
+                  webkitBackgroundClip: "text",
+                }}
+              >
+                이메일 로그인
+              </Typography>
+            </Login>
+          </Wrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

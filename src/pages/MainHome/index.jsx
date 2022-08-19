@@ -11,6 +11,7 @@ import NthAlbum from "./components/nthAlbum";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 // 관심 아티스트와 앨범차트를 따로 감싸기 위한 component
 const PageWrapper = styled.div`
@@ -86,7 +87,7 @@ const MainHome = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/userinfo`)
+      .get(`${process.env.REACT_APP_API}/userinfo}`)
       .then((response) => {
         console.log("메인홈");
         console.log(response);
@@ -105,70 +106,79 @@ const MainHome = () => {
   });
 
   return (
-    <Layout>
-      <PageWrapper>
-        <Margin height="40" />
-        <TitleBox>
-          <Flex direction="column" justify="left">
-            <Typography fontSize="28" fontWeight="700">
-              영우 님의
-              <br />
-              관심 아티스트
-            </Typography>
-          </Flex>
-        </TitleBox>
-        <Margin height="40" />
-        <CardCarousel />
-        <EditButtonWrapper>
-          <EditButton onClick={() => onClickEdit()}>+ 수정하기</EditButton>
-        </EditButtonWrapper>
-      </PageWrapper>
-      <PageWrapper>
-        <Margin height="44" />
-        <TitleBox>
-          <Flex direction="column" justify="left">
-            <Typography fontSize="28" fontWeight="700">
-              앨범차트
-            </Typography>
-          </Flex>
-        </TitleBox>
-        <Margin height="24" />
-        <FirstAlbum
-          albumLink="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/639/088/82639088_1653623843808_1_600x600.JPG/dims/resize/Q_80,0"
-          iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-          albumName="Face The Sun"
-          artistName="Seventeen"
-          albumInfo="정규 4집"
-        />
-        <Margin height="16" />
-        <NthAlbum
-          rank="2"
-          iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-          albumName="Face The Sun"
-          artistName="Seventeen"
-          albumInfo="정규 4집"
-        />
-        <Margin height="16" />
-        <NthAlbum
-          rank="3"
-          iconLink="https://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
-          albumName="Face The Sun"
-          artistName="Seventeen"
-          albumInfo="정규 4집"
-        />
-        <Margin height="16" />
-        <MoreViewButton>
-          <MoreViewTextWrapper>
-            <Typography regular16 color="gray">
-              더보기
-            </Typography>
-            <HiOutlineChevronDown size="22" color="#afafaf" />
-          </MoreViewTextWrapper>
-        </MoreViewButton>
-      </PageWrapper>
-      <Margin height="70" />
-      <Footer active="home" />
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <PageWrapper>
+            <Margin height="40" />
+            <TitleBox>
+              <Flex direction="column" justify="left">
+                <Typography fontSize="28" fontWeight="700">
+                  영우 님의
+                  <br />
+                  관심 아티스트
+                </Typography>
+              </Flex>
+            </TitleBox>
+            <Margin height="40" />
+            <CardCarousel />
+            <EditButtonWrapper>
+              <EditButton onClick={() => onClickEdit()}>+ 수정하기</EditButton>
+            </EditButtonWrapper>
+          </PageWrapper>
+          <PageWrapper>
+            <Margin height="44" />
+            <TitleBox>
+              <Flex direction="column" justify="left">
+                <Typography fontSize="28" fontWeight="700">
+                  앨범차트
+                </Typography>
+              </Flex>
+            </TitleBox>
+            <Margin height="24" />
+            <FirstAlbum
+              albumLink="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/639/088/82639088_1653623843808_1_600x600.JPG/dims/resize/Q_80,0"
+              iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
+              albumName="Face The Sun"
+              artistName="Seventeen"
+              albumInfo="정규 4집"
+            />
+            <Margin height="16" />
+            <NthAlbum
+              rank="2"
+              iconLink="http://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
+              albumName="Face The Sun"
+              artistName="Seventeen"
+              albumInfo="정규 4집"
+            />
+            <Margin height="16" />
+            <NthAlbum
+              rank="3"
+              iconLink="https://file2.instiz.net/data/cached_img/upload/201507210/88367d0af857e0a6cd53aafbe1c15c49.jpg"
+              albumName="Face The Sun"
+              artistName="Seventeen"
+              albumInfo="정규 4집"
+            />
+            <Margin height="16" />
+            <MoreViewButton>
+              <MoreViewTextWrapper>
+                <Typography regular16 color="gray">
+                  더보기
+                </Typography>
+                <HiOutlineChevronDown size="22" color="#afafaf" />
+              </MoreViewTextWrapper>
+            </MoreViewButton>
+          </PageWrapper>
+          <Margin height="70" />
+          <Footer active="home" />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

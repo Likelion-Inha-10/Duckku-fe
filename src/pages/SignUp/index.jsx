@@ -9,6 +9,7 @@ import Margin from "../../duckku-ui/Margin";
 import Typography from "../../duckku-ui/Typography";
 import toast from "react-simple-toasts";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const InputWrapper = styled.div`
   margin-top: 10px;
@@ -150,94 +151,105 @@ const SignUp = () => {
   };
 
   return (
-    <Layout>
-      <Header back title="회원가입" />
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <Header back title="회원가입" />
 
-      <Wrapper>
-        <Margin height="100" />
-        <InputWrapper>
-          <Input
-            borderColor={colors.name}
-            value={user.name}
-            onChange={onChange}
-            name="name"
-            placeholder="이름"
-            onKeyUp={next}
-            ref={inputName}
-          />
-          <SubText>
-            <Input
-              borderColor={colors.email}
-              name="email"
-              placeholder="이메일"
-              onKeyUp={next}
-              value={user.email}
-              onChange={onChange}
-              ref={inputEmail}
-            />
-            <Margin height="5" />
-            <Typography
-              style={{ visibility: `${alert.email ? "hidden" : "visible"}` }}
-              fontSize="14"
-              color="red"
-              fontWeight="400"
+          <Wrapper>
+            <Margin height="100" />
+            <InputWrapper>
+              <Input
+                borderColor={colors.name}
+                value={user.name}
+                onChange={onChange}
+                name="name"
+                placeholder="이름"
+                onKeyUp={next}
+                ref={inputName}
+              />
+              <SubText>
+                <Input
+                  borderColor={colors.email}
+                  name="email"
+                  placeholder="이메일"
+                  onKeyUp={next}
+                  value={user.email}
+                  onChange={onChange}
+                  ref={inputEmail}
+                />
+                <Margin height="5" />
+                <Typography
+                  style={{
+                    visibility: `${alert.email ? "hidden" : "visible"}`,
+                  }}
+                  fontSize="14"
+                  color="red"
+                  fontWeight="400"
+                >
+                  메일 양식을 맞춰주세요
+                </Typography>
+              </SubText>
+              <SubText>
+                <Input
+                  borderColor={colors.pw}
+                  name="pw"
+                  placeholder="비밀번호"
+                  type="password"
+                  value={user.pw}
+                  onKeyUp={next}
+                  onChange={onChange}
+                  ref={inputPW}
+                />
+                <Margin height="5" />
+                <Typography
+                  fontSize="14"
+                  color={`${alert.pw ? "gray" : "red"}`}
+                  fontWeight="400"
+                >
+                  최소 8자리 이상으로 설정해주세요
+                </Typography>
+              </SubText>
+              <SubText>
+                <Input
+                  borderColor={colors.pw2}
+                  value={user.pw2}
+                  onChange={onChange}
+                  name="pw2"
+                  placeholder="비밀번호 확인"
+                  onKeyUp={next}
+                  type="password"
+                  ref={inputPW2}
+                />
+                <Margin height="5" />
+                <Typography
+                  style={{ visibility: `${alert.pw2 ? "hidden" : "visible"}` }}
+                  fontSize="14"
+                  color="red"
+                  fontWeight="400"
+                >
+                  비밀번호가 일치하지 않습니다
+                </Typography>
+              </SubText>
+            </InputWrapper>
+          </Wrapper>
+          <ButtonWrapper>
+            <Button
+              onClick={submit}
+              ref={last}
+              backgroundColor={colors.submitButton}
             >
-              메일 양식을 맞춰주세요
-            </Typography>
-          </SubText>
-          <SubText>
-            <Input
-              borderColor={colors.pw}
-              name="pw"
-              placeholder="비밀번호"
-              type="password"
-              value={user.pw}
-              onKeyUp={next}
-              onChange={onChange}
-              ref={inputPW}
-            />
-            <Margin height="5" />
-            <Typography
-              fontSize="14"
-              color={`${alert.pw ? "gray" : "red"}`}
-              fontWeight="400"
-            >
-              최소 8자리 이상으로 설정해주세요
-            </Typography>
-          </SubText>
-          <SubText>
-            <Input
-              borderColor={colors.pw2}
-              value={user.pw2}
-              onChange={onChange}
-              name="pw2"
-              placeholder="비밀번호 확인"
-              onKeyUp={next}
-              type="password"
-              ref={inputPW2}
-            />
-            <Margin height="5" />
-            <Typography
-              style={{ visibility: `${alert.pw2 ? "hidden" : "visible"}` }}
-              fontSize="14"
-              color="red"
-              fontWeight="400"
-            >
-              비밀번호가 일치하지 않습니다
-            </Typography>
-          </SubText>
-        </InputWrapper>
-      </Wrapper>
-      <ButtonWrapper>
-        <Button
-          onClick={submit}
-          ref={last}
-          backgroundColor={colors.submitButton}
-        >
-          입력한 정보로 가입하기
-        </Button>
-      </ButtonWrapper>
-    </Layout>
+              입력한 정보로 가입하기
+            </Button>
+          </ButtonWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

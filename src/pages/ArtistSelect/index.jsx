@@ -11,6 +11,7 @@ import OptionButton from "./components/optionButton";
 import ArtistButton from "./components/artistButton";
 import Toast from "../../duckku-ui/Toast";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 const TopWrapper = styled.div`
@@ -257,41 +258,53 @@ const ArtistSelect = () => {
   };
 
   return (
-    <Layout>
-      <TopWrapper>
-        <Header back title="아티스트 설정" />
-        <Margin height="23" />
-        <TitleBox>
-          <Flex direction="column" justify="left">
-            <Typography bold21>
-              좋아하는 아티스트를
-              <br />
-              선택해주세요.
-            </Typography>
-          </Flex>
-        </TitleBox>
-        <Margin height="30" />
-        <InputBox placeholder="아티스트 검색" setSearchTerm={setSearchTerm} />
-        <Margin height="21" />
-        <OptionSlider>
-          <OptionButtonWrapper>
-            <Flex direction="row">{optionButtons}</Flex>
-          </OptionButtonWrapper>
-        </OptionSlider>
-        <Margin height="32" />
-      </TopWrapper>
-      <ArtistWrapper>{artistButtons}</ArtistWrapper>
-      <ButtonWrapper>
-        <Button
-          backgroundColor={artistNumber === 0 ? "gray" : "main"}
-          onClick={onConfirm}
-        >
-          {artistNumber === 0
-            ? "아티스트 선택하기"
-            : artistNumber + "명의 아티스트 선택"}
-        </Button>
-      </ButtonWrapper>
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}
+      >
+        <Layout>
+          <TopWrapper>
+            <Header back title="아티스트 설정" />
+            <Margin height="23" />
+            <TitleBox>
+              <Flex direction="column" justify="left">
+                <Typography bold21>
+                  좋아하는 아티스트를
+                  <br />
+                  선택해주세요.
+                </Typography>
+              </Flex>
+            </TitleBox>
+            <Margin height="30" />
+            <InputBox
+              placeholder="아티스트 검색"
+              setSearchTerm={setSearchTerm}
+            />
+            <Margin height="21" />
+            <OptionSlider>
+              <OptionButtonWrapper>
+                <Flex direction="row">{optionButtons}</Flex>
+              </OptionButtonWrapper>
+            </OptionSlider>
+            <Margin height="32" />
+          </TopWrapper>
+          <ArtistWrapper>{artistButtons}</ArtistWrapper>
+          <ButtonWrapper>
+            <Button
+              backgroundColor={artistNumber === 0 ? "gray" : "main"}
+              onClick={onConfirm}
+            >
+              {artistNumber === 0
+                ? "아티스트 선택하기"
+                : artistNumber + "명의 아티스트 선택"}
+            </Button>
+          </ButtonWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
