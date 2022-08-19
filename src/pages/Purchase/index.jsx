@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../duckku-ui/Header";
 import Layout from "../../duckku-ui/Layout";
 import Margin from "../../duckku-ui/Margin";
@@ -7,6 +7,8 @@ import Typography from "../../duckku-ui/Typography";
 import { PurchaseCard, PurchaseBtn } from "./components/PurchaseCard";
 import SingList from "./components/SingList";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -38,22 +40,48 @@ const TrackWrapper = styled.div`
 const ListsMap = (props) => {
   return props.Lists.map((v) => (
     <SingList
-      key={v.SingName}
+      key={v.music_name}
       Num={props.Lists.indexOf(v) + 1}
-      SingName={v.SingName}
-      SingTime={v.SingTime}
+      SingName={v.music_name}
+      SingTime={v.play_time}
     />
   ));
 };
 
 const Purchase = () => {
-  const Lists = [
-    { SingName: "Fell My Rhythm", SingTime: "3:31" },
-    { SingName: "Cheer up", SingTime: "5:31" },
-    { SingName: "우아하게", SingTime: "3:41" },
-    { SingName: "Nothing", SingTime: "4:31" },
-    { SingName: "힘들어 죽겠다...", SingTime: "2:32" },
-  ];
+  const { albumId } = useParams();
+
+  const [Name, setName] = useState("");
+  const [Img, setImg] = useState("");
+  const [Singer, setSinger] = useState("");
+  const [MusicList, setMusicList] = useState([]);
+
+  useEffect(() => {
+    console.log(albumId);
+    const id = localStorage.getItem("id");
+
+    axios
+      .get(`${process.env.REACT_APP_API}/show_album_info/${albumId}`)
+      .then((response) => {
+        setName(response.data.name);
+        setImg(response.data.album_image);
+        setSinger(response.data.artist_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/album_music_list_info/${albumId}`)
+      .then((response) => {
+        setMusicList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -66,17 +94,13 @@ const Purchase = () => {
         <Layout>
           <Header zIndex="10" back title="   앨범 구매하기" />
           <AllWrapper>
-            <PurchaseCard
-              Img="https://th.bing.com/th/id/R.5e9ac488f0fe4831728673c1ae26cdb1?rik=utuJcfkDCV%2bY0A&riu=http%3a%2f%2fimage.yes24.com%2fmomo%2fTopCate2520%2fMidCate005%2f251947388.jpg&ehk=2kmSkQWNOz%2b7c%2fRy7B7uuI6tZQmtzG42pUuSVkRK6N8%3d&risl=&pid=ImgRaw&r=0"
-              SingName="The ReVe Festival ‘Day2’"
-              SingerName="레드벨벳"
-            />
+            <PurchaseCard Img={Img} SingName={Name} SingerName={Singer} />
             <Margin width="390" height="50" />
 
             <TrackWrapper>
               <Typography bold16>수록곡</Typography>
 
-              <ListsMap Lists={Lists} />
+              <ListsMap Lists={MusicList} />
             </TrackWrapper>
             <Margin width="300px" height="130" />
           </AllWrapper>
