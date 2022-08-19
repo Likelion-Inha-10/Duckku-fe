@@ -89,6 +89,7 @@ const Album = () => {
           <Margin height="30" />
 
           <Contents
+            aid={data.id}
             data={data}
             photo={photo}
             ticket={ticket}
