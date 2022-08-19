@@ -45,6 +45,7 @@ const Router = () => (
       <Route exact path="/payment" element={<Payment />} />
       <Route exact path="/purchase-history" element={<PurchaseHistory />} />
       <Route exact path="/start" element={<Start />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
 );

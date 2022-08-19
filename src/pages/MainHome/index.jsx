@@ -9,7 +9,7 @@ import { HiOutlineChevronDown } from "react-icons/hi";
 import FirstAlbum from "./components/firstAlbum";
 import NthAlbum from "./components/nthAlbum";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
@@ -81,29 +81,24 @@ const MoreViewTextWrapper = styled.div`
 
 const MainHome = () => {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
   const onClickEdit = () => {
     navigate(`/favorite-artist`);
   };
 
   useEffect(() => {
+    const id = localStorage.getItem("id");
+
     axios
-      .get(`${process.env.REACT_APP_API}/userinfo}`)
+      .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
       .then((response) => {
-        console.log("메인홈");
+        setUserName(response.data[0].userName);
         console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
-    axios
-      .get(`${process.env.REACT_APP_API}/my_artist_list`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+  }, []);
 
   return (
     <>
@@ -119,7 +114,7 @@ const MainHome = () => {
             <TitleBox>
               <Flex direction="column" justify="left">
                 <Typography fontSize="28" fontWeight="700">
-                  영우 님의
+                  {userName} 님의
                   <br />
                   관심 아티스트
                 </Typography>
