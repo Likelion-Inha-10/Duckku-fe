@@ -51,18 +51,18 @@ const Title = styled.div`
   display: block;
   margin-left: 40px;
   margin-top: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 // 옵션 박스
 const Option = styled.div`
   width: 230px;
   height: 17px;
-  display: flex;
+  display: block;
   margin-left: 40px;
   margin-top: 7px;
+`;
+
+const StyledTypho = styled(Typography)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -115,11 +115,13 @@ const PurchaseAlbum = (props) => {
               </Typography>
             </PurchaseSuccess>
             <Title>
-              <Typography bold14>{props.Title}</Typography>
+              <StyledTypho bold14>{props.Title}</StyledTypho>
             </Title>
             <Option>
-              <Typography thin14 color="darkGray">옵션명 :&nbsp;</Typography>
-              <Typography thin14 color="darkGray">{props.Option}</Typography>
+              <Flex direction="row">
+                <Typography thin14 color="darkGray">옵션명 :&nbsp;</Typography>
+                <StyledTypho thin14 color="darkGray">{props.Option}</StyledTypho>
+              </Flex>
             </Option>
             <Ticket>
               <Typography thin14 color="darkGray">[응모권 미포함]</Typography>
