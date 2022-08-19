@@ -15,9 +15,11 @@ const Album = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const id = localStorage.getItem("id");
+
     axios
-      .get("http://jsonplaceholder.typicode.com/users")
-      .then((r) => setData(r.data));
+      .get(`${process.env.REACT_APP_API}/userinfo/${id}`)
+      .then((r) => console.log(r));
   }, []);
 
   return (

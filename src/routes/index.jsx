@@ -17,13 +17,14 @@ import MyFixInform from "../pages/MyFixInform";
 import Payment from "../pages/Payment";
 import PurchaseHistory from "../pages/PurchaseHistory";
 import Start from "../pages/Start";
-
+import ScrollToTop from "../duckku-ui/Scroll";
 //모달창 생성 테스트 페이지 입니다. 페이지 생성되면 적용 후에 지울 예정
 import ModalAlbumTest from "../pages/ModalQrTest";
 // 라우트명은 kebab-case 로 작성합니다
 
 const Router = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route exact path="/" element={<Intro />} />
       <Route exact path="/purchase" element={<Purchase />} />
