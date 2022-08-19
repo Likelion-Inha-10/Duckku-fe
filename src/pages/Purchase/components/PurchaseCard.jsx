@@ -167,6 +167,7 @@ const CircleButton = styled.button`
   color: white;
   font-size: 12px;
   border-radius: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: ${(props) =>
     props.backgroundColor
       ? props.theme.colors[props.backgroundColor]
