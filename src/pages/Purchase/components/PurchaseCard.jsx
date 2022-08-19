@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../duckku-ui/Button";
 import Margin from "../../../duckku-ui/Margin";
 import styled from "styled-components";
@@ -7,6 +7,8 @@ import Modal from "../Modal/Modal";
 import { FaWonSign } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { ImPlus } from "react-icons/im";
+import axios, { Axios } from "axios";
+import { useParams } from "react-router-dom";
 // 이미지 부분
 
 const PurchaseImageWrapper = styled.div`
@@ -181,6 +183,39 @@ const SmallTypo = styled.p`
 const PurchaseBtn = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const { albumId } = useParams();
+  const [Ticket, setWithTicket] = useState("");
+  const [NoTicket, setWithNoTicket] = useState("");
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+
+    axios
+      .get(`${process.env.REACT_APP_API}/show_album_info/${albumId}`)
+      .then((response) => {
+        setWithTicket(response.data.price_with_ticket);
+        console.log(Ticket);
+        setWithNoTicket(response.data.price_without_ticket);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .post(`${process.env.REACT_APP_API}/buy_albums/${albumId}/${id}`, {
+        album_with_ticket: { numberInclude },
+        album_without_ticket: { numberNotInclude },
+      })
+      .then((response) => {
+        console.log(response);
+        console.log("구매가 완료되었습니다.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -260,7 +295,7 @@ const PurchaseBtn = () => {
                   <FaWonSign style={{ paddingTop: "4px" }} />
                 </WonPadding>
                 &nbsp;
-                {13700 * numberInclude}
+                {Ticket * numberInclude}
               </Typography>
             </Price>
           </PriceSection>
@@ -294,7 +329,7 @@ const PurchaseBtn = () => {
               <Typography regular16>
                 <FaWonSign style={{ paddingTop: "4px" }} />
                 &nbsp;
-                {numberNotInclude * 9700}
+                {numberNotInclude * NoTicket}
               </Typography>
             </Price>
           </PriceSection>
@@ -311,7 +346,7 @@ const PurchaseBtn = () => {
               <Typography bold16>
                 <FaWonSign style={{ paddingTop: "4px" }} />
                 &nbsp;
-                {13700 * numberInclude + numberNotInclude * 9700}
+                {Ticket * numberInclude + numberNotInclude * NoTicket}
               </Typography>
             </Price>
           </TotalPriceSection>
