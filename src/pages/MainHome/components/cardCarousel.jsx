@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slick.css";
+import { useNavigate } from "react-router-dom";
 
 const CarouselWrapper = styled.div`
   width: 100%;
@@ -15,7 +16,6 @@ const CarouselWrapper = styled.div`
 const CardCarousel = () => {
   const settings = {
     dots: true,
-    fade: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -39,6 +39,11 @@ const CardCarousel = () => {
 
   const [artistList, setArtistList] = useState([]);
   const [artistCards, setArtistCards] = useState();
+  const navigate = useNavigate();
+
+  const moveToAlbum = (artist) => {
+    navigate(`/album/${artist.key}`);
+  };
 
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -50,6 +55,8 @@ const CardCarousel = () => {
         let artistArray = [];
         response.data.map((artist) => {
           artistArray.push({
+            key: artist.id,
+            artistid: artist.id,
             imgLink:
               "https://img7.yna.co.kr/etc/inner/KR/2019/12/24/AKR20191224038500005_01_i_P4.jpg",
             iconLink:
@@ -71,13 +78,18 @@ const CardCarousel = () => {
   useEffect(() => {
     setArtistCards(
       artistList.map((artist) => (
-        <ArtistCard
-          imgLink={artist.imgLink}
-          iconLink={artist.iconLink}
-          artistName={artist.artistName}
-          color1={artist.color1}
-          color2={artist.color2}
-        />
+        <div onClick={() => moveToAlbum(artist)}>
+          <ArtistCard
+            key={artist.key}
+            artistid={artist.artistid}
+            imgLink={artist.imgLink}
+            iconLink={artist.iconLink}
+            artistName={artist.artistName}
+            color1={artist.color1}
+            color2={artist.color2}
+            nClick={moveToAlbum}
+          />
+        </div>
       ))
     );
   }, [artistList]);

@@ -35,7 +35,7 @@ const Router = () => (
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/store" element={<Store />} />
       <Route exact path="/main-home" element={<MainHome />} />
-      <Route exact path="/album" element={<Album />} />
+      <Route exact path="/album/:artistid" element={<Album />} />
       <Route exact path="/favorite-artist" element={<FavoriteArtist />} />
       <Route exact path="/my-page" element={<MyPage />} />
       <Route exact path="/my-inform" element={<MyInform />} />
