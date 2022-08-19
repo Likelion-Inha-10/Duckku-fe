@@ -9,6 +9,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { ImPlus } from "react-icons/im";
 import axios, { Axios } from "axios";
 import { useParams } from "react-router-dom";
+
 // 이미지 부분
 
 const PurchaseImageWrapper = styled.div`
@@ -55,9 +56,42 @@ const HeartSection = styled.div`
 
 const HeartButton = () => {
   const [like, setLike] = useState(false);
+  const { albumId } = useParams();
+  const id = localStorage.getItem("id");
+  const WishClicked = () => {
+    if (like === true) {
+      setLike(false);
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}
+      `
+        )
+
+        .then((response) => {
+          console.log("찜하기 취소 성공");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setLike(true);
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/add_subalbum/${albumId}/${id}
+      `
+        )
+
+        .then((response) => {
+          console.log("찜하기 성공");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
 
   return (
-    <HeartSection onClick={() => setLike(!like)}>
+    <HeartSection onClick={WishClicked}>
       {like ? <AiFillHeart color="red" /> : <AiFillHeart />}
     </HeartSection>
   );
