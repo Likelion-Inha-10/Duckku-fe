@@ -9,7 +9,8 @@ import Button from "../../duckku-ui/Button";
 import Slider from "react-slick";
 import Flex from "../../duckku-ui/Flex";
 import "./components/slick.css";
-import { useState } from "react";
+import { ReactComponent as StartTitle } from "../../assets/svgs/startTitle.svg";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const StyledSlider = styled(Slider)`
@@ -61,6 +62,21 @@ const ButtonWrapper = styled.div`
   bottom: 56px;
 `;
 
+const StartPageWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  z-index: ${(props) => (props.visible === false ? 100 : -10)};
+  opacity: ${(props) => (props.visible === false ? 1 : 0)};
+  transition: 0.5s;
+`;
+
 const Intro = () => {
   const settings = {
     dots: true,
@@ -86,13 +102,27 @@ const Intro = () => {
   };
 
   const [slide, setSlide] = useState(0);
+  const [startLoad, setStartLoad] = useState(false);
   const navigate = useNavigate();
 
   const onClickButton = () => {
     navigate(`/start`);
   };
+
+  useEffect(() => {
+    setTimeout(function () {
+      console.log("Works!");
+      setStartLoad(true);
+    }, 2000);
+  }, []);
+
   return (
     <Layout>
+      <StartPageWrapper visible={startLoad}>
+        <Typography bold16>나만의 덕질 꾸미기</Typography>
+        <Margin height="18" />
+        <StartTitle />
+      </StartPageWrapper>
       <Margin height="59" />
       <StyledSlider {...settings}>
         <SlideWrapper>
