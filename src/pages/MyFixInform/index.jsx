@@ -54,7 +54,18 @@ const MyFixInform = () => {
     pw2: "gray",
     submitButton: "gray",
   });
+  useEffect(() => {
+    const id = localStorage.getItem("id");
 
+    axios.get(`${process.env.REACT_APP_API}/userinfo/${id}`).then((r) => {
+      console.log(r.data[0]);
+      setUser({
+        ...user,
+        name: r.data[0].userName,
+        email: r.data[0].userEmail,
+      });
+    });
+  }, []);
   //밑줄 색 바꾸는거, user에 값 저장하는거, 유효성검사
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -98,6 +109,19 @@ const MyFixInform = () => {
         return console.log("다 입력해!!");
       }
     }
+    const id = localStorage.getItem("id");
+
+    axios
+      .patch(`${process.env.REACT_APP_API}/userinfo/${id}`, {
+        userName: user.name,
+        userEmail: user.email,
+        password1: user.pw,
+        password2: user.pw2,
+        user: id,
+      })
+      .then((r) => {
+        console.log(r);
+      });
   };
 
   const next = (e) => {
